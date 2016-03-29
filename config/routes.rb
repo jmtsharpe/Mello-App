@@ -53,4 +53,8 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  root to: 'static_pages#root'
+
+  resources :users
+  resource :session
 end

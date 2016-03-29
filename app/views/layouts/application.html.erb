@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MelloApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
+  <title>Links</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header class"over-head">
+    <ul class="over-head-left">
+      <div id="board-options"></div>
+    </ul>
+    <div id="over-head-logo">
+
+    </div>
+    <ul class="over-head-right">
+
+    </ul>
+  </header>
+<% if signed_in? %>
+  <%= current_user.username %>
+  <%= button_to "Sign Out", session_url, :method => :delete %>
+<% else %>
+  <%= link_to "Sign In", new_session_url %>
+  <%= link_to "Sign Up", new_user_url %>
+<% end %>
+
+<br>
+
+<%= render "layouts/errors" %>
 
 <%= yield %>
 
