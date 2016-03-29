@@ -1,0 +1,9 @@
+Component Hierarchy
+
+•	App
+  o	UserForm
+  o	BoardIndex
+    ♣	CardIndex
+      •	CardIndexItem
+  o	BoardForm
+    ♣	CardForm
