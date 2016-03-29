@@ -1,0 +1,30 @@
+
+Boards
+Title
+String
+Not null
+Author ID
+Integer
+Not null, foreign key
+
+Cards
+Title
+String
+Not null
+List ID
+Integer
+Not null, foreign key
+Author ID
+Integer
+Not null, foreing key
+
+Comments
+Body
+String
+Not null
+Author ID
+Integer
+Not null, foreign key
+Card ID
+Integer
+Not null, foreign key
