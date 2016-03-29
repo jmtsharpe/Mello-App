@@ -8,6 +8,7 @@
     "test": "test"
   },
   "scripts": {
+    "postinstall": "./node_modules/.bin/webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,5 +29,10 @@
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
     "webpack": "^1.12.14"
-  }
+  },
+  "engines": {
+   "node": "4.1.1",
+   "npm": "2.1.x"
+  },
+
 }
