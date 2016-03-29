@@ -1,28 +1,28 @@
-Flux Stores
+#Flux Stores
 
-BoardStore
-Holds all boards for user
+##BoardStore
+  Holds all boards for user
 
-Actions
-•	receiveAllBoards
-•	receiveSingleBoard
-•	removeBoard
+###Actions
+  * receiveAllBoards
+  *	receiveSingleBoard
+  *	removeBoard
 
-BoardFormStore
-Holds data to create boards
+##BoardFormStore
+  Holds data to create boards
 
-Actions
-•	receiveBoardFormParams
+###Actions
+  *	receiveBoardFormParams
 
-Listeners
-•	BoardForm
+###Listeners
+  *	BoardForm
 
-CardStore
+##CardStore
 Holds all cards for user
 
-Actions
-•	receiveAllCards
-•	receiveSingleCard
-•	removeCard
+###Actions
+  * receiveAllCards
+  *	receiveSingleCard
+  *	removeCard
 
 
