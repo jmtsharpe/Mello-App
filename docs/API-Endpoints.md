@@ -14,6 +14,15 @@
   * POST /session
   * DELETE /session
 
+##Boards
+
+  * GET /api/boards
+  * POST /api/boards
+  * GET /api/boards/:id
+  * PATCH /api/boards/:id
+  * DELETE /api/boards/:id
+  * GET /api/boards/:id/cards
+
 ##Cards
 
   * GET /api/cards
@@ -22,14 +31,13 @@
   * PATCH /api/cards/:id
   * DELETE /api/cards/:id
 
-##Boards
+##Tasks
 
-  * GET /api/boards
-  * POST /api/boards
-  * GET /api/boards/:id
-  * PATCH /api/boards/:id
-  * DELETE /api/boards/:id
-  * GET /api/boards/:id/notes
+  * GET /api/cards/:card_id/tasks
+  * POST /api/cards/:card_id/tasks
+  * GET /api/cards/:card_id/tasks/:id
+  * PATCH /api/cards/:card_id/tasks/:id
+  * DELETE /api/cards/:card_id/tasks/:id
 
 ##Comments
 
