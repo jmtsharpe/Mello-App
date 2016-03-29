@@ -2,7 +2,7 @@ BOARDS
 
 | Column    | Type    | Details                 |
 | ----------|---------|------------------------ |
-| Title     | String  | Not null                |
+| Subject   | String  | Not null                |
 | Author ID | Integer | Not null, foreign key   |
 
 CARDS
@@ -11,7 +11,24 @@ CARDS
 | ----------|---------|------------------------ |
 | Title     | String  | Not null                |
 | List ID   | Integer | Not null, foreign key   |
-| Author ID | Integer | Not null, foreing key   |
+| Author ID | Integer | Not null, foreign key   |
+
+
+TASKS
+
+| Column    | Type    | Details                 |
+| ----------|---------|------------------------ |
+| Body      | String  | Not null                |
+| Due Date  | Date    | Allow null              |
+| Author ID | Integer | Not null, foreign key   |
+| Card ID   | Integer | Not null, foreign key   |
+
+TASKS: BONUS
+
+| Column     | Type    | Details                 |
+| -----------|---------|------------------------ |
+| Assoc Task | Integer | Allow null, foreign key |
+
 
 COMMENTS
 
