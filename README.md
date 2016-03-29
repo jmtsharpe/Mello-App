@@ -10,13 +10,13 @@
 
 ####Design Docs
 
-* [View Wireframes][wireframes]
+* [View Wireframes][views]
 * [React Components][components]
 * [Flux Stores][stores]
 * [API endpoints][api-endpoints]
 * [DB schema][schema]
 
-[views]: ./docs/wireframes.md
+[views]: ./docs/views.md
 [components]: ./docs/React-Components.md
 [stores]: ./docs/FluxStores.md
 [api-endpoints]: ./docs/Api-Endpoints.md
