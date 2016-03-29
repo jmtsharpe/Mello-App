@@ -21,7 +21,7 @@
   *	User signup/signin pages
   *	Redirect user to landing page on login (Mello’s root React component)
 
-##Phase 2: Board Models
+##Phase 2: Boards
 
 #####Objective: Have functioning boards created by user.
 
