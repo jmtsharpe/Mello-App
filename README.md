@@ -1,17 +1,19 @@
-Mello is a web application modelled after Trello using Ruby on Rails. Mello allows users to 
+#####Mello is a web application modeled after Trello using Ruby on Rails. Mello allows users to:
 
   *	Create an account
   *	Log in/ Log out
+  *	Create, read, edit and delete boards
   *	Create, read, edit and delete cards
-  *	Add listed notes to each card.
+  *	Attach cards to boards
+  *	Add listed notes to each card
   *	Upload pictures, create checklists, add labels and comments, and create due dates.
 
 
-Implementation Timeline
+#####Implementation Timeline
 
 ##Phase 1
 
-Objective: Have a functioning rails project with Authentication.
+#####Objective: Have a functioning rails project with Authentication.
 
   *	Create new Rails project
   *	Create User model
@@ -32,7 +34,7 @@ Objective: Cards can be created and Notes can be added to them.
 
 ##Phase 3: Build Out Flux and Implement Routers
 
-Objective: Cards can be added, read, edited and destroyed all using the user interface
+#####Objective: Cards can be added, read, edited and destroyed all using the user interface
 
   *	Create all interactions using React and Flux.
   *	Have all interactions through single page using routers.
@@ -43,14 +45,14 @@ Objective: Cards can be added, read, edited and destroyed all using the user int
 
 ##Phase 4: Drag and drop functionality for Lists and Cards
 
-Objective: Add React Drag and Drop functionality to Card Elements
+#####Objective: Add React Drag and Drop functionality to Card Elements
 
   *	Drag list items from one card to another:
   *	Update cards using drag and drop GUI
 
 ##Phase 5: Styling
 
-Objective: build styling around existing functionality.
+#####Objective: build styling around existing functionality.
 
 
   *	Create style guide to direct styling
