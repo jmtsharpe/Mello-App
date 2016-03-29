@@ -22,7 +22,8 @@
   *	Redirect user to landing page on login (Mello’s root React component)
 
 ##Phase 2: Cards Model, Associated comments, API, basic APIUTIL
-Objective: Cards can be created and Notes can be added to them.
+
+#####Objective: Cards can be created and Notes can be added to them.
 
   *	Create Card model
   *	Create comments model
