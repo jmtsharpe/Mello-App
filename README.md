@@ -8,6 +8,20 @@
   *	Add listed tasks to each card
   *	Upload pictures, create checklists, add labels and comments, and create due dates.
 
+####Design Docs
+
+* [View Wireframes][wireframes]
+* [React Components][components]
+* [Flux Stores][stores]
+* [API endpoints][api-endpoints]
+* [DB schema][schema]
+
+[views]: ./docs/wireframes.md
+[components]: ./docs/React-Components.md
+[stores]: ./docs/FluxStores.md
+[api-endpoints]: ./docs/Api-Endpoints.md
+[schema]: ./docs/DBSchema.md
+
 
 #####Implementation Timeline
 
