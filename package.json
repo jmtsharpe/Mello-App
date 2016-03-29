@@ -2,37 +2,26 @@
   "name": "Mello-App",
   "version": "1.0.0",
   "description": "*\tCreate an account   *\tLog in/ Log out   *\tCreate, read, edit and delete boards   *\tCreate, read, edit and delete cards   *\tAttach cards to boards   *\tAdd listed tasks to each card   *\tUpload pictures, create checklists, add labels and comments, and create due dates.",
-  "main": "index.js",
+  "main": "webpack.config.js",
   "directories": {
     "doc": "docs",
     "test": "test"
   },
-  "scripts": {
-    "postinstall": "./node_modules/.bin/webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jmtsharpe/Mello-App.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jmtsharpe/Mello-App/issues"
-  },
-  "homepage": "https://github.com/jmtsharpe/Mello-App#readme",
   "dependencies": {
     "babel-core": "^6.7.4",
     "babel-loader": "^6.2.4",
     "babel-preset-react": "^6.5.0",
+    "flux": "^2.1.1",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
+    "react-router": "^2.0.1",
     "webpack": "^1.12.14"
   },
-  "engines": {
-   "node": "4.1.1",
-   "npm": "2.1.x"
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
