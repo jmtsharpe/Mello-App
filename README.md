@@ -11,7 +11,7 @@
 
 #####Implementation Timeline
 
-##Phase 1
+##Phase 1: Authentication
 
 #####Objective: Have a functioning rails project with Authentication.
 
