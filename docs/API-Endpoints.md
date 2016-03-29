@@ -1,20 +1,20 @@
-Root
+##Root
 
 GET / - loads React web app
 
-Users
+##Users
 
 GET /users/new
 POST /users
 PATCH /users
 
-Session
+##Session
 
 GET /session/new
 POST /session
 DELETE /session
 
-Notes
+##Cards
 
 GET /api/cards
 POST /api/cards
@@ -22,7 +22,7 @@ GET /api/cards/:id
 PATCH /api/cards/:id
 DELETE /api/cards/:id
 
-Notebooks
+##Boards
 
 GET /api/boards
 POST /api/boards
@@ -31,9 +31,8 @@ PATCH /api/boards/:id
 DELETE /api/boards/:id
 GET /api/boards/:id/notes
 
-Comments
+##Comments
 
-A note's tags will be included in the note show template
 GET /api/comments
 POST /api/cards/:card_id/comments
 DELETE /api/cards/:card_id/comments/comment_id
