@@ -1,4 +1,4 @@
-/*
+ /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -13,3 +13,108 @@
  *= require_tree .
  *= require_self
  */
+
+ /*/ RESET /*/
+
+ html, body, header, nav, h1, a, ul, li,
+strong, main, section, img, div, h2, p,
+form, fieldset, label, textarea,
+button, article, footer, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: inherit;
+  font-family: inherit;
+  box-sizing: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: none;
+  background: transparent;
+}
+
+body {
+  text-decoration: none;
+  font-family: sans-serif;
+  height: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+
+
+ /*/ CLEARFIX /*/
+
+.group:after {
+   content: "";
+   clear: both;
+   display: block;
+ }
+
+/*/ HEADER /*/
+
+.over-head {
+  background: #026aa7;
+  padding: 5px;
+}
+
+.nav-bar {
+  color: white;
+
+}
+.nav-bar > ul > li {
+  padding: 10px;
+  border-radius: 10%;
+  background: #2af;
+  margin: 0 5px 0 5px;
+}
+
+
+.over-head-left {
+  float: left;
+}
+
+.over-head-left > li {
+  float: left;
+
+}
+
+.over-head-right {
+  float: right;
+}
+
+.over-head-right > li {
+  float: left;
+}
+
+.over-head-logo {
+  font-weight: bold;
+  font-size: 24px;
+  padding: 5px;
+  text-align: center;
+  top: 10px;
+  letter-spacing: 2px;
+}
+
+.board-index {
+  float: left;
+  background: #2af;
+  color: white;
+  padding: 10px;
+  border-radius: 3%;
+  margin: 10px;
+}
+
+.board-index h2 {
+  padding: 10px 0 10px 0;
+  margin: auto;
+}
+
+.board-list-item {
+  padding: 10px 20px 10px 20px;
+  background: #026aa7;
+  border-radius: 3%;
+  margin: 5px;
+}

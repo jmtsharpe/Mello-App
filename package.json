@@ -15,7 +15,8 @@
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
     "react-router": "^2.0.1",
-    "webpack": "^1.12.14"
+    "webpack": "^1.12.14",
+    "react-addons-linked-state-mixin": "^0.14.2"
   },
   "devDependencies": {},
   "scripts": {
