@@ -20,6 +20,7 @@ var resetCard = function (card) {
 };
 
 CardStore.all = function () {
+  debugger
   var cards = [];
   for (var id in _cards) {
     if (_cards.hasOwnProperty(id)) {
@@ -33,17 +34,27 @@ CardStore.all = function () {
   return cards;
 };
 
+CardStore.findMine = function () {
+  var cards = [];
+  for (var id in _cards) {
+    if (_cards.hasOwnProperty(id)) {
+      cards.push(_cards[id]);
+    }
+  }
+};
+
 CardStore.find = function (id) {
   return _cards[id];
 };
 
 CardStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
-    case CardConstants.BOARDS_RECEIVED:
+    case CardConstants.CARDS_RECEIVED:
+      debugger
       resetCards(payload.cards);
       CardStore.__emitChange();
       break;
-    case CardConstants.BOARD_RECEIVED:
+    case CardConstants.CARD_RECEIVED:
       resetCard(payload.card);
       CardStore.__emitChange();
       break;

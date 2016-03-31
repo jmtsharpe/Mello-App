@@ -31,12 +31,9 @@ var BoardIndex = React.createClass({
     return (
       <div className="content">
         <div className="board-index group">
-
-
           <ul>
             {boards}
           </ul>
-
           <BoardForm />
         </div>
         {this.props.children}

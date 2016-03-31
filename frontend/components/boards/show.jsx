@@ -2,6 +2,7 @@ var React = require('react');
 var BoardStore = require('./../../stores/board');
 var ApiUtil = require('./../../util/apiUtil');
 var CardForm = require('./../cards/form');
+var CardIndex = require('./../cards/index');
 
 
 var BoardShow = React.createClass({
@@ -24,7 +25,6 @@ var BoardShow = React.createClass({
 
     this.boardListener = BoardStore.addListener(this._onChange);
     ApiUtil.fetchSingleBoard(this.props.params.id);
-    ApiUtil.fetchMyBoards(this.props.params.id);
   },
 
   componentWillUnmount: function () {
@@ -44,6 +44,7 @@ var BoardShow = React.createClass({
         return (
           <div id="board" className="group">
             <p>{this.state.board.subject}</p>
+            <CardIndex boardId={this.state.board.id} />
             <CardForm boardId={this.state.board.id} />
           </div>
         );

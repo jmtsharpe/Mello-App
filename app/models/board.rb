@@ -9,7 +9,14 @@ class Board < ActiveRecord::Base
   primary_key: :id
   )
 
-  
+  has_many(
+  :cards,
+  class_name: "Card",
+  foreign_key: :board_id,
+  primary_key: :id
+  )
+
+
 
 
 end

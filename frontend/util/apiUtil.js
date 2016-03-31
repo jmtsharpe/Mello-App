@@ -7,6 +7,10 @@ module.exports = {
       method: "GET",
       success: function (boards) {
         ApiActions.receiveAllBoards(boards);
+      },
+      error: function () {
+        debugger
+        return("fetchAllBoards#error");
       }
     });
   },
@@ -17,6 +21,10 @@ module.exports = {
       method: "GET",
       success: function (board) {
         ApiActions.receiveSingleBoard(board);
+      },
+      error: function () {
+        debugger
+        return("fetchSingleBoards#error");
       }
     });
   },
@@ -33,24 +41,27 @@ module.exports = {
     });
   },
 
-  fetchAllCards: function () {
+  fetchAllCards: function (board_id) {
     $.ajax({
-      url: "api/boards",
+      url: "api/boards/" + board_id + "/cards",
       method: "GET",
-      success: function (boards) {
-        ApiActions.receiveAllBoards(boards);
+      success: function (cards) {
+        ApiActions.receiveAllBoards(cards);
+      },
+      error: function () {
+        return("fetchAllCards#error");
       }
     });
   },
 
-  createCard: function (card, callback) {
+  createCard: function (card) {
+
     $.ajax({
       url: "api/boards/:id/cards",
       method: "POST",
       data: {card: card},
       success: function (card) {
         ApiActions.receiveSingleCard(card);
-        callback && callback(card.id);
       }
     });
   }

@@ -17,8 +17,7 @@ var CardForm = React.createClass({
     return this.blankAttrs;
   },
 
-  createCard: function (event, board_id) {
-    debugger
+  createCard: function (event) {
     event.preventDefault();
     var card = {};
     Object.keys(this.state).forEach(function (key) {
