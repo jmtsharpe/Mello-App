@@ -1,12 +1,14 @@
 var React = require('react');
-var History = require('react-router').History;
+
 
 var BoardIndexItem = React.createClass({
+  contextTypes: {
+      router: React.PropTypes.object.isRequired
+    },
 
-  mixins: [History],
 
   showDetail: function () {
-      this.history.pushState(null, 'boards/' + this.props.board.id, {});
+      this.context.router.push('boards/' + this.props.board.id);
     },
 
   render: function () {

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resource :session
 
   namespace :api, defaults: {format: :json} do
-    resources :boards
+    resources :boards do
+      resources :cards
+    end
   end
 end

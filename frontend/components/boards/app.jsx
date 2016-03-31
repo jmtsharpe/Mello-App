@@ -2,14 +2,16 @@ var React = require('react');
 var History = require('react-router').History;
 
 var App = React.createClass({
-    mixins: [History],
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
 
   goHome: function () {
-      this.history.pushState(null, '', {});
+      this.context.router.push('');
     },
 
   goToBoards: function () {
-    this.history.pushState(null, 'boards', {});
+    this.context.router.push('boards');
   },
 
   render: function () {

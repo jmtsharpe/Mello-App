@@ -1,7 +1,7 @@
 var React = require('react');
-var BoardStore = require('../../stores/board');
-var ApiUtil = require('../../util/apiUtil');
-var Card = require('../cards/form');
+var BoardStore = require('./../../stores/board');
+var ApiUtil = require('./../../util/apiUtil');
+var CardForm = require('./../cards/form');
 
 
 var BoardShow = React.createClass({
@@ -24,10 +24,15 @@ var BoardShow = React.createClass({
 
     this.boardListener = BoardStore.addListener(this._onChange);
     ApiUtil.fetchSingleBoard(this.props.params.id);
+    ApiUtil.fetchMyBoards(this.props.params.id);
   },
 
   componentWillUnmount: function () {
     this.boardListener.remove();
+  },
+
+  addCard: function () {
+
   },
 
   render: function () {
@@ -36,14 +41,16 @@ var BoardShow = React.createClass({
       if (this.state.board === undefined) {
         return (<p>Loading board...</p>);
       } else {
-        return (<p>{this.state.board.subject}</p>);
+        return (
+          <div id="board" className="group">
+            <p>{this.state.board.subject}</p>
+            <CardForm boardId={this.state.board.id} />
+          </div>
+        );
       }
     }.bind(this);
     return (
-      <div id="board" className="group">
-        <h1>{board()}</h1>
-        <div onClick={this.addCard}>Add a card</div>
-      </div>
+      <div>{board()}</div>
     );
   }
 
