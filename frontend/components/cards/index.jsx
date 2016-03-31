@@ -31,13 +31,10 @@ var CardIndex = React.createClass({
     return (
       <div className="content">
         <div className="card-index group">
-
-
           <ul>
             {cards}
           </ul>
 
-          <CardForm />
         </div>
       </div>
     );

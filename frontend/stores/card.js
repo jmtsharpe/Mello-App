@@ -20,7 +20,6 @@ var resetCard = function (card) {
 };
 
 CardStore.all = function () {
-  debugger
   var cards = [];
   for (var id in _cards) {
     if (_cards.hasOwnProperty(id)) {
@@ -50,7 +49,6 @@ CardStore.find = function (id) {
 CardStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case CardConstants.CARDS_RECEIVED:
-      debugger
       resetCards(payload.cards);
       CardStore.__emitChange();
       break;

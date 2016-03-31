@@ -22,7 +22,6 @@ var BoardShow = React.createClass({
   },
 
   componentDidMount: function () {
-
     this.boardListener = BoardStore.addListener(this._onChange);
     ApiUtil.fetchSingleBoard(this.props.params.id);
   },
@@ -39,6 +38,7 @@ var BoardShow = React.createClass({
 
     var board = function () {
       if (this.state.board === undefined) {
+
         return (<p>Loading board...</p>);
       } else {
         return (

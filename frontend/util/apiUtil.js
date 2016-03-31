@@ -1,4 +1,5 @@
-var ApiActions = require('../actions/boardActions.js');
+var BoardActions = require('../actions/boardActions.js');
+var CardActions = require('../actions/cardActions.js');
 
 module.exports = {
   fetchAllBoards: function () {
@@ -6,10 +7,9 @@ module.exports = {
       url: "api/boards",
       method: "GET",
       success: function (boards) {
-        ApiActions.receiveAllBoards(boards);
+        BoardActions.receiveAllBoards(boards);
       },
       error: function () {
-        debugger
         return("fetchAllBoards#error");
       }
     });
@@ -20,22 +20,22 @@ module.exports = {
       url: "api/boards/" + id,
       method: "GET",
       success: function (board) {
-        ApiActions.receiveSingleBoard(board);
+        BoardActions.receiveSingleBoard(board);
       },
       error: function () {
-        debugger
         return("fetchSingleBoards#error");
       }
     });
   },
 
   createBoard: function (board, callback) {
+
     $.ajax({
       url: "api/boards",
       method: "POST",
       data: {board: board},
       success: function (board) {
-        ApiActions.receiveSingleBoard(board);
+        BoardActions.receiveSingleBoard(board);
         callback && callback(board.id);
       }
     });
@@ -46,7 +46,7 @@ module.exports = {
       url: "api/boards/" + board_id + "/cards",
       method: "GET",
       success: function (cards) {
-        ApiActions.receiveAllBoards(cards);
+        CardActions.receiveAllCards(cards);
       },
       error: function () {
         return("fetchAllCards#error");
@@ -54,14 +54,15 @@ module.exports = {
     });
   },
 
-  createCard: function (card) {
-
+  createCard: function (card, board_id) {
+    debugger;
     $.ajax({
-      url: "api/boards/:id/cards",
+      url: "api/boards/" + board_id + "/cards",
       method: "POST",
       data: {card: card},
       success: function (card) {
-        ApiActions.receiveSingleCard(card);
+        CardActions.receiveSingleCard(card);
+        callback && callback(card.id);
       }
     });
   }

@@ -24,8 +24,8 @@ var CardForm = React.createClass({
       { card[key] = this.state[key]; }
     }.bind(this));
     card.board_id = this.props.boardId;
-    ApiUtil.createCard(card, function (id) {
-      this.context.router.push("/cards/" + id);
+    ApiUtil.createCard(card, this.props.boardId, function (id) {
+      this.context.router.push("/boards/"+ this.props.boardId + "/cards/" + id);
     }.bind(this));
     this.setState(this.blankAttrs);
   },
