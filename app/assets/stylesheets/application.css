@@ -37,10 +37,21 @@ body {
   text-decoration: none;
   font-family: sans-serif;
   height: 100%;
+  box-sizing: content-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
 }
 
 ul {
   list-style: none;
+}
+
+h1 {
+  font-size: 36px;
 }
 
 
@@ -99,22 +110,46 @@ ul {
 }
 
 .board-index {
-  float: left;
-  background: #2af;
+  width: 80%;
   color: white;
   padding: 10px;
   border-radius: 3%;
-  margin: 10px;
+  margin: auto;
+  text-align: center;
 }
 
 .board-index h2 {
-  padding: 10px 0 10px 0;
   margin: auto;
 }
 
-.board-list-item {
+.board-list-item, .creation-div {
+  display: inline-block;
+  width: 25%;
+  height: 60px;
   padding: 10px 20px 10px 20px;
   background: #026aa7;
-  border-radius: 3%;
+  border-radius: 1%;
   margin: 5px;
+}
+
+.board-list-item:hover, .creation-div:hover {
+  cursor: pointer;
+
+}
+
+.creation-div {
+
+}
+
+.create-form {
+}
+
+#board {
+  background: #2af;
+  position: absolute;
+  top: 110px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
 }

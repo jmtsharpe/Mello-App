@@ -23,28 +23,33 @@ module.exports = React.createClass({
     }.bind(this));
     board.user_id = 1;
     ApiUtil.createBoard(board, function (id) {
-      this.history.pushState(null, "/board/" + id, {});
+      this.history.pushState(null, "/boards/" + id, {});
     }.bind(this));
     this.setState(this.blankAttrs);
   },
 
+
   render: function () {
     return(
-      <form className='new-board' onSubmit={this.createBoard}>
 
-        <div>
-          <label htmlFor='board_subject'>Subject:</label>
-          <input
-            type='text'
-            id='board_subject'
-            valueLink={this.linkState("subject")}
-          />
+        <div className="creation-div">
+          <h2>Create a board</h2>
+          <div className="create-form">
+            <form className='new-board' onSubmit={this.createBoard}>
+
+              <label htmlFor='board_subject'>Subject:</label>
+              <input
+                type='text'
+                id='board_subject'
+                valueLink={this.linkState("subject")}
+              />
+              <button className="create-board-">Create Board</button>
+            </form>
+          </div>
         </div>
 
 
-        <button>Create Board</button>
-        <br />
-      </form>
+
     );
   }
 });

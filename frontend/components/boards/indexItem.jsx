@@ -1,15 +1,20 @@
 var React = require('react');
-var BoardStore = require('../../stores/board.js');
+var History = require('react-router').History;
 
-BoardIndexItem = React.createClass({
+var BoardIndexItem = React.createClass({
+
+  mixins: [History],
+
+  showDetail: function () {
+      this.history.pushState(null, 'boards/' + this.props.board.id, {});
+    },
+
   render: function () {
-    debugger
     return(
-      <li className="board-list-item">
+      <li onClick={this.showDetail} className="board-list-item">
         <p>{this.props.board.subject}</p>
       </li>
     );
-    debugger;
   }
 });
 

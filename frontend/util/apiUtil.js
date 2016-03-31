@@ -4,6 +4,7 @@ module.exports = {
   fetchAllBoards: function () {
     $.ajax({
       url: "api/boards",
+      method: "GET",
       success: function (boards) {
         ApiActions.receiveAllBoards(boards);
       }
@@ -13,6 +14,7 @@ module.exports = {
   fetchSingleBoard: function (id) {
     $.ajax({
       url: "api/boards/" + id,
+      method: "GET",
       success: function (board) {
         ApiActions.receiveSingleBoard(board);
       }

@@ -7,26 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header class="over-head group">
-    <nav class="nav-bar">
-      <ul class="over-head-left">
-        <% if signed_in? %>
-          <li class="board-options top-buttons">Boards</li>
-          <li>Search</li>
-        <% else %>
-        <% end %>
-      </ul>
-      <ul class="over-head-right top-buttons">
-        <% if signed_in? %>
-          <li><%= current_user.username %></li>
-        <% else %>
-        <% end %>
-      </ul>
-      <div class="over-head-logo">
-        Mello
-      </div>
-    </nav>
-  </header>
+  
 <% if signed_in? %>
   <%= current_user.username %>
   <%= button_to "Sign Out", session_url, :method => :delete %>

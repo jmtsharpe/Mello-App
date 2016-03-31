@@ -4,7 +4,7 @@ var BoardStore = require('../../stores/board.js');
 var BoardForm = require('./form');
 var ApiUtil = require('../../util/apiUtil');
 
-BoardIndex = React.createClass({
+var BoardIndex = React.createClass({
 
   getInitialState: function () {
     return {boards: BoardStore.all() };
@@ -19,26 +19,27 @@ BoardIndex = React.createClass({
     ApiUtil.fetchAllBoards();
   },
 
-  compomentWillUnmount: function () {
+  componentWillUnmount: function () {
     this.boardListener.remove();
   },
 
   render: function () {
 
     var boards = this.state.boards.map(function (board) {
-      debugger
       return <BoardIndexItem key={board.id} board={board} />;
     }.bind(this));
-    debugger
     return (
-      <div className="board-index">
-        <h2>Create a board</h2>
-        <BoardForm />
-        <h2>My Boards</h2>
-        <ul>
-          {boards}
-        </ul>
+      <div className="content">
+        <div className="board-index group">
 
+
+          <ul>
+            {boards}
+          </ul>
+
+          <BoardForm />
+        </div>
+        {this.props.children}
       </div>
     );
   }
