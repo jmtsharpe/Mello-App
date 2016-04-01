@@ -6,7 +6,7 @@ class Api::CardsController < ApplicationController
   def create
     @card = Card.new(card_params)
     if @card.save
-      render :show
+      render :index
     else
       render json: @card.errors.full_messages, status: 422
     end

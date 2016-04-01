@@ -33,6 +33,13 @@ CardStore.all = function () {
   return cards;
 };
 
+CardStore.mine = function (boardId) {
+	var myCards = CardStore.all().filter( function (card) {
+		return card.board_id === boardId;
+	});
+	return myCards;
+};
+
 CardStore.findMine = function () {
   var cards = [];
   for (var id in _cards) {

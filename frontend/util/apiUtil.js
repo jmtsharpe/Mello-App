@@ -62,7 +62,6 @@ module.exports = {
       data: {card: card},
       success: function (card) {
         CardActions.receiveSingleCard(card);
-        callback && callback(card.id);
       }
     });
   }

@@ -7,11 +7,11 @@ var ApiUtil = require('../../util/apiUtil');
 var CardIndex = React.createClass({
 
   getInitialState: function () {
-    return {cards: CardStore.all() };
+    return {cards: CardStore.mine(this.props.boardId) };
   },
 
   _onChange: function () {
-    this.setState({ cards: CardStore.all() });
+    this.setState({ cards: CardStore.mine(this.props.boardId) });
   },
 
   componentDidMount: function () {
@@ -24,7 +24,6 @@ var CardIndex = React.createClass({
   },
 
   render: function () {
-
     var cards = this.state.cards.map(function (card) {
       return <CardIndexItem key={card.id} card={card} />;
     }.bind(this));
@@ -34,12 +33,10 @@ var CardIndex = React.createClass({
           <ul>
             {cards}
           </ul>
-
         </div>
       </div>
     );
   }
-
 });
 
 module.exports = CardIndex;
