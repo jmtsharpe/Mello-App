@@ -6,25 +6,24 @@ var ApiUtil = require('../../util/apiUtil');
 
 var TaskIndex = React.createClass({
 
-  getInitialState: function () {
-    return {tasks: TaskStore.mine(this.props.boardId, this.props.cardId) };
-  },
+  // getInitialState: function () {
+  //   return {tasks: TaskStore.mine(this.props.cardId) };
+  // },
 
-  _onChange: function () {
-    this.setState({ tasks: TaskStore.mine(this.props.boardId, this.props.cardId) });
-  },
-
-  componentDidMount: function () {
-    this.taskListener = TaskStore.addListener(this._onChange);
-    ApiUtil.fetchAllTasks(this.props.boardId, this.props.cardId);
-  },
-
-  componentWillUnmount: function () {
-    this.taskListener.remove();
-  },
+  // _onChange: function () {
+  //   this.setState({ tasks: TaskStore.mine(this.props.cardId) });
+  // },
+	//
+  // componentDidMount: function () {
+  //   this.taskListener = TaskStore.addListener(this._onChange);
+  // },
+	//
+  // componentWillUnmount: function () {
+  //   this.taskListener.remove();
+  // },
 
   render: function () {
-    var tasks = this.state.tasks.map(function (task) {
+    var tasks = this.props.tasks.map(function (task) {
       return <TaskIndexItem key={task.id} task={task} />;
     }.bind(this));
     return (

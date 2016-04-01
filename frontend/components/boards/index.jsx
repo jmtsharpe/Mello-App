@@ -33,8 +33,8 @@ var BoardIndex = React.createClass({
         <div className="board-index group">
           <ul>
             {boards}
+						<li><BoardForm /></li>
           </ul>
-          <BoardForm />
         </div>
         {this.props.children}
       </div>

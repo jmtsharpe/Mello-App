@@ -20,8 +20,8 @@ var CardForm = React.createClass({
   createCard: function (event) {
     event.preventDefault();
     var card = {};
-    Object.keys(this.state).forEach(function (key) {
-      { card[key] = this.state[key]; }
+    Object.keys(blankAttrs).forEach(function (key) {
+      { card[key] = blankAttrs[key]; }
     }.bind(this));
     card.board_id = this.props.boardId;
     ApiUtil.createCard(card, this.props.boardId);
@@ -31,19 +31,20 @@ var CardForm = React.createClass({
 
   render: function () {
     return(
-      <div className="card-creation-div">
-        <h2>Create a card</h2>
-        <div className="create-form">
-          <form className='new-card' onSubmit={this.createCard}>
-            <input
-              type='text'
-              id='card_subject'
-              valueLink={this.linkState("subject")}
-            />
-          <button className="create-card">Save</button>
-          </form>
-        </div>
-      </div>
+			<li className="card-list-item" id="card-creation">
+	        <h2>Create a card</h2>
+	        <div className="create-form">
+	          <form className='new-card' onSubmit={this.createCard}>
+	            <input
+	              type='text'
+	              id='card_subject'
+	              valueLink={this.linkState("subject")}
+	            />
+	          <button className="create-card">Save</button>
+	          </form>
+	        </div>
+
+			</li>
     );
   }
 });

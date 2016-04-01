@@ -6,32 +6,32 @@ var ApiUtil = require('../../util/apiUtil');
 
 var CardIndex = React.createClass({
 
-  getInitialState: function () {
-    return {cards: CardStore.mine(this.props.boardId) };
-  },
-
-  _onChange: function () {
-    this.setState({ cards: CardStore.mine(this.props.boardId) });
-  },
-
-  componentDidMount: function () {
-    this.cardListener = CardStore.addListener(this._onChange);
-    ApiUtil.fetchAllCards(this.props.boardId);
-  },
-
-  componentWillUnmount: function () {
-    this.cardListener.remove();
-  },
+  // getInitialState: function () {
+  //   return {cards: CardStore.mine(this.props.boardId) };
+  // },
+	//
+  // _onChange: function () {
+  //   this.setState({ cards: CardStore.mine(this.props.boardId) });
+  // },
+	//
+  // componentDidMount: function () {
+  //   this.cardListener = CardStore.addListener(this._onChange);
+  // },
+	//
+  // componentWillUnmount: function () {
+  //   this.cardListener.remove();
+  // },
 
   render: function () {
-    var cards = this.state.cards.map(function (card) {
-      return <CardIndexItem boardId={this.props.boardId} cardId={card.id} key={card.id} card={card} />;
+    var cards = this.props.cards.map(function (card) {
+      return <CardIndexItem key={card.id} card={card} />;
     }.bind(this));
     return (
       <div className="content">
         <div className="card-index group">
           <ul>
             {cards}
+						<CardForm boardId={this.props.boardId} />
           </ul>
         </div>
       </div>

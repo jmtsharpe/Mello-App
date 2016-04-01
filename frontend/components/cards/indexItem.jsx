@@ -11,9 +11,9 @@ var CardIndexItem = React.createClass({
   render: function () {
     return(
       <li className="card-list-item">
-        <p>{this.props.card.subject}</p>
-				<TaskIndex className="task-index" boardId={this.props.boardId} cardId={this.props.cardId} />
-				<TaskForm boardId={this.props.boardId} cardId={this.props.cardId} />
+        <h2 className="card-title">{this.props.card.subject}</h2>
+				<TaskIndex className="task-index" tasks={this.props.card.tasks} cardId={this.props.cardId} />
+				<TaskForm className="task-creation-div" boardId={this.props.card.board_id} cardId={this.props.card.id} />
       </li>
     );
   }

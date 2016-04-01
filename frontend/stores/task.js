@@ -20,7 +20,6 @@ var resetTask = function (task) {
 };
 
 TaskStore.all = function () {
-	debugger;
   var tasks = [];
   for (var id in _tasks) {
     if (_tasks.hasOwnProperty(id)) {
@@ -39,15 +38,6 @@ TaskStore.mine = function (cardId) {
 		return task.card_id === cardId;
 	});
 	return myTasks;
-};
-
-TaskStore.findMine = function () {
-  var tasks = [];
-  for (var id in _tasks) {
-    if (_tasks.hasOwnProperty(id)) {
-      tasks.push(_tasks[id]);
-    }
-  }
 };
 
 TaskStore.find = function (id) {

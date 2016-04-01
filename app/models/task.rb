@@ -1,13 +1,13 @@
 class Task < ActiveRecord::Base
 
 
-  validates :subject, :board_id, presence: true
+  validates :subject, :card_id, presence: true
 
   belongs_to(
-  :board,
-  class_name: "Board",
-  foreign_key: :board_id,
+  :card,
+  class_name: "Card",
+  foreign_key: :card_id,
   primary_key: :id
   )
-  
+
 end

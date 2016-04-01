@@ -68,7 +68,7 @@ h1 {
 
 .over-head {
   background: #026aa7;
-  padding: 5px;
+
 }
 
 .nav-bar {
@@ -76,12 +76,16 @@ h1 {
 
 }
 .nav-bar > ul > li {
-  padding: 10px;
+  padding: 3px 10px 3px 10px;
   border-radius: 3px;
   background: #2af;
-  margin: 0 5px 0 5px;
+  margin: 5px 5px 5px 5px;
+	font-size: 12px
 }
 
+.nav-bar > ul > li:hover{
+	cursor: pointer;
+}
 
 .over-head-left {
   float: left;
@@ -102,8 +106,8 @@ h1 {
 
 .over-head-logo {
   font-weight: bold;
-  font-size: 24px;
-  padding: 5px;
+  font-size: 16px;
+  padding: 6px;
   text-align: center;
   top: 10px;
   letter-spacing: 2px;
@@ -116,6 +120,7 @@ h1 {
   border-radius: 3px;
   margin: auto;
   text-align: center;
+
 }
 
 .board-index h2 {
@@ -128,7 +133,7 @@ h1 {
 	padding-right: 0;
 }
 
-.board-list-item, .board-creation-div {
+.board-list-item, .create-board-button {
   display: inline-block;
   width: 25%;
   height: 80px;
@@ -136,9 +141,13 @@ h1 {
   background: #026aa7;
   border-radius: 3px;
   margin: 5px;
+	float: left;
 }
 
-.board-list-item:hover, .creation-div:hover {
+.board-creation-div {
+}
+
+.board-list-item:hover, .create-board-button:hover {
   cursor: pointer;
 
 }
@@ -151,7 +160,7 @@ h1 {
 #board {
   background: #2af;
   position: absolute;
-  top: 110px;
+  top: 90px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -160,16 +169,41 @@ h1 {
 }
 
 .board-content {
+	position: relative;
 	white-space: nowrap;
 }
 
-.card-list-item, .card-creation-div {
+
+.card-list-item {
+	vertical-align: top;
   display: inline-block;
-  width: 250px;
-  height: 60px;
+  width: 200px;
+  height: auto;
   padding: 10px 20px 10px 20px;
   background: #e2e4e6;
   border-radius: 3px;
   margin: 5px;
+
+}
+ #card-creation {
+  display: inline-block;
+  width: 200px;
+  height: 40px;
+  padding: 10px 20px 10px 20px;
+  background: #026aa7;
+  border-radius: 3px;
+  margin: 5px;
+	color: white;
+}
+
+.task-list-item {
+	border-radius: 3px;
+	padding: 10px 20px 10px 20px;
+	background: white;
+	box-shadow: 1px 1px 1px 0 gray;
+	margin: 10px 0 10px 0;
+}
+
+.task-creation-div {
 
 }

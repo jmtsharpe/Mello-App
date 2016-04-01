@@ -1,5 +1,6 @@
 var BoardActions = require('../actions/boardActions.js');
 var CardActions = require('../actions/cardActions.js');
+var TaskActions = require('../actions/taskActions.js');
 
 module.exports = {
   fetchAllBoards: function () {
@@ -71,17 +72,16 @@ module.exports = {
       url: "api/boards/" + board_id + "/cards/" + card_id + "/tasks",
       method: "GET",
       success: function (tasks) {
-				debugger;
         TaskActions.receiveAllTasks(tasks);
       },
       error: function (tasks) {
-				debugger;
         return("fetchAllTasks#error");
       }
     });
   },
 
   createTask: function (task, board_id, card_id) {
+		debugger;
     $.ajax({
       url: "api/boards/" + board_id + "/cards/" + card_id + "/tasks",
       method: "POST",

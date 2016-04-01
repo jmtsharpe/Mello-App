@@ -1,4 +1,4 @@
-class TasksController < ApplicationController
+class Api::TasksController < ApplicationController
 	def new
   end
 

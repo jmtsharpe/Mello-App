@@ -30,35 +30,22 @@ var BoardShow = React.createClass({
     this.boardListener.remove();
   },
 
-  addCard: function () {
-
-  },
-
   render: function () {
+    if (!this.state.board || !this.state.board.cards) {
+      return (<p>Loading board...</p>);
+    }
 
-    var board = function () {
-      if (this.state.board === undefined) {
-
-        return (<p>Loading board...</p>);
-      } else {
-        return (
-          <div id="board" className="group">
-						<div className="board-bar">
-							<p>{this.state.board.subject}</p>
-						</div>
-						<div className="board-content">
-		          <CardIndex boardId={this.state.board.id} />
-	            <CardForm boardId={this.state.board.id} />
-						</div>
-          </div>
-        );
-      }
-    }.bind(this);
     return (
-      <div>{board()}</div>
+      <div id="board" className="group">
+				<div className="board-bar">
+					<p>{this.state.board.subject}</p>
+				</div>
+				<div className="board-content">
+          <CardIndex boardId={this.state.board.id} cards={this.state.board.cards} />
+				</div>
+      </div>
     );
   }
-
 });
 
 module.exports = BoardShow;
