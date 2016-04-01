@@ -25,7 +25,7 @@ var CardIndex = React.createClass({
 
   render: function () {
     var cards = this.state.cards.map(function (card) {
-      return <CardIndexItem key={card.id} card={card} />;
+      return <CardIndexItem boardId={this.props.boardId} cardId={card.id} key={card.id} card={card} />;
     }.bind(this));
     return (
       <div className="content">

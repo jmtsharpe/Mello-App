@@ -35,7 +35,7 @@ module.exports = React.createClass({
   render: function () {
     return(
 
-        <div className="creation-div">
+        <div className="board-creation-div">
           <h2>Create a board</h2>
           <div className="create-form">
             <form className='new-board' onSubmit={this.createBoard}>

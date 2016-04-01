@@ -43,9 +43,13 @@ var BoardShow = React.createClass({
       } else {
         return (
           <div id="board" className="group">
-            <p>{this.state.board.subject}</p>
-            <CardIndex boardId={this.state.board.id} />
-            <CardForm boardId={this.state.board.id} />
+						<div className="board-bar">
+							<p>{this.state.board.subject}</p>
+						</div>
+						<div className="board-content">
+		          <CardIndex boardId={this.state.board.id} />
+	            <CardForm boardId={this.state.board.id} />
+						</div>
           </div>
         );
       }

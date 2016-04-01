@@ -55,7 +55,6 @@ module.exports = {
   },
 
   createCard: function (card, board_id) {
-    debugger;
     $.ajax({
       url: "api/boards/" + board_id + "/cards",
       method: "POST",
@@ -64,5 +63,34 @@ module.exports = {
         CardActions.receiveSingleCard(card);
       }
     });
+  },
+
+	fetchAllTasks: function (board_id, card_id) {
+
+    $.ajax({
+      url: "api/boards/" + board_id + "/cards/" + card_id + "/tasks",
+      method: "GET",
+      success: function (tasks) {
+				debugger;
+        TaskActions.receiveAllTasks(tasks);
+      },
+      error: function (tasks) {
+				debugger;
+        return("fetchAllTasks#error");
+      }
+    });
+  },
+
+  createTask: function (task, board_id, card_id) {
+    $.ajax({
+      url: "api/boards/" + board_id + "/cards/" + card_id + "/tasks",
+      method: "POST",
+      data: {task: task},
+      success: function (task) {
+        TaskActions.receiveSingleTask(task);
+      }
+    });
   }
+
+
 };
