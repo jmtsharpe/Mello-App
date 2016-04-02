@@ -1,8 +1,8 @@
 var React = require('react');
-var BoardForm = require('./form');
+var CardForm = require('./form');
 var OnClickOutside = require('react-onclickoutside');
 
-BoardFormButton = React.createClass({
+CardFormButton = React.createClass({
 mixins: [OnClickOutside],
   getInitialState: function () {
     return { pressed: false };
@@ -23,20 +23,19 @@ mixins: [OnClickOutside],
 
   		if (!this.state.pressed) {
   			return(
-  				<div className="create-board-button" onClick={this.isPressed}>
-  					<h2>Create a board</h2>
-  				</div>
+          <li className="card-list-item" id="card-creation" onClick={this.isPressed}>
+    				<h2>Create a card</h2>
+          </li>
   			);
   		}
       return(
-          <div className="create-board-button" onClick={this.isPressed}>
-            <h2>Create a board</h2>
-            <BoardForm />
-          </div>
+        <li className="card-list-item" id="card-creation" onClick={this.isPressed}>
+          <CardForm />
+        </li>
       );
 
   }
 
 });
 
-module.exports = BoardFormButton;
+module.exports = CardFormButton;

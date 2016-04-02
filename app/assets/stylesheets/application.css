@@ -143,19 +143,37 @@ h1 {
   margin: 5px;
 	float: left;
 }
+.create-board-button {
+  position: relative;
+}
+
+/*/ BOARD FORM /*/
 
 .board-creation-div {
+  border: 1px solid #e2e4e6;
+  color: #aaaaaa;
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px;
 }
+
+.create-form > h4 {
+  border-bottom: 1px solid grey;
+}
+
+.create-form > label {
+  float: left;
+}
+
+
 
 .board-list-item:hover, .create-board-button:hover {
   cursor: pointer;
 
 }
 
-
-
-.create-form {
-}
 
 #board {
   background: #2af;
@@ -171,6 +189,10 @@ h1 {
 .board-content {
 	position: relative;
 	white-space: nowrap;
+}
+
+.new-board {
+
 }
 
 

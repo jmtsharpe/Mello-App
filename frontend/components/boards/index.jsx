@@ -2,6 +2,7 @@ var React = require('react');
 var BoardIndexItem = require('./indexItem');
 var BoardStore = require('../../stores/board.js');
 var BoardForm = require('./form');
+var BoardFormButton = require('./formButton');
 var ApiUtil = require('../../util/apiUtil');
 
 var BoardIndex = React.createClass({
@@ -30,10 +31,13 @@ var BoardIndex = React.createClass({
     }.bind(this));
     return (
       <div className="content">
+        <div className="board-index-head">
+          <h1>MyBoards</h1>
+        </div>
         <div className="board-index group">
           <ul>
             {boards}
-						<li><BoardForm /></li>
+						<li><BoardFormButton /></li>
           </ul>
         </div>
         {this.props.children}

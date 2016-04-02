@@ -1,7 +1,7 @@
 var React = require('react');
 var CardIndexItem = require('./indexItem');
 var CardStore = require('../../stores/card');
-var CardForm = require('./form');
+var CardFormButton = require('./formButton');
 var ApiUtil = require('../../util/apiUtil');
 
 var CardIndex = React.createClass({
@@ -31,7 +31,7 @@ var CardIndex = React.createClass({
         <div className="card-index group">
           <ul>
             {cards}
-						<CardForm boardId={this.props.boardId} />
+						<CardFormButton boardId={this.props.boardId} />
           </ul>
         </div>
       </div>

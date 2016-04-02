@@ -13,10 +13,11 @@
     "babel-preset-react": "^6.5.0",
     "flux": "^2.1.1",
     "react": "^0.14.8",
+    "react-addons-linked-state-mixin": "^0.14.2",
     "react-dom": "^0.14.8",
+    "react-onclickoutside": "^4.7.1",
     "react-router": "^2.0.1",
-    "webpack": "^1.12.14",
-    "react-addons-linked-state-mixin": "^0.14.2"
+    "webpack": "^1.12.14"
   },
   "devDependencies": {},
   "scripts": {
@@ -26,9 +27,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-
-"engines": {
-   "node": "5.1.0",
-   "npm": "3.3.12"
+  "engines": {
+    "node": "5.1.0",
+    "npm": "3.3.12"
   }
 }
