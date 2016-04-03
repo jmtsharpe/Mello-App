@@ -31,18 +31,17 @@ var TaskForm = React.createClass({
 
   render: function () {
     return(
-      <div className="task-creation-div">
-        <h2>Create a task</h2>
-        <div className="create-form">
-          <form className='new-task' onSubmit={this.createTask}>
-            <input
-              type='text'
-              id='task_subject'
-              valueLink={this.linkState("subject")}
-            />
-					<button className="create-task">Save</button>
-          </form>
-        </div>
+      <div className="create-form">
+        <form className='new-task' onSubmit={this.createTask}>
+          <textarea
+            className="task-form-field"
+            type='text'
+            id='task_subject'
+            valueLink={this.linkState("subject")}
+          />
+          <br />
+  				<button className="submit">Save</button>
+        </form>
       </div>
     );
   }

@@ -8,8 +8,10 @@ var TaskIndexItem = React.createClass({
 
   render: function () {
     return(
-      <li className="task-list-item">
-        <p>{this.props.task.subject}</p>
+      <li className="task-list-padding">
+        <div className="task-list-item">
+          <p>{this.props.task.subject}</p>
+        </div>
       </li>
     );
   }

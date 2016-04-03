@@ -1,8 +1,8 @@
 var React = require('react');
-var CardForm = require('./form');
+var TaskForm = require('./form');
 var OnClickOutside = require('react-onclickoutside');
 
-CardFormButton = React.createClass({
+TaskFormButton = React.createClass({
 mixins: [OnClickOutside],
   getInitialState: function () {
     return { pressed: false };
@@ -20,22 +20,21 @@ mixins: [OnClickOutside],
 
 
   render: function () {
-
   		if (!this.state.pressed) {
   			return(
-          <li className="card-list-item" id="card-creation-button" onClick={this.isPressed}>
-    				<h2>Create a card</h2>
-          </li>
+          <div className="task-creation-button" onClick={this.isPressed}>
+    				<p>Add a task..</p>
+          </div>
   			);
   		}
       return(
-        <li className="card-list-item" id="card-creation-div" onClick={this.isPressed}>
-          <CardForm boardId={this.props.boardId} />
-        </li>
+        <div className="task-creation-div" onClick={this.isPressed}>
+          <TaskForm boardId={this.props.boardId} cardId={this.props.cardId} />
+        </div>
       );
 
   }
 
 });
 
-module.exports = CardFormButton;
+module.exports = TaskFormButton;

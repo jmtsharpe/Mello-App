@@ -21,8 +21,7 @@ var CardForm = React.createClass({
     event.preventDefault();
     var card = {};
     Object.keys(this.state).forEach(function (key) {
-      debugger;
-      { card[key] = this.blankAttrs[key]; }
+      { card[key] = this.state[key]; }
     }.bind(this));
     card.board_id = this.props.boardId;
     ApiUtil.createCard(card, this.props.boardId);
@@ -32,15 +31,16 @@ var CardForm = React.createClass({
 
   render: function () {
     return(
-      <div className="create-form">
-        <h2>Create a card</h2>
+      <div className="create-card-form">
         <form className='new-card' onSubmit={this.createCard}>
           <input
+            className="card-input-field"
             type='text'
             id='card_subject'
             valueLink={this.linkState("subject")}
           />
-        <button className="create-card">Save</button>
+          <br/>
+          <button className="submit">Save</button>
         </form>
       </div>
     );

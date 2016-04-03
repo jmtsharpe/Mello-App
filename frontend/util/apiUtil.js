@@ -56,11 +56,13 @@ module.exports = {
   },
 
   createCard: function (card, board_id) {
+    debugger
     $.ajax({
       url: "api/boards/" + board_id + "/cards",
       method: "POST",
       data: {card: card},
       success: function (card) {
+        debugger
         CardActions.receiveSingleCard(card);
       }
     });
