@@ -114,6 +114,22 @@ h1 {
   letter-spacing: 2px;
 }
 
+.profile-button {
+
+}
+
+.profile-dropdown {
+	z-index: 10;
+	color: grey;
+	border: 1px solid grey;
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	background: white;
+	top: 40px;
+	right: 5px;
+}
+
 .board-index {
   width: 80%;
   color: white;
@@ -277,6 +293,7 @@ h1 {
   border: none;
   box-shadow: 0 1px 0 0 #d2d4d6;
   padding: 0 5px 40px;
+	resize: vertical;
 }
 
 .create-task {

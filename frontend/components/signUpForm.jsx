@@ -33,7 +33,7 @@ var SignUpForm = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
-    var user = {}
+    var user = {};
 
     Object.keys(this.state).forEach(function (key) {
       { user[key] = this.state[key]; }

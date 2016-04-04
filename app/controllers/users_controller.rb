@@ -5,9 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    debugger
     @user = User.new(user_params)
-    debugger
     if @user.save
       debugger
       flash[:success] = "Created account successfuly! Welcome #{@user.username}!"
@@ -38,7 +36,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    debugger
     params.require(:user).permit(:username, :password)
   end
 end

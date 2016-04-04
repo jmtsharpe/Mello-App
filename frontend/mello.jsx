@@ -7,7 +7,7 @@ var Route = require('react-router').Route;
 var IndexRoute = require('react-router').IndexRoute;
 var BoardIndex = require('./components/boards/index');
 var BoardShow = require('./components/boards/show');
-var App = require('./components/boards/app');
+var App = require('./components/app/app');
 var LoginForm = require('./components/loginForm');
 var SignUpForm = require('./components/signUpForm');
 var ApiUtil = require('./util/apiUtil.js');
@@ -17,7 +17,7 @@ var hashHistory = require('react-router').hashHistory;
 var SessionStore = require("./stores/session");
 
 var routes = (
-  <Route path="/" component={App}>
+  <Route path="/" component={App} onEnter={_requireLoggedIn}>
     <Route path="/boards" component={BoardIndex} onEnter={_requireLoggedIn} />
     <Route path="boards/:id" component={BoardShow} />
   </Route>
