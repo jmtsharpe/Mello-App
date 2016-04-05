@@ -166,12 +166,6 @@ h1 {
 
 }
 
-@media only screen and (max-width: 750px)
-.board-list-item {
-	width: 100%;
-	padding-right: 0;
-}
-
 .board-list-item, .create-board-button {
   display: inline-block;
   width: 20%;
