@@ -21,11 +21,19 @@ Welcome = React.createClass({
 	render: function () {
 		return (
 		<main>
+			<div className="first-main">
+				<div className="main-page-logo">Mello</div>
+				<h1 className="main-blurb">Mello is the like totally free, flexible, and visual way to like organize stuff.</h1>
 
-			<button onClick={this.goToLogin}>Login</button>
-			<button onClick={this.goToSignUp}>Sign Up</button>
+				<button className="submit main-submit" onClick={this.goToSignUp}>Sign Up it's like, FREE!</button>
+				<br />
+				<button className="login" onClick={this.goToLogin}>Login...</button>
+			</div>
+			<div className="second-main"></div>
 
-
+			<footer>
+				if you are reading this, that means I'm already dead...
+			</footer>
 		</main>
 	);
 

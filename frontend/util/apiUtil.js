@@ -20,6 +20,7 @@ module.exports = {
   },
 
 	fetchUserBoards: function (userId) {
+		debugger;
 		$.ajax({
       url: "api/boards",
       method: "GET",
@@ -49,7 +50,6 @@ module.exports = {
   },
 
   createBoard: function (board, callback) {
-
     $.ajax({
       url: "api/boards",
       method: "POST",
@@ -61,6 +61,18 @@ module.exports = {
       }
     });
   },
+
+	editBoardTitle: function (board) {
+		$.ajax({
+			url: "api/boards/" + board.id,
+			method: "PATCH",
+			data: {board: board},
+			dataType: "json",
+			success: function (board) {
+				BoardActions.receiveSingleBoard(board);
+			}
+		});
+	},
 
   fetchAllCards: function (boardId) {
     $.ajax({
@@ -117,12 +129,14 @@ module.exports = {
   },
 
   signUp: function(credentials, callback) {
+		debugger
     $.ajax({
       type: "POST",
       url: "/api/users",
       dataType: "json",
       data: {user: credentials},
       success: function(currentUser) {
+				debugger;
         SessionActions.currentUserReceived(currentUser);
         callback && callback();
       }

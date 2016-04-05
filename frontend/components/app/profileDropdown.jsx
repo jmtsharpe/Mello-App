@@ -14,7 +14,7 @@ var ProfileDropdown = React.createClass({
 	  },
 
 	  isPressed: function () {
-			this.setState({pressed: true});
+			this.setState({pressed: !this.state.pressed});
 		},
 
 	  handleClickOutside: function (e) {

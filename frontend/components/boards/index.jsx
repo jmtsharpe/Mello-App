@@ -41,9 +41,10 @@ var BoardIndex = React.createClass({
     }.bind(this));
     return (
       <div className="content">
-        <div className="board-index-head">
-					<h4>MyBoards</h4>
-        </div>
+				<div className="board-index-head">
+					<h4 className="board-starred-title">☆ Starred Boards</h4>
+					<h4 className="board-index-title">☺ MyBoards</h4>
+				</div>
         <div className="board-index group">
 
           <ul>

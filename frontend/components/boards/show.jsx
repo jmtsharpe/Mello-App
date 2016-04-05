@@ -6,6 +6,7 @@ var CardForm = require('./../cards/form');
 var CardIndex = require('./../cards/index');
 var CardStore = require('./../../stores/card');
 var TaskStore = require('./../../stores/task');
+var TitleButton = require('./TitleButton');
 
 
 var BoardShow = React.createClass({
@@ -46,10 +47,12 @@ var BoardShow = React.createClass({
 
     return (
       <div id="board" className="group">
-				<div className="board-bar">
-					<p>{this.state.board.subject}</p>
+				<div className="board-bar group">
+					<ul>
+						<TitleButton subject={this.state.board.subject} boardId={this.state.board.id} />
+					</ul>
 				</div>
-				<div className="board-content">
+				<div className="board-content group">
           <CardIndex boardId={this.state.board.id} cards={this.state.board.cards} />
 				</div>
       </div>

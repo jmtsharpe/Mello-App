@@ -5,6 +5,8 @@ var BoardStore = new Store(AppDispatcher);
 
 var _boards = {};
 
+var _board = {};
+
 var resetBoards = function (boards) {
   _boards = {};
   boards.forEach(function (board) {

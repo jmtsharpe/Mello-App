@@ -27,13 +27,13 @@ var TaskIndex = React.createClass({
       return <TaskIndexItem key={task.id} task={task} />;
     }.bind(this));
     return (
-      <div className="content">
+
         <div className="task-index group">
           <ul>
             {tasks}
           </ul>
         </div>
-      </div>
+
     );
   }
 });

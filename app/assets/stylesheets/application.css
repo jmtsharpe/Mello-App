@@ -17,7 +17,7 @@
  /*/ RESET /*/
 
  html, body, header, nav, h1, a, ul, li,
-strong, main, section, img, div, h2, p,
+strong, main, section, img, div, h2, h4, h3, p,
 form, fieldset, label, textarea,
 button, article, footer, small {
   margin: 0;
@@ -26,7 +26,7 @@ button, article, footer, small {
   outline: 0;
   font-size: inherit;
   font-family: inherit;
-  box-sizing: inherit;
+  box-sizing: content-box;;
   color: inherit;
   text-align: inherit;
   text-decoration: none;
@@ -87,6 +87,7 @@ h1 {
 
 .nav-bar > ul > li:hover{
 	cursor: pointer;
+	background: #19d;
 }
 
 .over-head-left {
@@ -106,6 +107,10 @@ h1 {
   float: left;
 }
 
+.top-button:hover {
+	cursor: pointer;
+}
+
 .over-head-logo {
   font-weight: bold;
   font-size: 16px;
@@ -113,6 +118,11 @@ h1 {
   text-align: center;
   top: 10px;
   letter-spacing: 2px;
+}
+
+.over-head-logo:hover {
+	cursor: pointer;
+	color: #dddddd;
 }
 
 .board-dropdown, .profile-dropdown, .info-dropdown {
@@ -151,6 +161,13 @@ h1 {
 	width: 80%;
 	margin: auto;
 }
+.board-index-head {
+	padding-top: 30px;
+}
+
+.board-index-title, .board-starred-title {
+	padding: 20px 10px 0 20px;
+}
 
 .board-index {
   width: 100%;
@@ -171,16 +188,21 @@ h1 {
   width: 20%;
   height: 80px;
   padding: 10px 20px 10px 20px;
-  background: #026aa7;
+  background: #127ab7;
   border-radius: 3px;
   margin: 5px;
 	float: left;
+}
+
+.board-list-item:hover, .create-board-button:hover {
+	background: #026aa7;
+	cursor: pointer;
 }
 .create-board-button {
   position: relative;
 }
 
-/*/ BOARD FORM /*/
+/*/ /*/ /*/ BOARD FORM /*/ /*/ /*/
 
 .board-creation-div {
 	width: 100%;
@@ -208,6 +230,8 @@ h1 {
 
 }
 
+/*/ /*/ /*/ /*/ /*/ /*/ /*/ BOARDSHOW /*/ /*/ /*/ /*/ /*/ /*/ /*/
+
 
 #board {
   background: #2af;
@@ -219,18 +243,86 @@ h1 {
   overflow: auto;
 	padding: 10px;
 }
+.board-bar > ul {
+	float: left;
+}
+
+.board-bar > ul > li {
+	float: right;
+}
+
+.board-title {
+	border-radius: 3px;
+	padding: 10px;
+	color: white;
+	position: relative;
+}
+
+.board-title:hover {
+	background: #19e;
+	cursor: pointer;
+}
+
+/*/ /*/ /*/ EDIT BOARD TITLE /*/ /*/ /*/
+.edit-board-title {
+	border-radius: 2px;
+	z-index: 10;
+	position: absolute;
+	background: white;
+	width: 200px;
+	height:auto;
+	padding: 10px;
+	top: 40px;
+	left: 0;
+}
+
+.edit-board-header {
+	text-align: center;
+	color: #aaaaaa;
+	border-bottom: 1px solid #aaaaaa;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+
+.new-title > label {
+	font-size: 14px;
+	font-weight: bold;
+	color: #444444;
+	margin-top: 10px;
+}
+
+
+.board-title-field {
+	font-size: 16px;
+	padding: 5px;
+	box-shadow: 0 0 1px 1px blue;
+	border-radius: 2px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	width: 180px;
+	border: none;
+}
+
+/*/ /*/ /*/ BOARD CONTENT /*/ /*/ /*/
 
 .board-content {
 	position: relative;
 	white-space: nowrap;
+	text-align: left;
 }
 
-.new-board {
+/*/ /*/ /*/ CARDS /*/ /*/ /*/
+.card-index {
+	float: left;
 
 }
 
+.card-list {
+	float: left;
+}
 
 .card-list-item {
+	float: left;
 	vertical-align: top;
   display: inline-block;
   width: 260px;
@@ -244,16 +336,22 @@ h1 {
 .card-title {
   padding: 5px 20px 0 20px;
 }
+/*/ CARD CREATION /*/
 
  #card-creation-button {
   display: inline-block;
   width: 230px;
   height: 40px;
   padding: 10px 20px 10px 20px;
-  background: #026aa7;
+  background: #127ab7;
   border-radius: 3px;
   margin: 5px;
 	color: white;
+}
+
+#card-creation-button:hover {
+	background: #026aa7;
+	cursor: pointer;
 }
 
 #card-creation-div {
@@ -270,16 +368,33 @@ h1 {
   box-shadow: inset 0 1px 8px #d2d4d6;
 }
 
+
+
+/*/ /*/ /*/ TASKS /*/ /*/ /*/
+
 .task-list-item {
 	border-radius: 3px;
-	padding: 10px 20px 10px 20px;
+	padding: 10px 20px 10px 10px;
 	background: white;
 	box-shadow: 0 1px 0 0 #a2a4a6;
+	white-space: pre-wrap;
+
+}
+
+.task-list-item:hover {
+	background: #efefef;
+	cursor: pointer;
+}
+
+.task-list-item > p {
+	width: 200px;
 }
 
 .task-list-padding {
   padding: 5px 20px 5px 20px;
 }
+
+/*/ TASK CREATION /*/
 
 .task-creation-button {
   padding: 10px 20px 10px 20px;
@@ -299,22 +414,29 @@ h1 {
 
 .task-creation-button:hover {
   background: #d2d4d6;
+	cursor: pointer;
 }
 
 .task-form-field {
   background: white;
-  line-height: 60px;
+  line-height: 20px;
   height: 60px;
-  width: 210px;
+  width: 200px;
   border-radius: 3px;
   border: none;
   box-shadow: 0 1px 0 0 #d2d4d6;
-  padding: 0 5px 40px;
+  padding: 5px 10px 40px 10px;
 	resize: vertical;
 }
 
 .create-task {
   padding: 10px 20px 10px 20px;
+}
+.new-task {
+	margin-bottom: 10px;
+}
+.new-task > .submit {
+	margin-top: 10px;
 }
 
 /*/ SUBMIT BUTTON /*/
@@ -329,4 +451,80 @@ h1 {
 
 .submit:active {
   background: #51ad3f;
+}
+/*/ WELCOME PAGE /*/
+.main-page-logo {
+	font-size: 100px;
+	color: #127ab7;
+	font-family: sans-serif;
+	padding: 40px 20px;
+}
+
+.main-blurb {
+	color: #4d4d4d;
+}
+
+.main-submit {
+	margin: 20px;
+}
+
+.login {
+	color: #aaaaaa;
+}
+
+.login:hover {
+	cursor: pointer;
+	color: #444444;
+}
+
+.first-main {
+	padding: 50px;
+	text-align: center;
+	background: #eeeeee;
+	margin: auto;
+	height: 600px;
+}
+
+.second-main {
+	padding: 50px;
+	text-align: center;
+	background: #127ab7;
+	margin: auto;
+	height: 600px;
+}
+
+/*/ LOGIN SIGN UP /*/
+
+.sign-up-main, .login-main {
+	padding: 50px;
+	text-align: center;
+
+}
+
+.sign-up-container, .login-container {
+
+}
+
+.sign-up-header, .login-header {
+	margin: auto;
+}
+
+.sign-up-form, .login-form {
+	text-align: left;
+	top: 50px;
+	padding: 20px;
+	width: 300px;
+	margin: auto;
+}
+
+.sign-up-label, .login-label {
+	font-size: 20px;
+}
+
+.sign-up-input, .login-input {
+	width: 100%;
+	padding: 10px;
+	font-size: 20px;
+	margin-bottom: 20px;
+	margin-top: 20px;
 }

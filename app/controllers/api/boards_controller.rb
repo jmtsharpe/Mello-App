@@ -16,6 +16,15 @@ class Api::BoardsController < ApplicationController
   end
 
   def update
+		@board = Board.find(params[:id])
+
+    if @board.update(board_params)
+      flash[:success] = "Updated successfully"
+      render :show
+    else
+      flash.now[:errors] = @board.errors.full_messsages
+      render :show
+    end
   end
 
   def index

@@ -14,23 +14,38 @@ var LoginForm = React.createClass({
     };
   },
 
+	goToSignUp: function () {
+    this.context.router.push('signup');
+  },
+
   render: function() {
     return (
-			<div className="sign-in-sign-up">
-	      <div>
-	        <h1>Please Log in</h1>
+			<main className="login-main">
+				<div className="login-header">
+					<h1>Login</h1>
+				</div>
+				<div className="login-containter">
 
-	        <form onSubmit={this.handleSubmit}>
-	          <label htmlFor="name">Name</label>
-	          <input onChange={this.updateName} type="text" value={this.state.name}/>
 
-	          <label htmlFor="password">Password</label>
-	          <input onChange={this.updatePassword} type="password" value={this.state.password}/>
+					<form className="login-form" onSubmit={this.handleSubmit}>
 
-	          <button>Submit</button>
-	        </form>
-	      </div>
-			</div>
+						<label className="login-label" htmlFor="name">Username</label>
+						<br />
+						<input className="login-input" onChange={this.updateName} type="text" value={this.state.name}/>
+
+						<br />
+						<label className="login-label" htmlFor="password">Password</label>
+						<br />
+						<input className="login-input" onChange={this.updatePassword} type="password" value={this.state.password}/>
+						<br />
+						<button className="submit">Submit</button>
+					</form>
+				</div>
+				<div>
+					<p>Don't have an account?</p>
+					<button className="submit" onClick={this.goToSignUp}>Sign Up!</button>
+				</div>
+			</main>
     );
   },
 

@@ -13,21 +13,44 @@ var SignUpForm = React.createClass({
     };
   },
 
+	goToLogin: function () {
+    this.context.router.push('login');
+  },
+
   render: function() {
     return (
-      <div>
-        <h1>Please Sign Up</h1>
 
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="name">Name</label>
-          <input onChange={this.updateName} type="text" value={this.state.name}/>
+			<main className="sign-up-main">
+				<div className="sign-up-header">
+					<h1>Please Sign Up</h1>
+				</div>
+				<div className="sign-up-containter">
 
-          <label htmlFor="password">Password</label>
-          <input onChange={this.updatePassword} type="password" value={this.state.password}/>
 
-          <button>Submit</button>
-        </form>
-      </div>
+					<form className="sign-up-form" onSubmit={this.handleSubmit}>
+
+						<label className="sign-up-label" htmlFor="name">Name</label>
+						<br />
+						<input className="sign-up-input" onChange={this.updateName} type="text" value={this.state.name}/>
+
+						<br />
+						<label className="sign-up-label" htmlFor="password">Password</label>
+						<br />
+						<input className="sign-up-input" onChange={this.updatePassword} type="password" value={this.state.password}/>
+						<br />
+						<button className="submit">Submit</button>
+					</form>
+					<div className="sign-up-form">
+						<h2 className="sign-up-header">Have a Google account?</h2>
+						<button className="submit">Sign up with Google</button>
+					</div>
+				</div>
+				<div>
+					<p>Already have a Mello acount?</p>
+					<button className="login" onClick={this.goToLogin}>Login...</button>
+				</div>
+
+			</main>
     );
   },
 

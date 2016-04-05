@@ -31,13 +31,11 @@ var CardIndex = React.createClass({
       return <CardIndexItem key={card.id} boardId={this.props.boardId} card={card} />;
     }.bind(this));
     return (
-      <div className="content">
-        <div className="card-index group">
-          <ul>
-            {cards}
-						<CardFormButton boardId={this.props.boardId} />
-          </ul>
-        </div>
+      <div className="card-index group">
+        <ul className="card-list">
+          {cards}
+					<CardFormButton boardId={this.props.boardId} />
+        </ul>
       </div>
     );
   }

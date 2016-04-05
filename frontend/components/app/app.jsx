@@ -32,7 +32,6 @@ var App = React.createClass({
 	},
 
 	componentDidMount: function () {
-		debugger;
     this.sessionStoreToken = SessionStore.addListener(this.handleChange);
     this.handleChange();
   },
