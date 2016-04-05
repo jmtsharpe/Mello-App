@@ -128,15 +128,26 @@ module.exports = {
     });
   },
 
-  signUp: function(credentials, callback) {
+	editTask: function (newTask, task) {
 		debugger
+    $.ajax({
+      url: "api/boards/1/cards/" + task.card_id + "/tasks/" + task.id,
+      method: "PATCH",
+      data: {task: newTask},
+      dataType: "json",
+      success: function (task) {
+        TaskActions.receiveSingleTask(task);
+      }
+    });
+  },
+
+  signUp: function(credentials, callback) {
     $.ajax({
       type: "POST",
       url: "/api/users",
       dataType: "json",
       data: {user: credentials},
       success: function(currentUser) {
-				debugger;
         SessionActions.currentUserReceived(currentUser);
         callback && callback();
       }

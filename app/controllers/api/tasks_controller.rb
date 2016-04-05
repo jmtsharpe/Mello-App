@@ -15,6 +15,15 @@ class Api::TasksController < ApplicationController
   end
 
   def update
+		@task = Task.find(params[:id])
+
+    if @task.update(task_params)
+      flash[:success] = "Updated successfully"
+      render :show
+    else
+      flash.now[:errors] = @task.errors.full_messsages
+      render :show
+    end
   end
 
   def index

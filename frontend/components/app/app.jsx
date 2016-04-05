@@ -31,6 +31,7 @@ var App = React.createClass({
 
 	},
 
+
 	componentDidMount: function () {
     this.sessionStoreToken = SessionStore.addListener(this.handleChange);
     this.handleChange();
@@ -49,28 +50,53 @@ var App = React.createClass({
 	},
 
   render: function () {
+		if(!this.state.overlay) {
+	    return (
+	      <div>
+	        <header className="over-head group">
+	          <nav className="nav-bar">
+	            <ul className="over-head-left">
+	              <BoardsDropdown />
+	              <li>Search</li>
+	            </ul>
+	            <ul className="over-head-right top-buttons">
 
-    return (
-      <div>
-        <header className="over-head group">
-          <nav className="nav-bar">
-            <ul className="over-head-left">
-              <BoardsDropdown />
-              <li>Search</li>
-            </ul>
-            <ul className="over-head-right top-buttons">
+								<ProfileDropdown username={this.state.currentUser.username}/>
+								<InfoDropdown />
+	            </ul>
+	            <div className="over-head-logo" onClick={this.goToBoards}>
+	              Mello
+	            </div>
+	          </nav>
+	        </header>
+	        {this.props.children}
+	      </div>
+	    );
+		}
+
+		return (
+			<div className="overlay-back">
+				<header className="over-head group">
+					<nav className="nav-bar">
+						<ul className="over-head-left">
+							<BoardsDropdown />
+							<li>Search</li>
+						</ul>
+						<ul className="over-head-right top-buttons">
 
 							<ProfileDropdown username={this.state.currentUser.username}/>
 							<InfoDropdown />
-            </ul>
-            <div className="over-head-logo" onClick={this.goToBoards}>
-              Mello
-            </div>
-          </nav>
-        </header>
-        {this.props.children}
-      </div>
-    );
+						</ul>
+						<div className="over-head-logo" onClick={this.goToBoards}>
+							Mello
+						</div>
+					</nav>
+				</header>
+				{this.props.children}
+			</div>
+		);
+
+
   }
 });
 
