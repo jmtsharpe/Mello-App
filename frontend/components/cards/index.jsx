@@ -3,19 +3,22 @@ var CardIndexItem = require('./indexItem');
 var CardStore = require('../../stores/card');
 var CardFormButton = require('./formButton');
 var ApiUtil = require('../../util/apiUtil');
+var TaskStore = require('../../stores/task');
 
 var CardIndex = React.createClass({
 
-  // getInitialState: function () {
-  //   return {cards: CardStore.mine(this.props.boardId) };
-  // },
-	//
+  getInitialState: function () {
+    return { cards: CardStore.all() };
+  },
+
   // _onChange: function () {
-  //   this.setState({ cards: CardStore.mine(this.props.boardId) });
+  //   this.setState({ cards: CardStore.all() });
   // },
 	//
   // componentDidMount: function () {
   //   this.cardListener = CardStore.addListener(this._onChange);
+	// 	this.taskListener = TaskStore.addListener(this._onChange);
+	// 	ApiUtil.fetchAllCards(this.props.boardId);
   // },
 	//
   // componentWillUnmount: function () {
@@ -24,7 +27,8 @@ var CardIndex = React.createClass({
 
   render: function () {
     var cards = this.props.cards.map(function (card) {
-      return <CardIndexItem key={card.id} card={card} />;
+
+      return <CardIndexItem key={card.id} boardId={this.props.boardId} card={card} />;
     }.bind(this));
     return (
       <div className="content">

@@ -1,8 +1,13 @@
 var React = require('react');
 var History = require('react-router').History;
 var SessionStore = require('./../../stores/session');
+var TaskStore = require('./../../stores/task');
+var BoardStore = require('./../../stores/board');
+var CardStore = require('./../../stores/card');
 var ApiUtil = require('./../../util/apiUtil');
 var ProfileDropdown = require('./profileDropdown');
+var BoardsDropdown = require('./boardsDropdown');
+var InfoDropdown = require('./infoDropdown');
 
 
 var App = React.createClass({
@@ -26,7 +31,8 @@ var App = React.createClass({
 
 	},
 
-	componentDidMount: function() {
+	componentDidMount: function () {
+		debugger;
     this.sessionStoreToken = SessionStore.addListener(this.handleChange);
     this.handleChange();
   },
@@ -35,32 +41,30 @@ var App = React.createClass({
     this.sessionStoreToken.remove();
   },
 
-	handleChange: function() {
+	handleChange: function () {
 		if (SessionStore.isLoggedIn()) {
 			this.setState({ currentUser: SessionStore.currentUser() });
 		} else {
-			this.context.router.push("/login");
+			this.context.router.push("/welcome");
 		}
 	},
 
   render: function () {
+
     return (
       <div>
         <header className="over-head group">
           <nav className="nav-bar">
             <ul className="over-head-left">
-              <li className="board-options top-buttons"
-                  onClick={this.goToBoards}>
-                  Boards
-              </li>
+              <BoardsDropdown />
               <li>Search</li>
             </ul>
             <ul className="over-head-right top-buttons">
 
 							<ProfileDropdown username={this.state.currentUser.username}/>
-							something
+							<InfoDropdown />
             </ul>
-            <div className="over-head-logo" onClick={this.goHome}>
+            <div className="over-head-logo" onClick={this.goToBoards}>
               Mello
             </div>
           </nav>

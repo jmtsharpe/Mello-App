@@ -1,8 +1,11 @@
 var React = require('react');
 var BoardStore = require('./../../stores/board');
+var SessionStore = require('./../../stores/session');
 var ApiUtil = require('./../../util/apiUtil');
 var CardForm = require('./../cards/form');
 var CardIndex = require('./../cards/index');
+var CardStore = require('./../../stores/card');
+var TaskStore = require('./../../stores/task');
 
 
 var BoardShow = React.createClass({
@@ -23,8 +26,14 @@ var BoardShow = React.createClass({
 
   componentDidMount: function () {
     this.boardListener = BoardStore.addListener(this._onChange);
+		this.cardListener = CardStore.addListener(this.handleAdditions);
+		this.taskListener = TaskStore.addListener(this.handleAdditions);
     ApiUtil.fetchSingleBoard(this.props.params.id);
   },
+
+	handleAdditions: function () {
+		ApiUtil.fetchSingleBoard(this.props.params.id);
+	},
 
   componentWillUnmount: function () {
     this.boardListener.remove();

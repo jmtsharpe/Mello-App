@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::UsersController < ApplicationController
 
   def new
     @user = User.new
@@ -7,11 +7,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      debugger
       flash[:success] = "Created account successfuly! Welcome #{@user.username}!"
       redirect_to root_url
     else
-      debugger
       flash.now[:errors] = @user.errors.full_messages
       render :new
     end
@@ -32,6 +30,7 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+
 
   private
 

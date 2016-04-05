@@ -19,7 +19,8 @@ class Api::CardsController < ApplicationController
   end
 
   def index
-    @cards = Card.all
+		debugger
+    @cards = Card.where(board_id: params[:boardId])
     render :index
   end
 

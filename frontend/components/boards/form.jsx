@@ -1,5 +1,6 @@
 var React = require('react');
 var ApiUtil = require('../../util/apiUtil.js');
+var SessionStore = require('../../stores/session');
 
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 
@@ -26,7 +27,7 @@ module.exports = React.createClass({
     Object.keys(this.state).forEach(function (key) {
       { board[key] = this.state[key]; }
     }.bind(this));
-    board.user_id = 1;
+    board.user_id = SessionStore.currentUser().id;
     ApiUtil.createBoard(board, function (id) {
       this.context.router.push("/boards/" + id);
     }.bind(this));

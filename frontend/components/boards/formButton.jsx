@@ -20,21 +20,19 @@ mixins: [OnClickOutside],
 
 
   render: function () {
-
-  		if (!this.state.pressed) {
-  			return(
-  				<div className="create-board-button" onClick={this.isPressed}>
-  					<h2>Create a board</h2>
-  				</div>
-  			);
-  		}
-      return(
-          <div className="create-board-button" onClick={this.isPressed}>
-            <h2>Create a board</h2>
-            <BoardForm />
-          </div>
-      );
-
+		if (!this.state.pressed) {
+			return(
+				<div className="create-board-button" onClick={this.isPressed}>
+					<h2>Create a board</h2>
+				</div>
+			);
+		}
+    return(
+        <div className="create-board-button" onClick={this.isPressed}>
+          <h2>Create a board</h2>
+          <BoardForm />
+        </div>
+    );
   }
 
 });

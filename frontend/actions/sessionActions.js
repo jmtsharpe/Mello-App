@@ -4,7 +4,7 @@ var SessionConstants = require('../constants/sessionConstants');
 var SessionActions = {
 
   currentUserReceived: function(currentUser) {
-    AppDispatcher.dispatch({
+		AppDispatcher.dispatch({
       actionType: SessionConstants.CURRENT_USER_RECEIVED,
       currentUser: currentUser
     });

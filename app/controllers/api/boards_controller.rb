@@ -19,7 +19,11 @@ class Api::BoardsController < ApplicationController
   end
 
   def index
-    @boards = Board.all
+		if params[:userId]
+    	@boards = Board.where(user_id: params[:userId])
+		else
+			@boards = Board.all
+		end
     render :index
   end
 

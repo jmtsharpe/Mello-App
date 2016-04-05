@@ -5,6 +5,7 @@ var SessionActions = require('../actions/sessionActions');
 
 module.exports = {
   fetchAllBoards: function () {
+
     $.ajax({
       url: "api/boards",
       method: "GET",
@@ -17,6 +18,21 @@ module.exports = {
       }
     });
   },
+
+	fetchUserBoards: function (userId) {
+		$.ajax({
+      url: "api/boards",
+      method: "GET",
+      dataType: "json",
+			data: {userId: userId},
+      success: function (boards) {
+        BoardActions.receiveAllBoards(boards);
+      },
+      error: function () {
+        return("fetchUserBoards#error");
+      }
+    });
+	},
 
   fetchSingleBoard: function (id) {
     $.ajax({
@@ -46,11 +62,12 @@ module.exports = {
     });
   },
 
-  fetchAllCards: function (board_id) {
+  fetchAllCards: function (boardId) {
     $.ajax({
-      url: "api/boards/" + board_id + "/cards",
+      url: "api/boards/" + boardId + "/cards",
       method: "GET",
       dataType: "json",
+			data: {boardId: boardId},
       success: function (cards) {
         CardActions.receiveAllCards(cards);
       },
@@ -100,14 +117,12 @@ module.exports = {
   },
 
   signUp: function(credentials, callback) {
-    debugger
     $.ajax({
       type: "POST",
-      url: "/users",
+      url: "/api/users",
       dataType: "json",
       data: {user: credentials},
       success: function(currentUser) {
-        debugger
         SessionActions.currentUserReceived(currentUser);
         callback && callback();
       }
@@ -127,13 +142,14 @@ module.exports = {
     });
   },
 
-  logout: function() {
+  logout: function(callback) {
     $.ajax({
       type: "DELETE",
       url: "/api/session",
       dataType: "json",
       success: function() {
         SessionActions.logout();
+				callback && callback();
       }
     });
   },

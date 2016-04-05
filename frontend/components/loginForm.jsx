@@ -30,7 +30,6 @@ var LoginForm = React.createClass({
 	          <button>Submit</button>
 	        </form>
 	      </div>
-				<SignUpForm />
 			</div>
     );
   },

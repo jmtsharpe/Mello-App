@@ -42,7 +42,7 @@ var SignUpForm = React.createClass({
     var router = this.context.router;
 
     ApiUtil.signUp(user, function() {
-      router.push("/");
+      router.push("/boards");
     });
   },
 

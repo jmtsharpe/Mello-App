@@ -11,6 +11,7 @@ var App = require('./components/app/app');
 var LoginForm = require('./components/loginForm');
 var SignUpForm = require('./components/signUpForm');
 var ApiUtil = require('./util/apiUtil.js');
+var Welcome = require('./components/welcome');
 
 var hashHistory = require('react-router').hashHistory;
 
@@ -28,8 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
     <div>
       <Router history={hashHistory}>
         {routes}
-        <Route path="/login" component={LoginForm}/>
-        <Route path="/signup" component={SignUpForm}/>
+				<Route path="/welcome" component={Welcome} />
+        <Route path="/login" component={LoginForm} />
+        <Route path="/signup" component={SignUpForm} />
       </Router>
     </div>,
     document.getElementById('root')
@@ -45,7 +47,7 @@ function _requireLoggedIn(nextState, replace, asyncCompletionCallback) {
 
   function _redirectIfNotLoggedIn() {
     if (!SessionStore.isLoggedIn()) {
-      replace("/login");
+      replace("/welcome");
     }
 
     asyncCompletionCallback();

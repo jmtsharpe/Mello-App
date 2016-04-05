@@ -77,11 +77,12 @@ h1 {
 
 }
 .nav-bar > ul > li {
-  padding: 3px 10px 3px 10px;
+	font-weight: bold;
+  padding: 8px 10px 8px 10px;
   border-radius: 3px;
   background: #2af;
   margin: 5px 5px 5px 5px;
-	font-size: 12px
+	font-size: 14px
 }
 
 .nav-bar > ul > li:hover{
@@ -108,10 +109,28 @@ h1 {
 .over-head-logo {
   font-weight: bold;
   font-size: 16px;
-  padding: 6px;
+  padding: 12px;
   text-align: center;
   top: 10px;
   letter-spacing: 2px;
+}
+
+.board-dropdown, .profile-dropdown, .info-dropdown {
+	padding: 10px;
+	box-shadow: 1px 1px 3px 1px #a2a4a6;
+	border: none;
+	border-radius: 3px;
+	z-index: 10;
+	color: grey;
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	background: white;
+	top: 50px;
+}
+
+.board-dropdown {
+	left: 0;
 }
 
 .profile-button {
@@ -119,29 +138,32 @@ h1 {
 }
 
 .profile-dropdown {
-	z-index: 10;
-	color: grey;
-	border: 1px solid grey;
-	position: absolute;
-	width: 200px;
-	height: 200px;
-	background: white;
-	top: 40px;
+
 	right: 5px;
 }
 
+.info-dropdown {
+
+	right: 5px;
+}
+
+.content {
+	width: 80%;
+	margin: auto;
+}
+
 .board-index {
-  width: 80%;
+  width: 100%;
   color: white;
   padding: 10px;
   border-radius: 3px;
   margin: auto;
   text-align: center;
-
 }
 
 .board-index h2 {
   margin: auto;
+
 }
 
 @media only screen and (max-width: 750px)
@@ -152,7 +174,7 @@ h1 {
 
 .board-list-item, .create-board-button {
   display: inline-block;
-  width: 25%;
+  width: 20%;
   height: 80px;
   padding: 10px 20px 10px 20px;
   background: #026aa7;
@@ -167,6 +189,7 @@ h1 {
 /*/ BOARD FORM /*/
 
 .board-creation-div {
+	width: 100%;
   border: 1px solid #e2e4e6;
   color: #aaaaaa;
   background: white;
@@ -195,7 +218,7 @@ h1 {
 #board {
   background: #2af;
   position: absolute;
-  top: 90px;
+  top: 42px;
   left: 0;
   right: 0;
   bottom: 0;

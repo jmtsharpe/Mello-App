@@ -2,22 +2,21 @@ class Api::SessionsController < ApplicationController
 
   def show
     if signed_in?
-      render json: current_user
+      @user = current_user
     else
       render json: { message: "Not logged in" }, status: 401
     end
   end
 
   def create
-		debugger
-    user = User.find_by_credentials(
+    @user = User.find_by_credentials(
       params[:username],
       params[:password]
     )
 
-    if user && user.valid_password?(params[:password])
-      sign_in!(user)
-      render json: user
+  	if @user && @user.valid_password?(params[:password])
+      sign_in!(@user)
+      render :show
     else
       render json: { message: "Invalid credentials" }, status: 401
     end
