@@ -5,10 +5,8 @@ class Api::UsersController < ApplicationController
   end
 
   def create
-		debugger
     @user = User.new(user_params)
     if @user.save
-			debugger
       flash[:success] = "Created account successfuly! Welcome #{@user.username}!"
 			sign_in!(@user)
       render json: @user

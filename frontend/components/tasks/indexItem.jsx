@@ -16,9 +16,7 @@ var TaskIndexItem = React.createClass({
   },
 
   isPressed: function () {
-		debugger
 		this.setState({pressed: !this.state.pressed});
-		debugger
 	},
 
   handleClickOutside: function (e) {
@@ -26,7 +24,6 @@ var TaskIndexItem = React.createClass({
   },
 
   render: function () {
-		debugger
 		if (!this.state.pressed) {
 			return(
 				<li className="task-list-padding">

@@ -20,7 +20,6 @@ module.exports = {
   },
 
 	fetchUserBoards: function (userId) {
-		debugger;
 		$.ajax({
       url: "api/boards",
       method: "GET",
@@ -129,7 +128,6 @@ module.exports = {
   },
 
 	editTask: function (newTask, task) {
-		debugger
     $.ajax({
       url: "api/boards/1/cards/" + task.card_id + "/tasks/" + task.id,
       method: "PATCH",
@@ -190,7 +188,7 @@ module.exports = {
       complete: function() {
         completion && completion();
       }
-    })
+    });
   }
 
 
