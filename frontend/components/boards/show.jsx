@@ -6,7 +6,7 @@ var CardForm = require('./../cards/form');
 var CardIndex = require('./../cards/index');
 var CardStore = require('./../../stores/card');
 var TaskStore = require('./../../stores/task');
-var TitleButton = require('./TitleButton');
+var TitleButton = require('./titleButton');
 
 
 var BoardShow = React.createClass({
