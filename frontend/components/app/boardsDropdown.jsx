@@ -2,7 +2,7 @@ var React = require('react');
 var ApiUtil = require('../../util/apiUtil.js');
 var OnClickOutside = require('react-onclickoutside');
 var BoardStore = require('./../../stores/board');
-var BoardsDropdownItem = require('./BoardsDropdownItem');
+var BoardsDropdownItem = require('./boardsDropdownItem');
 var SessionStore = require('./../../stores/session');
 
 var BoardsDropdown = React.createClass({
