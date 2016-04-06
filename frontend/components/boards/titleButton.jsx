@@ -9,7 +9,7 @@ mixins: [OnClickOutside],
   },
 
   isPressed: function () {
-		this.setState({pressed: !this.state.pressed});
+		this.setState({pressed: true});
 	},
 
   handleClickOutside: function (e) {

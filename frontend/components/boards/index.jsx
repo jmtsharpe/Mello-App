@@ -45,13 +45,13 @@ var BoardIndex = React.createClass({
 					<h4 className="board-starred-title">☆ Starred Boards</h4>
 					<h4 className="board-index-title">☺ MyBoards</h4>
 				</div>
-        <div className="board-index group">
 
-          <ul>
+
+          <ul className="board-index group">
             {boards}
-						<li><BoardFormButton /></li>
+						<BoardFormButton />
           </ul>
-        </div>
+
         {this.props.children}
       </div>
     );

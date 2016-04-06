@@ -31,15 +31,26 @@ var ProfileDropdown = React.createClass({
 	  render: function () {
 	  		if (!this.state.pressed) {
 	  			return(
-	  				<li className="profile-button top-buttons" onClick={this.isPressed}>
-	  					<h2>{this.props.username}</h2>
+	  				<li className="group">
+							<div className="profile-button group" onClick={this.isPressed}>
+								<div className="profile-thumb group">
+									<h2 >
+										{this.props.username[0]}
+									</h2>
+								</div>
+								<div className="profile-name group">
+									<h2>
+										{this.props.username}
+									</h2>
+								</div>
+							</div>
 	  				</li>
 	  			);
 	  		}
 
 	      return(
 
-					<li className="profile-button top-buttons" onClick={this.isPressed}>
+					<li className="profile-button" onClick={this.isPressed}>
 						<h2>{this.props.username}</h2>
 						<div className="profile-dropdown" onClick={this.isPressed}>
 							<h2>Profile Dropdown</h2>

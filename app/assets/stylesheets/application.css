@@ -76,18 +76,21 @@ h1 {
   color: white;
 
 }
-.nav-bar > ul > li {
+
+.top-buttons {
 	font-weight: bold;
-  padding: 8px 10px 8px 10px;
+  padding: 7px 10px 7px 10px;
   border-radius: 3px;
-  background: #2af;
+  /*background: #2af;*/
   margin: 5px 5px 5px 5px;
-	font-size: 14px
+	font-size: 14px;
+  /*background: -webkit-linear-gradient(top,rgba(255,255,255,.3) 0,rgba(255,255,255,.2) 100%);*/
+  background: linear-gradient(to bottom,rgba(255,255,255,.3) 0,rgba(255,255,255,.2) 100%);
 }
 
-.nav-bar > ul > li:hover{
+.top-buttons:hover {
 	cursor: pointer;
-	background: #19d;
+	background: linear-gradient(to bottom,rgba(255,255,255,.4) 0,rgba(255,255,255,.3) 100%);
 }
 
 .over-head-left {
@@ -114,7 +117,7 @@ h1 {
 .over-head-logo {
   font-weight: bold;
   font-size: 16px;
-  padding: 12px;
+  padding: 11px;
   text-align: center;
   top: 10px;
   letter-spacing: 2px;
@@ -124,27 +127,120 @@ h1 {
 	cursor: pointer;
 	color: #dddddd;
 }
-
+/*/ /*/ /*/ OVERHEAD DROPDOWNS /*/ /*/ /*/
 .board-dropdown, .profile-dropdown, .info-dropdown {
-	padding: 10px;
+	padding: 9px;
 	box-shadow: 1px 1px 3px 1px #a2a4a6;
 	border: none;
 	border-radius: 3px;
 	z-index: 10;
 	color: grey;
 	position: absolute;
-	width: 200px;
-	height: 200px;
+	width: 300px;
+	height: auto;
 	background: white;
 	top: 50px;
 }
+
+/*/ BOARDS DROPDOWN /*/
 
 .board-dropdown {
 	left: 0;
 }
 
-.profile-button {
+.board-dropdown-item {
 
+}
+
+.board-dropdown-item-link {
+
+}
+.board-dropdown-item-link-wrapper {
+	text-align: left;
+	display: block;
+	height: 40px;
+	width: 300px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.board-dropdown-item-link:hover {
+	cursor: pointer;
+}
+
+.board-dropdown-item-link:hover .board-dropdown-item-thumbnail{
+	background: #026aa7;
+
+}
+
+.board-dropdown-item-link:hover .board-dropdown-item-title{
+	background: #2af;
+	color: white;
+}
+
+.board-dropdown-item-thumbnail {
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	float: left;
+	display: block;
+	background: #aaaaaa;
+	width: 36px;
+	height: 36px;
+}
+
+.board-dropdown-item-title {
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	width: 239px;
+	padding: 7px 5px 6px 20px;
+	float: left;
+	display: inline-block;
+	font-size: 20px;
+	background: #eeeeee;
+	overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*/ PROFILE DROPDOWN /*/
+
+.profile-button {
+	font-weight: bold;
+
+	border-radius: 3px;
+	margin: 5px 5px 5px 5px;
+	font-size: 14px;
+	background: linear-gradient(to bottom,rgba(255,255,255,.3) 0,rgba(255,255,255,.2) 100%);
+}
+
+.profile-button:hover {
+	cursor: pointer;
+	background: linear-gradient(to bottom,rgba(255,255,255,.4) 0,rgba(255,255,255,.3) 100%);
+}
+
+.profile-thumb:hover > h2 {
+	cursor: pointer;
+	background: #cdd2d4;
+}
+
+.profile-name {
+	padding: 7px 10px 7px 10px;
+	float: left;
+}
+
+.profile-thumb {
+	text-align: center;
+	vertical-align: middle;
+	float: left;
+	height: 30px;
+	width: 30px;
+}
+
+.profile-thumb > h2 {
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	padding: 7px 0 7px 0;
+	color: #4d4d4d;
+	background: #d6dadc;
 }
 
 .profile-dropdown {
@@ -152,27 +248,40 @@ h1 {
 	right: 5px;
 }
 
+
+/*/ INFO DROPDOWN /*/
+
 .info-dropdown {
 
 	right: 5px;
 }
 
 .content {
-	width: 80%;
-	margin: auto;
+	margin: 1pc auto;
+	padding: 1pc;
+	max-width: 1250px;
 }
 .board-index-head {
-	padding-top: 30px;
 }
 
 .board-index-title, .board-starred-title {
-	padding: 20px 10px 0 20px;
+
+	color: #4d4d4d;
+	font-size: 1pc;
+}
+.board-index-title {
+	margin-bottom: 20px;
+}
+
+.board-starred-title {
+	margin-bottom: 20px;
 }
 
 .board-index {
+	display: flex;
+	flex-wrap: wrap;
   width: 100%;
   color: white;
-  padding: 10px;
   border-radius: 3px;
   margin: auto;
   text-align: center;
@@ -188,10 +297,15 @@ h1 {
   width: 20%;
   height: 80px;
   padding: 10px 20px 10px 20px;
-  background: #127ab7;
+  background: #0079bf;
   border-radius: 3px;
-  margin: 5px;
+  margin-right: 10px;
+	margin-bottom: 10px;
 	float: left;
+	white-space: pre-line;
+	overflow: hidden;
+  text-overflow: ellipsis;
+	/*background-color: rgba(0,0,0,.15);*/
 }
 
 .board-list-item:hover, .create-board-button:hover {
@@ -236,7 +350,7 @@ h1 {
 #board {
   background: #2af;
   position: absolute;
-  top: 42px;
+  top: 40px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -365,7 +479,9 @@ h1 {
   font-size: 16px;
   border-radius: 3px;
   border: 1px solid grey;
-  box-shadow: inset 0 1px 8px #d2d4d6;
+  box-shadow: inset 0 1px 8px #a4a4a4;
+	background: #d4d4d4;
+	border-color: #aaa;
 }
 
 

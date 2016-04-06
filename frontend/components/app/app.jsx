@@ -57,9 +57,13 @@ var App = React.createClass({
 	          <nav className="nav-bar">
 	            <ul className="over-head-left">
 	              <BoardsDropdown />
-	              <li>Search</li>
+	              <li>
+									<div className="top-buttons">
+										Search
+									</div>
+								</li>
 	            </ul>
-	            <ul className="over-head-right top-buttons">
+	            <ul className="over-head-right">
 
 								<ProfileDropdown username={this.state.currentUser.username}/>
 								<InfoDropdown />

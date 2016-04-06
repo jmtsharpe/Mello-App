@@ -1,11 +1,14 @@
 var React = require('react');
 var ApiUtil = require('../../util/apiUtil.js');
 var OnClickOutside = require('react-onclickoutside');
+var BoardStore = require('./../../stores/board');
+var BoardsDropdownItem = require('./BoardsDropdownItem');
+var SessionStore = require('./../../stores/session');
 
-var ProfileDropdown = React.createClass({
+var BoardsDropdown = React.createClass({
 	mixins: [OnClickOutside],
   getInitialState: function () {
-    return { pressed: false };
+    return { pressed: false, boards: BoardStore.all() };
   },
 
   isPressed: function () {
@@ -13,16 +16,32 @@ var ProfileDropdown = React.createClass({
 	},
 
   handleClickOutside: function (e) {
-    this.setState({ pressed: false});
+    this.setState({ pressed: false,
+		 boards: BoardStore.all()});
   },
 
 
+	_onChange: function () {
+    this.setState({ boards: BoardStore.all() });
+  },
+
+	_updateBoards: function () {
+		this.setState({ boards: BoardStore.all() });
+	},
+
+	componentDidMount: function () {
+		this.boardListener = BoardStore.addListener(this._updateBoards);
+			ApiUtil.fetchUserBoards(SessionStore.currentUser().id);
+	},
 
 
   render: function () {
-		// var boards = this.state.boards.map(function (board) {
-		// 	return <BoardDropdownItem key={board.id} board={board} />;
-		// }.bind(this));
+		if (typeof this.state.boards === undefined ) {
+		} else {
+			var boards = this.state.boards.map(function (board) {
+				return <BoardsDropdownItem key={board.id} board={board} />;
+			}.bind(this));
+		}
 
 		if (!this.state.pressed) {
 			return(
@@ -32,16 +51,16 @@ var ProfileDropdown = React.createClass({
 			);
 		}
 
-
 		return (
-			<li className="board-dropdown-button top-buttons" onClick={this.isPressed}>Boards
+			<li >
+				<div className="board-dropdown-button top-buttons" onClick={this.isPressed}>Boards</div>
 				<div className="board-dropdown">
-					<div className="board-index-head">
+					<div className="board-dropdown-head">
 						<h3>MyBoards</h3>
 					</div>
 					<div className="board-dropdown-index group">
 						<ul>
-							boards
+							{boards}
 						</ul>
 					</div>
 					{this.props.children}
@@ -51,4 +70,4 @@ var ProfileDropdown = React.createClass({
 		}
 });
 
-module.exports = ProfileDropdown;
+module.exports = BoardsDropdown;

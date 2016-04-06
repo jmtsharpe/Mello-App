@@ -1,7 +1,7 @@
 var React = require('react');
 
 
-var BoardDropdownItem = React.createClass({
+var BoardsDropdownItem = React.createClass({
   contextTypes: {
       router: React.PropTypes.object.isRequired
     },
@@ -14,10 +14,17 @@ var BoardDropdownItem = React.createClass({
   render: function () {
     return(
       <li onClick={this.showDetail} className="board-dropdown-item">
-        <p>{this.props.board.subject}</p>
+        <a className="board-dropdown-item-link">
+					<div className="board-dropdown-item-link-wrapper">
+						<div className="board-dropdown-item-thumbnail"></div>
+						<span className="board-dropdown-item-title">
+							{this.props.board.subject}
+						</span>
+					</div>
+				</a>
       </li>
     );
   }
 });
 
-module.exports = BoardDownItem;
+module.exports = BoardsDropdownItem;

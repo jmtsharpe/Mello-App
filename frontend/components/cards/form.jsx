@@ -32,11 +32,12 @@ var CardForm = React.createClass({
   render: function () {
     return(
       <div className="create-card-form">
-        <form className='new-card' onSubmit={this.createCard}>
+        <form className="new-card" onSubmit={this.createCard}>
           <input
             className="card-input-field"
-            type='text'
-            id='card_subject'
+            type="text"
+            id="card_subject"
+						defaultValue="Add a card..."
             valueLink={this.linkState("subject")}
           />
           <br/>

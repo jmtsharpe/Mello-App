@@ -2,7 +2,7 @@ var React = require('react');
 var ApiUtil = require('../../util/apiUtil.js');
 var OnClickOutside = require('react-onclickoutside');
 
-var ProfileDropdown = React.createClass({
+var InfoDropdown = React.createClass({
 	mixins: [OnClickOutside],
 	  getInitialState: function () {
 	    return { pressed: false };
@@ -22,8 +22,10 @@ var ProfileDropdown = React.createClass({
 	  render: function () {
 	  		if (!this.state.pressed) {
 	  			return(
-	  				<li className="profile-button top-buttons" onClick={this.isPressed}>
-	  					<h2>i</h2>
+	  				<li>
+							<div className="profile-button top-buttons" onClick={this.isPressed}>
+	  						<h2>Help!</h2>
+							</div>
 	  				</li>
 	  			);
 	  		}
@@ -31,9 +33,11 @@ var ProfileDropdown = React.createClass({
 	      return(
 
 					<li className="info-button top-buttons" onClick={this.isPressed}>
-						<h2>i</h2>
-						<div className="info-dropdown" onClick={this.isPressed}>
-							<h2>Info Dropdown</h2>
+						<div>
+							<h2>Help!</h2>
+							<div className="info-dropdown" onClick={this.isPressed}>
+								<h2>I need somebody. HELP! Not just anybody. HELP! You know I need someone. HeeEEeeelp!</h2>
+							</div>
 						</div>
 					</li>
 	      );
@@ -41,4 +45,4 @@ var ProfileDropdown = React.createClass({
 	  }
 });
 
-module.exports = ProfileDropdown;
+module.exports = InfoDropdown;
