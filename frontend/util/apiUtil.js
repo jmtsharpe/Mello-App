@@ -100,6 +100,18 @@ module.exports = {
     });
   },
 
+	editCard: function (card) {
+    $.ajax({
+      url: "api/boards/1/cards/" + card.id,
+      method: "PATCH",
+      data: {card: card},
+      dataType: "json",
+      success: function (card) {
+        CardActions.receiveSingleCard(card);
+      }
+    });
+  },
+
 	fetchAllTasks: function (board_id, card_id) {
 
     $.ajax({

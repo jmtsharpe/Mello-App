@@ -16,6 +16,15 @@ class Api::CardsController < ApplicationController
   end
 
   def update
+		@card = Card.find(params[:id])
+
+    if @card.update(card_params)
+      flash[:success] = "Updated successfully"
+      render :show
+    else
+      flash.now[:errors] = @card.errors.full_messsages
+      render :show
+    end
   end
 
   def index

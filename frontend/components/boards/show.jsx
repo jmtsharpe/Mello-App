@@ -7,6 +7,7 @@ var CardIndex = require('./../cards/index');
 var CardStore = require('./../../stores/card');
 var TaskStore = require('./../../stores/task');
 var TitleButton = require('./titleButton');
+var DragSource = require('react-dnd').DragSource;
 
 
 var BoardShow = React.createClass({

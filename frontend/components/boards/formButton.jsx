@@ -22,14 +22,14 @@ mixins: [OnClickOutside],
   render: function () {
 		if (!this.state.pressed) {
 			return(
-				<li className="create-board-button board-list-item" onClick={this.isPressed}>
-					<h2>Create a board</h2>
+				<li id="create-board-button" className="board-list-item" onClick={this.isPressed}>
+					Create a board
 				</li>
 			);
 		}
     return(
-        <li className="create-board-button" onClick={this.isPressed}>
-          <h2>Create a board</h2>
+        <li id="create-board-button" className="board-list-item" onClick={this.isPressed}>
+          Create a board
           <BoardForm />
         </li>
     );

@@ -14,7 +14,7 @@ var BoardIndexItem = React.createClass({
   render: function () {
     return(
       <li onClick={this.showDetail} className="board-list-item">
-        <p>{this.props.board.subject}</p>
+        <h2>{this.props.board.subject}</h2>
       </li>
     );
   }

@@ -17,7 +17,7 @@ var ProfileDropdown = React.createClass({
 			this.setState({pressed: !this.state.pressed});
 		},
 
-	  handleClickOutside: function (e) {
+	  handleClickOutside: function () {
 	    this.setState({ pressed: false});
 	  },
 
@@ -49,12 +49,24 @@ var ProfileDropdown = React.createClass({
 	  		}
 
 	      return(
-
-					<li className="profile-button" onClick={this.isPressed}>
-						<h2>{this.props.username}</h2>
+					<li className="group">
+						<div className="profile-button group" onClick={this.isPressed}>
+							<div className="profile-thumb group">
+								<h2 >
+									{this.props.username[0]}
+								</h2>
+							</div>
+							<div className="profile-name group">
+								<h2>
+									{this.props.username}
+								</h2>
+							</div>
+						</div>
 						<div className="profile-dropdown" onClick={this.isPressed}>
 							<h2>Profile Dropdown</h2>
-							<h2 onClick={this.logout}>Logout</h2>
+							<h2 className="profile-dropdown-logout" onClick={this.logout}>
+								Logout
+							</h2>
 						</div>
 					</li>
 	      );

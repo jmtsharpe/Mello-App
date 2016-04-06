@@ -24,7 +24,7 @@ mixins: [OnClickOutside],
 		if (!this.state.pressed) {
 			return(
         <li className="card-list-item" id="card-creation-button" onClick={this.isPressed}>
-  				<h2>Create a card</h2>
+  				<h2>Create a card...</h2>
         </li>
 			);
 		}
