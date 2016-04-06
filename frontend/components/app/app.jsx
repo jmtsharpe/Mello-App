@@ -69,7 +69,7 @@ var App = React.createClass({
 								<InfoDropdown />
 	            </ul>
 	            <div className="over-head-logo" onClick={this.goToBoards}>
-	              Mello
+	              ℳello
 	            </div>
 	          </nav>
 	        </header>

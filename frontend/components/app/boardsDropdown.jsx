@@ -45,15 +45,15 @@ var BoardsDropdown = React.createClass({
 
 		if (!this.state.pressed) {
 			return(
-				<li className="board-dropdown-button top-buttons" onClick={this.isPressed}>
-					Boards
+				<li id="board-dropdown-button" className="top-buttons" onClick={this.isPressed}>
+					ℳ Boards
 				</li>
 			);
 		}
 
 		return (
 			<li >
-				<div className="board-dropdown-button top-buttons" onClick={this.isPressed}>Boards</div>
+				<div id="board-dropdown-button" className="top-buttons" onClick={this.isPressed}>ℳ Boards</div>
 				<div className="board-dropdown">
 					<div className="board-dropdown-head">
 						<h3>MyBoards</h3>

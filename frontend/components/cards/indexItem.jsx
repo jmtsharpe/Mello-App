@@ -20,7 +20,6 @@ var CardIndexItem = React.createClass({
 	},
 
 	isPressed: function () {
-		debugger
 		this.setState({pressed: !this.state.pressed });
 	},
 
