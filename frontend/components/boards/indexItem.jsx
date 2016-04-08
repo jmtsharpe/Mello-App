@@ -13,8 +13,10 @@ var BoardIndexItem = React.createClass({
 
   render: function () {
     return(
-      <li onClick={this.showDetail} className="board-list-item">
-        <h2>{this.props.board.subject}</h2>
+      <li className="board-list-item-padding">
+				<div onClick={this.showDetail} className="board-list-item">
+	        <h2>{this.props.board.subject}</h2>
+				</div>
       </li>
     );
   }

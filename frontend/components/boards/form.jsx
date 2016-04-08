@@ -47,11 +47,11 @@ module.exports = React.createClass({
             <br/>
             <input
               type='text'
-              id='board_subject'
+              id='board-subject'
               valueLink={this.linkState("subject")}
             />
 						<br />
-	          <button className="submit">Create Board</button>
+	          <button className="submit">Create</button>
           </form>
         </div>
       </div>

@@ -1,6 +1,7 @@
 var React = require('react');
 var ApiUtil = require('../../util/apiUtil');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
+var CardStore = require('./../../stores/card');
 
 var CardForm = React.createClass({
   contextTypes: {
@@ -23,6 +24,7 @@ var CardForm = React.createClass({
     Object.keys(this.state).forEach(function (key) {
       { card[key] = this.state[key]; }
     }.bind(this));
+		card.position = CardStore.all().length;
     card.board_id = this.props.boardId;
     ApiUtil.createCard(card, this.props.boardId);
     this.setState(this.blankAttrs);

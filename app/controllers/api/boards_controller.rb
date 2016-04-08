@@ -17,7 +17,6 @@ class Api::BoardsController < ApplicationController
 
   def update
 		@board = Board.find(params[:id])
-
     if @board.update(board_params)
       flash[:success] = "Updated successfully"
       render :show
@@ -38,7 +37,6 @@ class Api::BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
-    render :show
   end
 
   def destroy

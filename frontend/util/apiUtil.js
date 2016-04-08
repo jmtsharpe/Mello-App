@@ -74,6 +74,7 @@ module.exports = {
 	},
 
   fetchAllCards: function (boardId) {
+		debugger
     $.ajax({
       url: "api/boards/" + boardId + "/cards",
       method: "GET",
@@ -102,7 +103,19 @@ module.exports = {
 
 	editCard: function (card) {
     $.ajax({
-      url: "api/boards/1/cards/" + card.id,
+      url: "api/boards/" + card.boardId + "/cards/" + card.id,
+      method: "PATCH",
+      data: {card: card},
+      dataType: "json",
+      success: function (card) {
+        CardActions.receiveSingleCard(card);
+      }
+    });
+  },
+
+	editCardPosition: function (card) {
+    $.ajax({
+      url: "api/boards/" + card.boardId + "/cards/" + card.id,
       method: "PATCH",
       data: {card: card},
       dataType: "json",

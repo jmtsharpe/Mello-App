@@ -6,14 +6,22 @@ var CardForm = require('./../cards/form');
 var CardIndex = require('./../cards/index');
 var CardStore = require('./../../stores/card');
 var TaskStore = require('./../../stores/task');
+var PropTypes = React.PropTypes;
 var TitleButton = require('./titleButton');
+// var DragSource = require('react-dnd').DragSource;
+var DragDropContext = require('react-dnd').DragDropContext;
+var HTML5Backend = require('react-dnd-html5-backend');
+var CardIndexItem = require('./../cards/indexItem');
+var CardSlot = require('./../cards/cardSlot');
 
+BoardShow = React.createClass ({
+	// propTypes: {
+  //   CardPosition: PropTypes.arrayOf(
+  //     PropTypes.number.isRequired
+  //   ).isRequired
+  // },
 
-var BoardShow = React.createClass({
-
-
-
-  getInitialState: function () {
+	getInitialState: function () {
     return {board: BoardStore.find(this.props.params.id) };
   },
 
@@ -42,10 +50,29 @@ var BoardShow = React.createClass({
     this.boardListener.remove();
   },
 
-  render: function () {
+	renderCardSlot: function (i) {
+		return (
+			<div key={i}>
+				<CardSlot card={this.state.board.cards[i]} position={i}>
+					{this.renderCard(i)}
+				</CardSlot>
+			</div>
+		);
+	},
+
+	renderCard: function (i) {
+		return ( <CardIndexItem position={i}/>) ;
+	},
+
+	render: function () {
     if (!this.state.board || !this.state.board.cards) {
       return (<p>Loading board...</p>);
     }
+
+		var cardSlots = [];
+		for ( var i = 0; i < this.state.board.cards.length; i++ ) {
+			cardSlots.push(this.renderCardSlot(i, this.state.board.id));
+		}
 
     return (
       <div id="board" className="group">
@@ -55,11 +82,14 @@ var BoardShow = React.createClass({
 					</ul>
 				</div>
 				<div className="board-content group">
-						<CardIndex boardId={this.state.board.id} cards={this.state.board.cards} />
+					<ul>
+						{cardSlots}
+					</ul>
 				</div>
       </div>
     );
   }
+
 });
 
-module.exports = BoardShow;
+module.exports = DragDropContext(HTML5Backend)(BoardShow);

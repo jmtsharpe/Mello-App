@@ -306,17 +306,24 @@ h1 {
 
 }
 
+.board-list-item-padding {
+	box-sizing: content-box;
+	/*padding-right: 10px;*/
+	padding-bottom: 10px;
+	width: 25%;
+}
+
 .board-list-item, .create-board-button {
 	text-align: left;
 	box-sizing: content-box;
   display: inline-block;
-  width: 22%;
-  height: 80px;
+  width: 88.5%;
+  height: 76px;
   padding: 10px 10px 10px 10px;
   background: #0079bf;
   border-radius: 3px;
-  margin-right: 10px;
-	margin-bottom: 10px;
+  /*margin-right: 10px;
+	margin-bottom: 10px;*/
 	float: left;
 	white-space: pre-line;
   text-overflow: ellipsis;
@@ -327,10 +334,13 @@ h1 {
 	background: #026aa7;
 	cursor: pointer;
 }
+
+
+
 #create-board-button {
   position: relative;
 	text-align: center;
-	height: 50px;
+	height: 46px;
 	padding-top: 40px;
 	background: #d6dadc;
 	color: #aaaaaa;
@@ -345,22 +355,52 @@ h1 {
 /*/ /*/ /*/ BOARD FORM /*/ /*/ /*/
 
 .board-creation-div {
-	width: 100%;
-  border: 1px solid #e2e4e6;
+	border-radius: 3px;
+	width: 280px;
+  border: 1px solid rgb(214, 218, 220);
   color: #aaaaaa;
   background: white;
   position: absolute;
   top: 0;
   left: 0;
-  padding: 20px;
+  padding: 10px;
+	text-align: left;
+	box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.14902);
 }
 
 .create-form > h4 {
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid rgb(214, 218, 220);
+	color: #8c8c8c;
+	font-size: 14px;
+	font-weight: normal;
+	padding: 0 0 10px 100px;
+	margin-bottom: 10px;
 }
 
-.create-form > label {
+#board-subject {
+	box-sizing: content-box;
+	width: 263px;
+	border-radius: 2px;
+	border: 1px solid rgb(205, 210, 212);
+	padding: 7px;
+	margin: 2px 0 10px 0;
+	background-color: #e2e4e6
+}
+
+#board-subject:hover {
+	border: 1px solid rgb(165, 172, 176);
+}
+
+#board-subject:focus {
+	background: white;
+	box-shadow: 0 0 1px 1px rgb(41, 143, 202);
+}
+
+.create-form label {
+	font-size: 14px;
+	font-weight: bold;
   float: left;
+	color: rgb(77, 77, 77);
 }
 
 
@@ -381,8 +421,13 @@ h1 {
   right: 0;
   bottom: 0;
   overflow: auto;
-	padding: 8px;
+	padding: 10px;
 }
+
+.board-bar {
+	padding: 3px 0 2px 0;
+}
+
 .board-bar > ul {
 	float: left;
 }
@@ -413,11 +458,11 @@ h1 {
 	z-index: 10;
 	position: absolute;
 	background: white;
-	width: 200px;
+	width: 300px;
 	height:auto;
 	padding: 10px;
-	top: 40px;
-	left: 0;
+	top: 38px;
+	left: 5px;
 }
 
 .edit-board-header {
@@ -451,51 +496,66 @@ h1 {
 
 .board-content {
 	position: relative;
+	overflow: auto;
 	white-space: nowrap;
 	text-align: left;
+	height: 100%;
 }
 
 /*/ /*/ /*/ CARDS /*/ /*/ /*/
 .card-index {
 	float: left;
-
+	height: 100%;
 }
 
 .card-list {
 	float: left;
+	height: 100%;
+}
+
+.card-list-item-slot {
+	float: left;
+	height: 100%;
+	width: 280px;
 }
 
 .card-list-item {
-	float: left;
+
 	vertical-align: top;
   display: inline-block;
-  width: 260px;
+  width: 270px;
   height: auto;
   background: #e2e4e6;
   border-radius: 3px;
-  margin: 5px;
-  position: relative;
+  /*margin: 5px;*/
+  /*position: relative;*/
 }
 
 .card-title {
 	color: #4d4d4d;
   padding: 10px 20px 10px 20px;
+	font-size: 15px;
+}
+
+.card-title:hover {
+	cursor: pointer;
 }
 /*/ CARD CREATION /*/
 
  #card-creation-button {
+	float: left;
   display: inline-block;
-  width: 230px;
-  height: 30px;
-  padding: 10px 20px 0 20px;
+  width: 240px;
+  height: 25px;
+  padding: 12px 20px 3px 10px;
   background: #026aa7;
   border-radius: 3px;
-  margin: 5px;
 	color: white;
 }
 
 #card-creation-button > h2 {
 	font-weight: normal;
+	font-size: 14px;
 	color: rgba(255,255,255,.7);
 }
 
@@ -506,8 +566,12 @@ h1 {
 }
 
 #card-creation-div {
+	border-radius: 3px;
+	float: left;
+	width: 260px;
   padding: 5px;
-	height: 80px
+	height: 80px;
+	background: #e2e4e6;
 }
 
 .card-input-field {
@@ -517,7 +581,7 @@ h1 {
   font-size: 16px;
   border-radius: 3px;
   border: 1px solid grey;
-  box-shadow: inset 0 1px 8px #a4a4a4;
+  box-shadow: inset 0 1px 8px rgba(0,0,0,.15);
 	background: #d4d4d4;
 	border-color: #aaa;
 }
@@ -530,7 +594,7 @@ h1 {
 }
 
 .edit-input-field {
-  width: 230px;
+  width: 240px;
   margin-bottom: 5px;
   padding: 9px;
   font-size: 16px;
@@ -571,7 +635,7 @@ h1 {
 
 .task-creation-button {
   padding: 10px 20px 10px 20px;
-  width: 220px;
+  width: 230px;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
 }
@@ -603,7 +667,7 @@ h1 {
   background: white;
   line-height: 20px;
   height: 60px;
-  width: 220px;
+  width: 230px;
   border-radius: 3px;
   border: none;
   box-shadow: 0 1px 0 0 #d2d4d6;
@@ -635,8 +699,8 @@ h1 {
 	width: 300px;
 	height: 220px;
 	position: absolute;
-	top: 5px;
-	left: 10px;
+	top: 30%;
+	left: 40%;
 	text-align: center;
 	box-shadow: 1px 1px 3px 1px #a2a4a6;
 }
@@ -754,7 +818,7 @@ h1 {
     background : #000;
     opacity    : 0.6;
     z-index    : 5;
-    display    : none;
+    display    : flex;
 }
 
 #overlay {

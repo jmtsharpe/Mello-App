@@ -23,13 +23,13 @@ mixins: [OnClickOutside],
 
 		if (!this.state.pressed) {
 			return(
-        <li className="card-list-item" id="card-creation-button" onClick={this.isPressed}>
+        <li id="card-creation-button" onClick={this.isPressed}>
   				<h2>Create a card...</h2>
         </li>
 			);
 		}
     return(
-      <li className="card-list-item" id="card-creation-div" onClick={this.isPressed}>
+      <li id="card-creation-div" onClick={this.isPressed}>
         <CardForm boardId={this.props.boardId} />
       </li>
     );

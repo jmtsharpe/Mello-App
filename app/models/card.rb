@@ -1,5 +1,5 @@
 class Card < ActiveRecord::Base
-  validates :subject, :board_id, presence: true
+  validates :subject, :board_id, :position, presence: true
 
   belongs_to(
   :board,

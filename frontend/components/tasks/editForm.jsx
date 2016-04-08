@@ -28,22 +28,27 @@ var EditTaskForm = React.createClass({
     this.setState(this.blankAttrs);
   },
 
+	componentDidMount: function () {
+		this.setState({subject: this.props.defaultValue});
+	},
+
 
   render: function () {
     return(
-      <div className="edit-task">
-        <form className="task-edit-form" onSubmit={this.editTask}>
-					<h3 className="edit-task-head">Edit Task</h3>
-          <textarea
-            className="task-form-field"
-            type='text'
-            id='task_subject'
-            valueLink={this.linkState("subject")}
-          />
-          <br />
-  				<button className="submit">Save</button>
-        </form>
-      </div>
+
+	      <div className="edit-task">
+	        <form className="task-edit-form" onSubmit={this.editTask}>
+						<h3 className="edit-task-head">Edit Task</h3>
+	          <textarea
+	            className="task-form-field"
+	            type='text'
+	            id='task_subject'
+	            valueLink={this.linkState("subject")}
+	          />
+	          <br />
+	  				<button className="submit">Save</button>
+	        </form>
+	      </div>
     );
   }
 });

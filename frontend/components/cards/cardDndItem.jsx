@@ -7,7 +7,15 @@ var CardEditForm = require('./editForm');
 var OnClickOutside = require('react-onclickoutside');
 var ApiUtil = require('../../util/apiUtil');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
+var PropTypes = React.PropTypes;
+var DragSource = require('react-dnd').DragSource;
+var ItemTypes = require('./../../constants/draggableConstants');
 
+var CardSource = {
+  beginDrag: function (props) {
+    return {};
+  }
+};
 
 function collect(connect, monitor) {
   return {
@@ -19,6 +27,11 @@ function collect(connect, monitor) {
 
 var CardIndexItem = React.createClass({
 	mixins: [OnClickOutside, LinkedStateMixin],
+
+	propTypes: {
+    connectDragSource: PropTypes.func.isRequired,
+    isDragging: PropTypes.bool.isRequired
+  },
 
   contextTypes: {
       router: React.PropTypes.object.isRequired
@@ -64,9 +77,12 @@ var CardIndexItem = React.createClass({
     var isDragging = this.props.isDragging;
 
 		if (!this.state.pressed) {
-	    return (
+	    return connectDragSource (
 
-
+					<div style={{
+		        opacity: isDragging ? 0.5 : 1,
+		        cursor: 'move'
+		      }}>
 							<div className="card-list-item">
 			        <h2 onClick={this.isPressed} className="card-title">
 								{this.props.card.subject}
@@ -74,10 +90,10 @@ var CardIndexItem = React.createClass({
 							<TaskIndex className="task-index" tasks={this.props.card.tasks} cardId={this.props.cardId} />
 							<TaskFormButton className="task-creation-div" boardId={this.props.board_id} cardId={this.props.card.id} />
 							</div>
-
+					</div>
 	    );
 		}
-		return (
+		return connectDragSource (
 			<li className="card-list-item">
 				<div className="edit-card-form">
 	        <form className="edit-card" onSubmit={this.editCard}>
@@ -101,6 +117,6 @@ var CardIndexItem = React.createClass({
 
 // <CardEditForm defaultValue={this.props.card.subject} cardId={this.props.card.id}/>
 
-module.exports = CardIndexItem;
+module.exports = DragSource(ItemTypes.CARD, CardSource, collect)(CardIndexItem);
 
 // module.exports = CardIndexItem;

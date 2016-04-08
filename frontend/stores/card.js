@@ -11,7 +11,7 @@ var _cards = {};
 var resetCards = function (cards) {
   _cards = {};
   cards.forEach(function (card) {
-    _cards[card.id] = card;
+    _cards[card.position] = card;
   });
 };
 
@@ -21,9 +21,9 @@ var resetCard = function (card) {
 
 CardStore.all = function () {
   var cards = [];
-  for (var id in _cards) {
-    if (_cards.hasOwnProperty(id)) {
-      cards.push(_cards[id]);
+  for (var position in _cards) {
+    if (_cards.hasOwnProperty(position)) {
+      cards.push(_cards[position]);
     }
   }
 
@@ -33,20 +33,24 @@ CardStore.all = function () {
   return cards;
 };
 
-CardStore.mine = function (boardId) {
-	var myCards = CardStore.all().filter( function (card) {
-		return card.board_id === boardId;
-	});
-	return myCards;
-};
+// CardStore.mine = function (boardId) {
+// 	var myCards = CardStore.all().filter( function (card) {
+// 		return card.board_id === boardId;
+// 	});
+// 	return myCards;
+// };
+//
+// CardStore.findMine = function () {
+//   var cards = [];
+//   for (var id in _cards) {
+//     if (_cards.hasOwnProperty(id)) {
+//       cards.push(_cards[id]);
+//     }
+//   }
+// };
 
-CardStore.findMine = function () {
-  var cards = [];
-  for (var id in _cards) {
-    if (_cards.hasOwnProperty(id)) {
-      cards.push(_cards[id]);
-    }
-  }
+CardStore.findByPos = function (pos) {
+
 };
 
 CardStore.find = function (id) {

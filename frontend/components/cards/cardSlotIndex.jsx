@@ -2,9 +2,11 @@ var React = require('react');
 var CardIndexItem = require('./indexItem');
 var CardStore = require('../../stores/card');
 var CardFormButton = require('./formButton');
+var CardSlot = require('./cardSlot');
 var ApiUtil = require('../../util/apiUtil');
 var TaskStore = require('../../stores/task');
-
+var DragSource = require('react-dnd').DragSource;
+var DropTarget = require('react-dnd').DropTarget;
 
 var CardIndex = React.createClass({
 
@@ -29,7 +31,7 @@ var CardIndex = React.createClass({
   render: function () {
     var cards = this.props.cards.map(function (card) {
 
-      return <li className="card-list-item-slot" key={card.id}>
+      return <li className="card-list-item-slot">
 								<div className="card-list-item">
 
 									<CardIndexItem  key={card.id} boardId={this.props.boardId} card={card} />

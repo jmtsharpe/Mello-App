@@ -34,6 +34,10 @@ var BoardsDropdown = React.createClass({
 			ApiUtil.fetchUserBoards(SessionStore.currentUser().id);
 	},
 
+	componentWillUnmount: function () {
+		this.boardListener.remove();
+	},
+
 
   render: function () {
 		if (typeof this.state.boards === undefined ) {

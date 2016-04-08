@@ -15,7 +15,7 @@ var resetBoards = function (boards) {
 };
 
 var resetBoard = function (board) {
-  _board = board;
+  _boards[board.id] = board;
 };
 
 BoardStore.all = function () {
@@ -33,7 +33,7 @@ BoardStore.all = function () {
 };
 
 BoardStore.find = function (id) {
-  return _board;
+  return _boards[id];
 };
 
 BoardStore.__onDispatch = function (payload) {
