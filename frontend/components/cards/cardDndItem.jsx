@@ -7,6 +7,7 @@ var CardEditForm = require('./editForm');
 var OnClickOutside = require('react-onclickoutside');
 var ApiUtil = require('../../util/apiUtil');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
+
 var PropTypes = React.PropTypes;
 var DragSource = require('react-dnd').DragSource;
 var ItemTypes = require('./../../constants/draggableConstants');
@@ -82,7 +83,7 @@ var CardIndexItem = React.createClass({
 					<div style={{
 		        opacity: isDragging ? 0.5 : 1,
 		        cursor: 'move'
-		      }}>
+		      }} className="draggable">
 							<div className="card-list-item">
 			        <h2 onClick={this.isPressed} className="card-title">
 								{this.props.card.subject}

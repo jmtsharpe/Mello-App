@@ -11,6 +11,7 @@ var TitleButton = require('./titleButton');
 // var DragSource = require('react-dnd').DragSource;
 var DragDropContext = require('react-dnd').DragDropContext;
 var HTML5Backend = require('react-dnd-html5-backend');
+var CardSlotIndex = require('./../cards/cardSlotIndex');
 var CardIndexItem = require('./../cards/indexItem');
 var CardSlot = require('./../cards/cardSlot');
 
@@ -50,29 +51,21 @@ BoardShow = React.createClass ({
     this.boardListener.remove();
   },
 
-	renderCardSlot: function (i) {
-		return (
-			<div key={i}>
-				<CardSlot card={this.state.board.cards[i]} position={i}>
-					{this.renderCard(i)}
-				</CardSlot>
-			</div>
-		);
-	},
 
-	renderCard: function (i) {
-		return ( <CardIndexItem position={i}/>) ;
-	},
+
+	// renderCard: function (i) {
+	// 	return ( <CardIndexItem position={i}/>) ;
+	// },
 
 	render: function () {
     if (!this.state.board || !this.state.board.cards) {
       return (<p>Loading board...</p>);
     }
 
-		var cardSlots = [];
-		for ( var i = 0; i < this.state.board.cards.length; i++ ) {
-			cardSlots.push(this.renderCardSlot(i, this.state.board.id));
-		}
+		// var cardSlots = [];
+		// for ( var i = 0; i < this.state.board.cards.length; i++ ) {
+		// 	cardSlots.push(this.renderCardSlot(i, this.state.board.id));
+		// }
 
     return (
       <div id="board" className="group">
@@ -82,9 +75,7 @@ BoardShow = React.createClass ({
 					</ul>
 				</div>
 				<div className="board-content group">
-					<ul>
-						{cardSlots}
-					</ul>
+					<CardSlotIndex cards={this.state.board.cards} number={this.state.board.cards.length} />
 				</div>
       </div>
     );
@@ -92,4 +83,4 @@ BoardShow = React.createClass ({
 
 });
 
-module.exports = DragDropContext(HTML5Backend)(BoardShow);
+module.exports = BoardShow;

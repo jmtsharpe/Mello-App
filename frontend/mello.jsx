@@ -12,7 +12,7 @@ var LoginForm = require('./components/loginForm');
 var SignUpForm = require('./components/signUpForm');
 var ApiUtil = require('./util/apiUtil.js');
 var Welcome = require('./components/welcome');
-var BoardShowDnD = require('./components/boards/ShowDnD');
+// var BoardShowDnD = require('./components/boards/ShowDnD');
 
 var hashHistory = require('react-router').hashHistory;
 
@@ -25,12 +25,12 @@ var routes = (
   </Route>
 );
 
-var dragRoutes = (
-  <Route path="/" component={App} onEnter={_requireLoggedIn}>
-    <Route path="/boards" component={BoardIndex} onEnter={_requireLoggedIn} />
-    <Route path="boards/:id" component={BoardShowDnD} onEnter={_requireLoggedIn}/>
-  </Route>
-);
+// var dragRoutes = (
+//   <Route path="/" component={App} onEnter={_requireLoggedIn}>
+//     <Route path="/boards" component={BoardIndex} onEnter={_requireLoggedIn} />
+//     <Route path="boards/:id" component={BoardShowDnD} onEnter={_requireLoggedIn}/>
+//   </Route>
+// );
 
 document.addEventListener("DOMContentLoaded", function () {
 	var container = document.getElementById("root");
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
   ReactDOM.render(
     <div>
       <Router history={hashHistory}>
-        {dragRoutes}
+        {routes}
 				<Route path="/welcome" component={Welcome} />
         <Route path="/login" component={LoginForm} />
         <Route path="/signup" component={SignUpForm} />

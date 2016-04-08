@@ -4,6 +4,8 @@ var CardStore = require('../../stores/card');
 var CardFormButton = require('./formButton');
 var ApiUtil = require('../../util/apiUtil');
 var TaskStore = require('../../stores/task');
+
+var CardDndItem = require('./cardDndItem');
 var DragSource = require('react-dnd').DragSource;
 var PropTypes = React.PropTypes;
 var DropTarget = require('react-dnd').DropTarget;
@@ -15,10 +17,18 @@ var slotTarget = {
 	}
 };
 
+// function collect(connect, monitor) {
+//   return {
+//     connectDropTarget: connect.dropTarget(),
+//     isOver: monitor.isOver()
+//   };
+// }
+
 function collect(connect, monitor) {
   return {
     connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver()
+    isOver: monitor.isOver(),
+    canDrop: monitor.canDrop()
   };
 }
 
@@ -28,11 +38,9 @@ var CardSlot = React.createClass({
 	// 	return({ card: CardStore.find()[this.props.position] });
 	// },
 
-	// propTypes: {
-  //   CardPosition: PropTypes.arrayOf(
-  //     PropTypes.number.isRequired
-  //   ).isRequired
-  // },
+	propTypes: {
+    CardPosition: PropTypes.number.isRequired
+  },
 
 
 	// propTyps: {
@@ -54,7 +62,7 @@ var CardSlot = React.createClass({
 
 		return connectDropTarget (
 			<div>
-				{this.props.children}
+				<CardDndItem />
 			</div>
 		);
 	}

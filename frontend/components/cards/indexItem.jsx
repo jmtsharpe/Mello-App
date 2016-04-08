@@ -9,12 +9,6 @@ var ApiUtil = require('../../util/apiUtil');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 
 
-function collect(connect, monitor) {
-  return {
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging()
-  };
-}
 
 
 var CardIndexItem = React.createClass({
@@ -29,7 +23,7 @@ var CardIndexItem = React.createClass({
 	},
 
 	isPressed: function () {
-		this.setState({pressed: !this.state.pressed });
+		this.setState({pressed: true });
 	},
 
 	notPressed: function () {
@@ -65,20 +59,17 @@ var CardIndexItem = React.createClass({
 
 		if (!this.state.pressed) {
 	    return (
-
-
-							<div className="card-list-item">
-			        <h2 onClick={this.isPressed} className="card-title">
-								{this.props.card.subject}
-							</h2>
-							<TaskIndex className="task-index" tasks={this.props.card.tasks} cardId={this.props.cardId} />
-							<TaskFormButton className="task-creation-div" boardId={this.props.board_id} cardId={this.props.card.id} />
-							</div>
-
+				<div className="card-list-item">
+	        <h2 onClick={this.isPressed} className="card-title">
+						{this.props.card.subject}
+					</h2>
+					<TaskIndex className="task-index" tasks={this.props.card.tasks} cardId={this.props.cardId} />
+					<TaskFormButton className="task-creation-div" boardId={this.props.board_id} cardId={this.props.card.id} />
+				</div>
 	    );
 		}
 		return (
-			<li className="card-list-item">
+			<div className="card-list-item">
 				<div className="edit-card-form">
 	        <form className="edit-card" onSubmit={this.editCard}>
 	          <input
@@ -94,7 +85,7 @@ var CardIndexItem = React.createClass({
 	      </div>
 				<TaskIndex className="task-index" tasks={this.props.card.tasks} cardId={this.props.cardId} />
 				<TaskFormButton className="task-creation-div" boardId={this.props.board_id} cardId={this.props.card.id} />
-			</li>
+			</div>
 		);
   }
 });

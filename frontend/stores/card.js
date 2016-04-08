@@ -21,9 +21,9 @@ var resetCard = function (card) {
 
 CardStore.all = function () {
   var cards = [];
-  for (var position in _cards) {
-    if (_cards.hasOwnProperty(position)) {
-      cards.push(_cards[position]);
+  for (var id in _cards) {
+    if (_cards.hasOwnProperty(id)) {
+      cards.push(_cards[id]);
     }
   }
 

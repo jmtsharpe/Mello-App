@@ -7,6 +7,10 @@ var ApiUtil = require('../../util/apiUtil');
 var TaskStore = require('../../stores/task');
 var DragSource = require('react-dnd').DragSource;
 var DropTarget = require('react-dnd').DropTarget;
+var DragDropContext = require('react-dnd').DragDropContext;
+var HTML5Backend = require('react-dnd-html5-backend');
+
+var CardDndItem = require('./cardDndItem');
 
 var CardIndex = React.createClass({
 
@@ -28,21 +32,36 @@ var CardIndex = React.createClass({
   //   this.cardListener.remove();
   // },
 
+	renderCardSlot: function (i) {
+		return (
+			<li key={i}>
+				<CardDndItem card={this.props.cards[i]} position={i} />
+			</li>
+		);
+	},
+
   render: function () {
-    var cards = this.props.cards.map(function (card) {
 
-      return <li className="card-list-item-slot">
-								<div className="card-list-item">
+		var cardSlots = [];
 
-									<CardIndexItem  key={card.id} boardId={this.props.boardId} card={card} />
-								</div>
-							</li>
-					;
-    }.bind(this));
+		for ( var i = 0; i < this.props.number; i++ ) {
+			cardSlots.push(this.renderCardSlot(i));
+		}
+
+    // var cards = this.props.cards.map(function (card) {
+		//
+    //   return <li className="card-list-item-slot">
+		// 						<div className="card-list-item">
+		//
+		// 							<CardIndexItem  key={card.id} boardId={this.props.boardId} card={card} />
+		// 						</div>
+		// 					</li>
+		// 			;
+    // }.bind(this));
     return (
       <div className="card-index group">
         <ul className="card-list">
-          {cards}
+					{cardSlots}
 					<CardFormButton boardId={this.props.boardId} />
         </ul>
       </div>
@@ -50,4 +69,4 @@ var CardIndex = React.createClass({
   }
 });
 
-module.exports = CardIndex;
+module.exports = DragDropContext(HTML5Backend)(CardIndex);
