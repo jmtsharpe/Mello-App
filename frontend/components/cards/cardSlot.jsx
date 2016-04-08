@@ -38,17 +38,10 @@ var CardSlot = React.createClass({
 	// 	return({ card: CardStore.find()[this.props.position] });
 	// },
 
-	propTypes: {
-    CardPosition: PropTypes.number.isRequired
-  },
+	// propTypes: {
+  //   CardPosition: PropTypes.number.isRequired
+  // },
 
-
-	// propTyps: {
-	// 	position: PropTypes.number.isRequired,
-	// 	CardPosition: PropTypes.arrayOf(
-  //     PropTypes.number.isRequired
-  //   ).isRequired
-	// },
 
 	// componentDidMount: function () {
 	// 	piUtil.fetchAllCards(this.props.boardId);
@@ -57,13 +50,11 @@ var CardSlot = React.createClass({
 
 
 
-
 	render: function () {
-
-		return connectDropTarget (
-			<div>
-				<CardDndItem />
-			</div>
+		return (
+			<li className="card-list-item-slot">
+				<CardDndItem card={this.props.card} boardId={this.props.boardId} position={this.props.position}/>
+			</li>
 		);
 	}
 

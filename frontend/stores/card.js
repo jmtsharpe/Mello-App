@@ -20,6 +20,7 @@ var resetCard = function (card) {
 };
 
 CardStore.all = function () {
+	debugger
   var cards = [];
   for (var id in _cards) {
     if (_cards.hasOwnProperty(id)) {

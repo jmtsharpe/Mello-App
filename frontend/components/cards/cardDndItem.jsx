@@ -43,7 +43,7 @@ var CardIndexItem = React.createClass({
 	},
 
 	isPressed: function () {
-		this.setState({pressed: !this.state.pressed });
+		this.setState({pressed: true });
 	},
 
 	notPressed: function () {
@@ -94,7 +94,7 @@ var CardIndexItem = React.createClass({
 					</div>
 	    );
 		}
-		return connectDragSource (
+		return (
 			<li className="card-list-item">
 				<div className="edit-card-form">
 	        <form className="edit-card" onSubmit={this.editCard}>

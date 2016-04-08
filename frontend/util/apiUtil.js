@@ -74,7 +74,6 @@ module.exports = {
 	},
 
   fetchAllCards: function (boardId) {
-		debugger
     $.ajax({
       url: "api/boards/" + boardId + "/cards",
       method: "GET",
@@ -90,12 +89,14 @@ module.exports = {
   },
 
   createCard: function (card, board_id) {
+		debugger
     $.ajax({
       url: "api/boards/" + board_id + "/cards",
       method: "POST",
       data: {card: card},
       dataType: "json",
       success: function (card) {
+				debugger
         CardActions.receiveSingleCard(card);
       }
     });

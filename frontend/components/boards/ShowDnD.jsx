@@ -8,7 +8,7 @@ var CardStore = require('./../../stores/card');
 var TaskStore = require('./../../stores/task');
 var PropTypes = React.PropTypes;
 var TitleButton = require('./titleButton');
-// var DragSource = require('react-dnd').DragSource;
+var DragSource = require('react-dnd').DragSource;
 var DragDropContext = require('react-dnd').DragDropContext;
 var HTML5Backend = require('react-dnd-html5-backend');
 var CardSlotIndex = require('./../cards/cardSlotIndex');
@@ -75,7 +75,7 @@ BoardShow = React.createClass ({
 					</ul>
 				</div>
 				<div className="board-content group">
-					<CardSlotIndex cards={this.state.board.cards} number={this.state.board.cards.length} />
+					<CardSlotIndex boardId={this.state.board.id} cards={this.state.board.cards} number={this.state.board.cards.length} />
 				</div>
       </div>
     );

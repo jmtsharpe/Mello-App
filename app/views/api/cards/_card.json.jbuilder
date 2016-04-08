@@ -1,4 +1,4 @@
-json.extract!( card, :subject, :board_id, :id )
+json.extract!( card, :subject, :board_id, :id, :position )
 
   json.tasks do
     json.array!(card.tasks) do |task|

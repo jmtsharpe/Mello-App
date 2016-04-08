@@ -18,25 +18,23 @@ var CardIndex = React.createClass({
     return { cards: CardStore.all() };
   },
 
-  // _onChange: function () {
-  //   this.setState({ cards: CardStore.all() });
-  // },
-	//
-  // componentDidMount: function () {
-  //   this.cardListener = CardStore.addListener(this._onChange);
-	// 	this.taskListener = TaskStore.addListener(this._onChange);
-	// 	ApiUtil.fetchAllCards(this.props.boardId);
-  // },
-	//
-  // componentWillUnmount: function () {
-  //   this.cardListener.remove();
-  // },
+  _onChange: function () {
+    this.setState({ cards: CardStore.all() });
+  },
+
+  componentDidMount: function () {
+    this.cardListener = CardStore.addListener(this._onChange);
+		this.taskListener = TaskStore.addListener(this._onChange);
+		ApiUtil.fetchAllCards(this.props.boardId);
+  },
+
+  componentWillUnmount: function () {
+    this.cardListener.remove();
+  },
 
 	renderCardSlot: function (i) {
 		return (
-			<li key={i}>
-				<CardDndItem card={this.props.cards[i]} position={i} />
-			</li>
+			<CardSlot key={i} boardId={this.props.boardId} card={this.props.cards[i]} position={i} />
 		);
 	},
 
