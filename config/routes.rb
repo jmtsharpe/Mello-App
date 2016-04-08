@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
 
   namespace :api, defaults: {format: :json} do
+
+		patch 'boards/:id/cards', :to => 'cards#update_order'
+
 		resources :users
     resource :session
     resources :boards do

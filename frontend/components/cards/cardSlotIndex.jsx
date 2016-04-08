@@ -34,7 +34,7 @@ var CardIndex = React.createClass({
 
 	renderCardSlot: function (i) {
 		return (
-			<CardSlot key={i} boardId={this.props.boardId} card={this.props.cards[i]} position={i} />
+			<CardDndItem key={i} boardId={this.props.boardId} card={this.props.cards[i]} position={i} />
 		);
 	},
 

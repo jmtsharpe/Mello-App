@@ -15,6 +15,27 @@ class Api::CardsController < ApplicationController
   def edit
   end
 
+	def update_order
+		debugger
+		@moved_card = Card.find(params[:card][:id])
+
+		@new_pos = params[:newPos]
+
+		@cards = Card.where(board_id: params[:boardId])
+
+		@cards.each do |card|
+			if card.position >= @new_pos
+				card.update(position: (card.position + 1))
+				debugger
+			end
+		end
+
+		@moved_card.update(position: card_params[:position])
+
+		render :index
+
+	end
+
   def update
 		@card = Card.find(params[:id])
 

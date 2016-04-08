@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
   ReactDOM.render(
     <div>
       <Router history={hashHistory}>
-        {routes}
+        {dragRoutes}
 				<Route path="/welcome" component={Welcome} />
         <Route path="/login" component={LoginForm} />
         <Route path="/signup" component={SignUpForm} />

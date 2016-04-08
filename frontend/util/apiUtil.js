@@ -89,14 +89,12 @@ module.exports = {
   },
 
   createCard: function (card, board_id) {
-		debugger
     $.ajax({
       url: "api/boards/" + board_id + "/cards",
       method: "POST",
       data: {card: card},
       dataType: "json",
       success: function (card) {
-				debugger
         CardActions.receiveSingleCard(card);
       }
     });
@@ -114,11 +112,12 @@ module.exports = {
     });
   },
 
-	editCardPosition: function (card) {
+	updateCardPosition: function (card, newPos) {
+		debugger
     $.ajax({
-      url: "api/boards/" + card.boardId + "/cards/" + card.id,
+      url: "api/boards/" + card.boardId + "/cards/",
       method: "PATCH",
-      data: {card: card},
+      data: {card: card, newPos: newPos},
       dataType: "json",
       success: function (card) {
         CardActions.receiveSingleCard(card);
