@@ -106,21 +106,20 @@ module.exports = {
       method: "PATCH",
       data: {card: card},
       dataType: "json",
-      success: function (card) {
-        CardActions.receiveSingleCard(card);
+      success: function (cards) {
+        CardActions.receiveAllCard(cards);
       }
     });
   },
 
 	updateCardPosition: function (card, newPos) {
-		debugger
     $.ajax({
       url: "api/boards/" + card.boardId + "/cards/",
       method: "PATCH",
       data: {card: card, newPos: newPos},
       dataType: "json",
-      success: function (card) {
-        CardActions.receiveSingleCard(card);
+      success: function (cards) {
+        CardActions.receiveAllCards(cards);
       }
     });
   },
@@ -159,7 +158,9 @@ module.exports = {
       data: {task: newTask},
       dataType: "json",
       success: function (task) {
+        debugger
         TaskActions.receiveSingleTask(task);
+        
       }
     });
   },

@@ -16,6 +16,7 @@ var ItemTypes = require('./../../constants/draggableConstants');
 
 var CardSource = {
 	beginDrag: function (props) {
+
     return {
       position: props.card.position,
 			id: props.card.id,
@@ -26,12 +27,12 @@ var CardSource = {
 };
 
 var CardTarget = {
-	hover: function () {
-		console.log("IT WORKS");
+	hover: function (props, monitor, component) {
+		debugger;
 	},
 
   drop: function (props, monitor, component) {
-		var newPos = props.position;
+		var newPos = component.props.card.position;
     ApiUtil.updateCardPosition(monitor.getItem(), newPos);
     return {};
   },
@@ -65,7 +66,7 @@ var CardIndexItem = React.createClass({
 
 
 	getInitialState: function () {
-		return ({ pressed: false, card: this.props.card});
+		return ({ pressed: false, card: this.props.card, subject: this.props.card.subject});
 	},
 
 	isPressed: function () {
@@ -74,10 +75,6 @@ var CardIndexItem = React.createClass({
 
 	notPressed: function () {
 		this.setState({pressed: false});
-	},
-
-	componentDidMount: function () {
-		this.setState({ card: this.props.card });
 	},
 
   handleClickOutside: function (e) {
@@ -131,7 +128,7 @@ var CardIndexItem = React.createClass({
 		            className="edit-input-field"
 		            type="text"
 		            id="card_subject"
-								defaultValue={this.state.subject}
+								defaultValue={this.props.card.subject}
 		            valueLink={this.linkState("subject")}
 		          />
 		          <br/>

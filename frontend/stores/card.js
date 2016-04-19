@@ -20,7 +20,8 @@ var resetCard = function (card) {
 };
 
 CardStore.all = function () {
-	debugger
+  _cards
+  debugger
   var cards = [];
   for (var id in _cards) {
     if (_cards.hasOwnProperty(id)) {
@@ -28,29 +29,42 @@ CardStore.all = function () {
     }
   }
 
+  debugger
+
+  function compare(a,b) {
+    if (a.position < b.position)
+      return -1;
+    else if (a.position > b.position)
+      return 1;
+    else
+      return 0;
+  }
+
   cards = Object.keys(_cards).map(function (card_id) {
     return _cards[card_id];
   });
-  return cards;
+  return cards.sort(compare);
 };
 
-// CardStore.mine = function (boardId) {
-// 	var myCards = CardStore.all().filter( function (card) {
-// 		return card.board_id === boardId;
-// 	});
-// 	return myCards;
-// };
-//
-// CardStore.findMine = function () {
-//   var cards = [];
-//   for (var id in _cards) {
-//     if (_cards.hasOwnProperty(id)) {
-//       cards.push(_cards[id]);
-//     }
-//   }
-// };
+CardStore.reorder = function (origin, newPos) {
+  if (origin.position != newPos.position) {
+    var cards = this.all.map (function (card) {
+      if ((card.position > newPos.position) && (card.position < origin.position)) {
+        card.position += 1;
+      } else if ((card.position == newPos.position) && (card.position < origin.position)) {
+        card.position += 1;
+      } else if ((card.position == newPos.position) && (card.position > origin.position)) {
+        card.position -= 1;
+      } else if ((card.position < newPos.position) && (card.position > origin.position)) {
+        card.position -= 1;
+      } else {
+        card.position = newPos.position;
+      }
+    });
+    return cards
+  }
 
-CardStore.findByPos = function (pos) {
+  return this.all;
 
 };
 
@@ -61,6 +75,7 @@ CardStore.find = function (id) {
 CardStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case CardConstants.CARDS_RECEIVED:
+    debugger
       resetCards(payload.cards);
       CardStore.__emitChange();
       break;

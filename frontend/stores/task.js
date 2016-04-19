@@ -33,13 +33,6 @@ TaskStore.all = function () {
   return tasks;
 };
 
-TaskStore.mine = function (cardId) {
-	var myTasks = TaskStore.all().filter( function (task) {
-		return task.card_id === cardId;
-	});
-	return myTasks;
-};
-
 TaskStore.find = function (id) {
   return _tasks[id];
 };

@@ -16,23 +16,36 @@ class Api::CardsController < ApplicationController
   end
 
 	def update_order
-		debugger
 		@moved_card = Card.find(params[:card][:id])
 
 		@new_pos = params[:newPos]
 
-		@cards = Card.where(board_id: params[:boardId])
 
-		@cards.each do |card|
-			if card.position >= @new_pos
-				card.update(position: (card.position + 1))
-				debugger
-			end
-		end
 
-		@moved_card.update(position: card_params[:position])
+    unless @moved_card.position == @new_pos.to_i
+  		cards = Card.where(board_id: params[:card][:boardId])
+  		cards.each do |card|
 
-		render :index
+        if card.position > @new_pos.to_i && card.position < @moved_card.position
+  				card.update({position: (card.position + 1)})
+
+        elsif card.position == @new_pos.to_i && card.position < @moved_card.position
+          card.update({position: (card.position + 1)})
+
+        elsif card.position == @new_pos.to_i && card.position > @moved_card.position
+          card.update({position: (card.position - 1)})
+
+  			elsif card.position < @new_pos.to_i && card.position > @moved_card.position
+          card.update({position: (card.position - 1)})
+
+  			end
+  		end
+    end
+
+    @moved_card.update({position: @new_pos.to_i})
+
+    @cards = Card.where(board_id: params[:card][:boardId])
+    render :index
 
 	end
 
@@ -44,7 +57,7 @@ class Api::CardsController < ApplicationController
       render :show
     else
       flash.now[:errors] = @card.errors.full_messsages
-      render :show
+      render :index
     end
   end
 

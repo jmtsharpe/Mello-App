@@ -34,28 +34,24 @@ var CardIndex = React.createClass({
 
 	renderCardSlot: function (i) {
 		return (
-			<CardDndItem key={i} boardId={this.props.boardId} card={this.props.cards[i]} position={i} />
+			<CardDndItem card={this.state.cards[i]} />
 		);
 	},
 
   render: function () {
 
+    if ( typeof this.state.cards === undefined) {
+      return (
+        <div> LOADING CARDS... </div>
+      );
+    }
+
 		var cardSlots = [];
 
-		for ( var i = 0; i < this.props.number; i++ ) {
+		for ( var i = 0; i < this.state.cards.length; i++ ) {
 			cardSlots.push(this.renderCardSlot(i));
 		}
-
-    // var cards = this.props.cards.map(function (card) {
-		//
-    //   return <li className="card-list-item-slot">
-		// 						<div className="card-list-item">
-		//
-		// 							<CardIndexItem  key={card.id} boardId={this.props.boardId} card={card} />
-		// 						</div>
-		// 					</li>
-		// 			;
-    // }.bind(this));
+    
     return (
       <div className="card-index group">
         <ul className="card-list">

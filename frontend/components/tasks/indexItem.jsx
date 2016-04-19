@@ -2,25 +2,10 @@ var React = require('react');
 var TaskEditForm = require('./editForm');
 var OnClickOutside = require('react-onclickoutside');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
-var ApiUtil = require('../../util/apiUtil');
+var ApiUtil = require('./../../util/apiUtil');
 var Modal = require('react-modal');
 var App = require('./../app/app');
-
-
-var customStyles = {
-  content : {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-		background: '#efefef',
-		width: '300px',
-		height: '220px',
-		position: 'absolute',
-  }
-};
+var TaskStore = require('./../../stores/task');
 
 var TaskIndexItem = React.createClass({
   contextTypes: {
@@ -49,28 +34,23 @@ var TaskIndexItem = React.createClass({
     }.bind(this));
     task.id = this.props.task.id;
     ApiUtil.editTask(task, this.props.task);
-    this.setState({ pressed: false} );
+    this.setState({ pressed: false } );
   },
 
-		// componentDidMount: function () {
-		// 	this.setState({subject: this.props.defaultValue});
-		// },
+  _onChange: function () {
+    this.setState({ subject: TaskStore.find(this.props.task.id) });
+  },
 
-		// contextTypes: {
-		// 		router: React.PropTypes.object.isRequired
-		// 	},
-		// mixins: [LinkedStateMixin],
-		//
-		// blankAttrs: {
-		// 	subject: '',
-		// },
-		//
-		// getInitialState: function () {
-		// 	return this.blankAttrs;
-		// },
+  componentDidMount: function () {
+    this.taskListener = TaskStore.addListener(this._onChange);
+  },
 
+  componentWillUnmount: function () {
+    this.taskListener.remove();
+  },
 
   render: function () {
+
 		if (!this.state.pressed) {
 				return (
 					<li className="task-list-padding">
