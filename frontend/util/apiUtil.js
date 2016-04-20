@@ -106,8 +106,8 @@ module.exports = {
       method: "PATCH",
       data: {card: card},
       dataType: "json",
-      success: function (cards) {
-        CardActions.receiveAllCard(cards);
+      success: function (card) {
+        CardActions.receiveSingleCard(card);
       }
     });
   },
@@ -160,7 +160,7 @@ module.exports = {
       success: function (task) {
         debugger
         TaskActions.receiveSingleTask(task);
-        
+
       }
     });
   },

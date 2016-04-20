@@ -28,7 +28,7 @@ var CardSource = {
 
 var CardTarget = {
 	hover: function (props, monitor, component) {
-		debugger;
+
 	},
 
   drop: function (props, monitor, component) {
@@ -66,7 +66,11 @@ var CardIndexItem = React.createClass({
 
 
 	getInitialState: function () {
-		return ({ pressed: false, card: this.props.card, subject: this.props.card.subject});
+		return ({
+			pressed: false,
+			card: this.props.card,
+			subject: this.props.card.subject
+		});
 	},
 
 	isPressed: function () {
@@ -75,6 +79,18 @@ var CardIndexItem = React.createClass({
 
 	notPressed: function () {
 		this.setState({pressed: false});
+	},
+
+	_onChange: function () {
+		this.setState({ card: CardStore.find(this.props.position) });
+	},
+
+	componentDidMount: function () {
+		this.cardListener = CardStore.addListener(this._onChange);
+	},
+
+	componentWillUnmount: function () {
+		this.cardListener.remove();
 	},
 
   handleClickOutside: function (e) {
@@ -93,13 +109,13 @@ var CardIndexItem = React.createClass({
     this.setState({ pressed: false });
   },
 
-
-
   render: function () {
 
 		var connectDragSource = this.props.connectDragSource;
     var isDragging = this.props.isDragging;
     var connectDropTarget = this.props.connectDropTarget;
+
+
 
 
 		if (!this.state.pressed) {
@@ -113,43 +129,59 @@ var CardIndexItem = React.createClass({
 			        <h2 onClick={this.isPressed} className="card-title">
 								{this.props.card.subject}
 							</h2>
-							<TaskIndex className="task-index" tasks={this.props.card.tasks} cardId={this.props.cardId} />
-							<TaskFormButton className="task-creation-div" boardId={this.props.board_id} cardId={this.props.card.id} />
+							<TaskIndex
+								className="task-index"
+								tasks={this.state.card.tasks}
+								cardId={this.state.card.id}
+							/>
+							<TaskFormButton
+								className="task-creation-div"
+								boardId={this.state.card.board_id}
+								cardId={this.state.card.id}
+							/>
 							</div>
 					</li>
 	    ));
 		}
+
+		debugger
+
 		return connectDragSource(connectDropTarget(
 			<li className="card-list-item-slot">
 				<div className="card-list-item">
 					<div className="edit-card-form">
-		        <form className="edit-card" onSubmit={this.editCard}>
+		        <form
+							className="edit-card"
+							onSubmit={this.editCard}
+						>
 		          <input
 		            className="edit-input-field"
 		            type="text"
 		            id="card_subject"
-								defaultValue={this.props.card.subject}
+								defaultValue={this.state.subject}
 		            valueLink={this.linkState("subject")}
 		          />
 		          <br/>
 		          <button className="submit">Save</button>
 		        </form>
 		      </div>
-					<TaskIndex className="task-index" tasks={this.props.card.tasks} cardId={this.props.cardId} />
-					<TaskFormButton className="task-creation-div" boardId={this.props.board_id} cardId={this.props.card.id} />
+					<TaskIndex
+						className="task-index"
+						tasks={this.state.card.tasks}
+						cardId={this.state.cardId}
+					/>
+					<TaskFormButton
+						className="task-creation-div"
+						boardId={this.state.card.board_id}
+						cardId={this.state.card.id}
+					/>
 				</div>
 			</li>
 		));
   }
 });
 
-// <CardEditForm defaultValue={this.props.card.subject} cardId={this.props.card.id}/>
-
 module.exports = flow(
   DragSource("cardDndItem", CardSource, collect),
   DropTarget("cardDndItem", CardTarget, collectTarget)
 )(CardIndexItem);
-
-// module.exports = DragSource(ItemTypes.CARD, CardSource, collect)(CardIndexItem);
-
-// module.exports = CardIndexItem;

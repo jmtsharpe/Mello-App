@@ -16,7 +16,8 @@ var resetCards = function (cards) {
 };
 
 var resetCard = function (card) {
-  _cards[card.id] = card;
+  debugger
+  _cards[card.position] = card;
 };
 
 CardStore.all = function () {
@@ -24,6 +25,7 @@ CardStore.all = function () {
   debugger
   var cards = [];
   for (var id in _cards) {
+    debugger
     if (_cards.hasOwnProperty(id)) {
       cards.push(_cards[id]);
     }

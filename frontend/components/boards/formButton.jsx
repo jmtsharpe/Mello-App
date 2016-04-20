@@ -23,8 +23,10 @@ mixins: [OnClickOutside],
 		if (!this.state.pressed) {
 			return(
 				<li className="board-list-item-padding">
-					<div id="create-board-button" className="board-list-item" onClick={this.isPressed}>
-
+					<div id="create-board-button"
+            className="board-list-item"
+            onClick={this.isPressed}
+          >
 						Create a board
 					</div>
 				</li>
@@ -32,7 +34,10 @@ mixins: [OnClickOutside],
 		}
     return(
 			<li className="board-list-item-padding">
-				<div id="create-board-button" className="board-list-item" onClick={this.isPressed}>
+				<div id="create-board-button"
+          className="board-list-item"
+          onClick={this.isPressed}
+        >
 					Create a board
           <BoardForm />
 				</div>

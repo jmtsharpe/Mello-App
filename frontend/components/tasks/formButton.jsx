@@ -29,7 +29,10 @@ mixins: [OnClickOutside],
   		}
       return(
         <div className="task-creation-div" onClick={this.isPressed}>
-          <TaskForm boardId={this.props.boardId} cardId={this.props.cardId} />
+          <TaskForm
+            boardId={this.props.boardId}
+            cardId={this.props.cardId}
+          />
         </div>
       );
 

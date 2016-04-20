@@ -51,11 +51,17 @@ var BoardShow = React.createClass({
       <div id="board" className="group">
 				<div className="board-bar group">
 					<ul>
-						<TitleButton subject={this.state.board.subject} boardId={this.state.board.id} />
+						<TitleButton
+              subject={this.state.board.subject}
+              boardId={this.state.board.id}
+            />
 					</ul>
 				</div>
 				<div className="board-content group">
-						<CardIndex boardId={this.state.board.id} cards={this.state.board.cards} />
+					<CardIndex
+            boardId={this.state.board.id}
+            cards={this.state.board.cards}
+          />
 				</div>
       </div>
     );

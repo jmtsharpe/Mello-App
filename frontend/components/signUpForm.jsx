@@ -31,12 +31,22 @@ var SignUpForm = React.createClass({
 
 						<label className="sign-up-label" htmlFor="name">Name</label>
 						<br />
-						<input className="sign-up-input" onChange={this.updateName} type="text" value={this.state.name}/>
+						<input
+              className="sign-up-input"
+              onChange={this.updateName}
+              type="text"
+              value={this.state.name}
+            />
 
 						<br />
 						<label className="sign-up-label" htmlFor="password">Password</label>
 						<br />
-						<input className="sign-up-input" onChange={this.updatePassword} type="password" value={this.state.password}/>
+						<input
+              className="sign-up-input"
+              onChange={this.updatePassword}
+              type="password"
+              value={this.state.password}
+            />
 						<br />
 						<button className="submit">Submit</button>
 					</form>

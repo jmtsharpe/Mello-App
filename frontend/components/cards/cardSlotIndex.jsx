@@ -1,8 +1,6 @@
 var React = require('react');
-var CardIndexItem = require('./indexItem');
 var CardStore = require('../../stores/card');
 var CardFormButton = require('./formButton');
-var CardSlot = require('./cardSlot');
 var ApiUtil = require('../../util/apiUtil');
 var TaskStore = require('../../stores/task');
 var DragSource = require('react-dnd').DragSource;
@@ -28,13 +26,18 @@ var CardIndex = React.createClass({
 		ApiUtil.fetchAllCards(this.props.boardId);
   },
 
+  componentWillReceiveProps: function (newProps) {
+    this.setState({ cards: CardStore.all() });
+  },
+
   componentWillUnmount: function () {
     this.cardListener.remove();
+    this.taskListener.remove();
   },
 
 	renderCardSlot: function (i) {
 		return (
-			<CardDndItem card={this.state.cards[i]} />
+			<CardDndItem position={i} card={this.state.cards[i]} />
 		);
 	},
 
@@ -51,7 +54,7 @@ var CardIndex = React.createClass({
 		for ( var i = 0; i < this.state.cards.length; i++ ) {
 			cardSlots.push(this.renderCardSlot(i));
 		}
-    
+
     return (
       <div className="card-index group">
         <ul className="card-list">
@@ -62,5 +65,6 @@ var CardIndex = React.createClass({
     );
   }
 });
+// module.exports = CardIndex;
 
 module.exports = DragDropContext(HTML5Backend)(CardIndex);
