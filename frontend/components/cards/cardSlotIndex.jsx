@@ -22,7 +22,6 @@ var CardIndex = React.createClass({
 
   componentDidMount: function () {
     this.cardListener = CardStore.addListener(this._onChange);
-		this.taskListener = TaskStore.addListener(this._onChange);
 		ApiUtil.fetchAllCards(this.props.boardId);
   },
 
@@ -32,12 +31,11 @@ var CardIndex = React.createClass({
 
   componentWillUnmount: function () {
     this.cardListener.remove();
-    this.taskListener.remove();
   },
 
 	renderCardSlot: function (i) {
 		return (
-			<CardDndItem position={i} card={this.state.cards[i]} />
+			<CardDndItem key={i} position={i} card={this.state.cards[i]} />
 		);
 	},
 
@@ -65,6 +63,5 @@ var CardIndex = React.createClass({
     );
   }
 });
-// module.exports = CardIndex;
 
 module.exports = DragDropContext(HTML5Backend)(CardIndex);

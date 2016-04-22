@@ -11,6 +11,7 @@ var BoardsDropdownItem = React.createClass({
       this.context.router.push('boards/' + this.props.board.id);
     },
 
+
   render: function () {
     return(
       <li onClick={this.showDetail} className="board-dropdown-item">

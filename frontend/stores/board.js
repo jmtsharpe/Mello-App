@@ -39,12 +39,10 @@ BoardStore.find = function (id) {
 BoardStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case BoardConstants.BOARDS_RECEIVED:
-			debugger;
       resetBoards(payload.boards);
       BoardStore.__emitChange();
       break;
     case BoardConstants.BOARD_RECEIVED:
-			debugger;
       resetBoard(payload.board);
       BoardStore.__emitChange();
       break;

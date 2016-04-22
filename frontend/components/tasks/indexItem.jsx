@@ -7,64 +7,67 @@ var Modal = require('react-modal');
 var App = require('./../app/app');
 var TaskStore = require('./../../stores/task');
 
-var flow = require('lodash.flow');
-var DropTarget = require('react-dnd').DropTarget;
-var PropTypes = React.PropTypes;
-var DragSource = require('react-dnd').DragSource;
-var ItemTypes = require('./../../constants/draggableConstants');
+// var flow = require('lodash.flow');
+// var DropTarget = require('react-dnd').DropTarget;
+// var PropTypes = React.PropTypes;
+// var DragSource = require('react-dnd').DragSource;
 
-var TaskSource = {
-	beginDrag: function (props) {
 
-    return {
-      position: props.card.position,
-			id: props.card.id,
-      subject: props.card.subject,
-			boardId: props.card.board_id
-    };
-  }
-};
-
-var TaskTarget = {
-	hover: function (props, monitor, component) {
-
-	},
-
-  drop: function (props, monitor, component) {
-		var newPos = component.props.card.position;
-    ApiUtil.updateTaskPosition(monitor.getItem(), newPos);
-    return {};
-  },
-
-};
-
-function collect(connect, monitor) {
-  return {
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging()
-  };
-}
-
-function collectTarget(connect, monitor) {
-  return {
-    connectDropTarget: connect.dropTarget()
-  };
-}
+// var TaskSource = {
+// 	beginDrag: function (props) {
+//     return {
+//       position: props.task.id,
+// 			id: props.task.id,
+//       subject: props.task.subject,
+// 			cardId: props.task.card_id
+//     };
+//   }
+// };
+//
+// var TaskTarget = {
+// 	hover: function (props, monitor, component) {
+//
+// 	},
+//
+//   drop: function (props, monitor, component) {
+// 		var newPos = component.props.task.id;
+//     // ApiUtil.updateTaskPosition(monitor.getItem(), newPos);
+//     return {};
+//   },
+//
+// };
+//
+// function collect(connect, monitor) {
+//   return {
+//     connectDragSource: connect.dragSource(),
+//     isDragging: monitor.isDragging()
+//   };
+// }
+//
+// function collectTarget(connect, monitor) {
+//   return {
+//     connectDropTarget: connect.dropTarget()
+//   };
+// }
 
 var TaskIndexItem = React.createClass({
-  contextTypes: {
-    router: React.PropTypes.object.isRequired
-  },
-
-  propTypes: {
-    connectDragSource: React.PropTypes.func.isRequired,
-    isDragging: React.PropTypes.bool.isRequired
-  },
-
 	mixins: [OnClickOutside, LinkedStateMixin],
 
+	contextTypes: {
+		router: React.PropTypes.object.isRequired
+	},
+
+	// propTypes: {
+	// 	connectDragSource: React.PropTypes.func.isRequired,
+	// 	isDragging: React.PropTypes.bool.isRequired
+	// },
+
   getInitialState: function () {
-    return { pressed: false, subject: this.props.task.subject, task: this.props.task };
+    return {
+			pressed: false,
+			subject: this.props.task.subject,
+			task: this.props.task
+		};
   },
 
   isPressed: function () {
@@ -76,6 +79,7 @@ var TaskIndexItem = React.createClass({
   },
 
 	editTask: function (event) {
+
     event.preventDefault();
     var task = {};
     Object.keys(this.state).forEach(function (key) {
@@ -88,18 +92,23 @@ var TaskIndexItem = React.createClass({
 
   render: function () {
 
-		if (!this.state.pressed) {
-				return (
-					<li className="task-list-padding">
-						<div className="task-list-item" onClick={this.isPressed}>
-							<p>{this.state.subject}</p>
+		// var connectDragSource = this.props.connectDragSource;
+    // var isDragging = this.props.isDragging;
+    // var connectDropTarget = this.props.connectDropTarget;
 
-						</div>
-					</li>
-				);
+		if (!this.state.pressed) {
+			// connectDragSource(connectDropTarget
+			return (
+				<div className="task-list-padding">
+					<div className="task-list-item" onClick={this.isPressed}>
+						<p>{this.state.subject}</p>
+					</div>
+				</div>
+			);
 		}
-    return(
-      <li className="task-list-padding" >
+		// connectDragSource(connectDropTarget
+    return (
+      <div className="task-list-padding" >
         <div className="task-list-item" onClick={this.isPressed}>
           <p>{this.props.task.subject}</p>
         </div>
@@ -117,14 +126,14 @@ var TaskIndexItem = React.createClass({
 	  				<button className="submit">Save</button>
 	        </form>
 	      </div>
-      </li>
+      </div>
     );
   }
 });
 
-module.exports = flow(
-  DragSource("indexItem", TaskSource, collect),
-  DropTarget("indexItem", TaskTarget, collectTarget)
-)(TaskIndexItem);
+// module.exports = flow(
+//   DragSource("indexItem", TaskSource, collect),
+//   DropTarget("indexItem", TaskTarget, collectTarget)
+// )(TaskIndexItem);
 
 module.exports = TaskIndexItem;

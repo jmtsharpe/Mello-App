@@ -16,22 +16,18 @@ var resetCards = function (cards) {
 };
 
 var resetCard = function (card) {
-  debugger
   _cards[card.position] = card;
 };
 
 CardStore.all = function () {
   _cards
-  debugger
   var cards = [];
   for (var id in _cards) {
-    debugger
     if (_cards.hasOwnProperty(id)) {
       cards.push(_cards[id]);
     }
   }
 
-  debugger
 
   function compare(a,b) {
     if (a.position < b.position)
@@ -77,7 +73,6 @@ CardStore.find = function (id) {
 CardStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case CardConstants.CARDS_RECEIVED:
-    debugger
       resetCards(payload.cards);
       CardStore.__emitChange();
       break;

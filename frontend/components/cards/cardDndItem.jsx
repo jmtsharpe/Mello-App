@@ -1,12 +1,17 @@
 var React = require('react');
-var TaskIndex = require('./../tasks/index');
+var ApiUtil = require('../../util/apiUtil');
+
+var CardEditForm = require('./editForm');
+
+
+var TaskIndexItem = require('./../tasks/indexItem');
 var TaskFormButton = require('./../tasks/formButton');
+
 var TaskStore = require('./../../stores/task');
 var CardStore = require('./../../stores/card');
-var CardEditForm = require('./editForm');
-var OnClickOutside = require('react-onclickoutside');
-var ApiUtil = require('../../util/apiUtil');
+
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
+var OnClickOutside = require('react-onclickoutside');
 
 var flow = require('lodash.flow');
 var DropTarget = require('react-dnd').DropTarget;
@@ -38,6 +43,7 @@ var CardTarget = {
   },
 
 };
+
 
 function collect(connect, monitor) {
   return {
@@ -74,6 +80,7 @@ var CardIndexItem = React.createClass({
 	},
 
 	isPressed: function () {
+		debugger
 		this.setState({pressed: true });
 	},
 
@@ -81,16 +88,22 @@ var CardIndexItem = React.createClass({
 		this.setState({pressed: false});
 	},
 
+	componentWillReceiveProps: function (newProps) {
+    this.setState({ card: newProps.card, subject: newProps.card.subject })
+  },
+
 	_onChange: function () {
-		this.setState({ card: CardStore.find(this.props.position) });
+		ApiUtil.fetchAllCards(this.props.card.board_id);
 	},
 
+
 	componentDidMount: function () {
-		this.cardListener = CardStore.addListener(this._onChange);
+		this.taskListener = TaskStore.addListener(this._onChange);
+		debugger
 	},
 
 	componentWillUnmount: function () {
-		this.cardListener.remove();
+		this.taskListener.remove();
 	},
 
   handleClickOutside: function (e) {
@@ -115,38 +128,46 @@ var CardIndexItem = React.createClass({
     var isDragging = this.props.isDragging;
     var connectDropTarget = this.props.connectDropTarget;
 
+		if (this.props.card.tasks === undefined || this.props.card.tasks.length === 0) {
+			var tasks = "";
+		} else {
+			var tasks = this.state.card.tasks.map(function (task) {
+				return connectDragSource(connectDropTarget(
+					<div key={task.id}><TaskIndexItem  task={task} /></div>
+				));
 
+			});
+		}
 
 
 		if (!this.state.pressed) {
 	    return connectDragSource(connectDropTarget(
 
-					<li style={{
-		        opacity: isDragging ? 0.5 : 1,
-		        cursor: 'move'
-		      }} className="card-list-item-slot">
-							<div className="card-list-item" >
-			        <h2 onClick={this.isPressed} className="card-title">
-								{this.props.card.subject}
-							</h2>
-							<TaskIndex
-								className="task-index"
-								tasks={this.state.card.tasks}
-								cardId={this.state.card.id}
-							/>
-							<TaskFormButton
-								className="task-creation-div"
-								boardId={this.state.card.board_id}
-								cardId={this.state.card.id}
-							/>
-							</div>
+					<li
+						style={{
+			        opacity: isDragging ? 0.5 : 1,
+			        cursor: 'move'
+		      	}}
+						className="card-list-item-slot"
+					>
+						<div className="card-list-item" >
+		        <h2 onClick={this.isPressed} className="card-title">
+							{this.props.card.subject}
+						</h2>
+						<ul>
+						{tasks}
+						</ul>
+						<TaskFormButton
+							className="task-creation-div"
+							boardId={this.state.card.board_id}
+							cardId={this.state.card.id}
+						/>
+						</div>
 					</li>
 	    ));
 		}
 
-		debugger
-
-		return connectDragSource(connectDropTarget(
+		return (
 			<li className="card-list-item-slot">
 				<div className="card-list-item">
 					<div className="edit-card-form">
@@ -158,18 +179,13 @@ var CardIndexItem = React.createClass({
 		            className="edit-input-field"
 		            type="text"
 		            id="card_subject"
-								defaultValue={this.state.subject}
 		            valueLink={this.linkState("subject")}
 		          />
 		          <br/>
 		          <button className="submit">Save</button>
 		        </form>
 		      </div>
-					<TaskIndex
-						className="task-index"
-						tasks={this.state.card.tasks}
-						cardId={this.state.cardId}
-					/>
+					{tasks}
 					<TaskFormButton
 						className="task-creation-div"
 						boardId={this.state.card.board_id}
@@ -177,7 +193,7 @@ var CardIndexItem = React.createClass({
 					/>
 				</div>
 			</li>
-		));
+		);
   }
 });
 

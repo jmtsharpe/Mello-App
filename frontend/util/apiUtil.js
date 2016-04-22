@@ -140,12 +140,14 @@ module.exports = {
   },
 
   createTask: function (task, board_id, card_id) {
+    debugger
     $.ajax({
       url: "api/boards/" + board_id + "/cards/" + card_id + "/tasks",
       method: "POST",
       data: {task: task},
       dataType: "json",
       success: function (task) {
+        debugger
         TaskActions.receiveSingleTask(task);
       }
     });
@@ -160,7 +162,19 @@ module.exports = {
       success: function (task) {
         debugger
         TaskActions.receiveSingleTask(task);
+      }
+    });
+  },
 
+  updateTaskPosition: function (newTask, task) {
+    $.ajax({
+      url: "api/boards/1/cards/" + task.card_id + "/tasks/" + task.id,
+      method: "PATCH",
+      data: {task: newTask},
+      dataType: "json",
+      success: function (task) {
+        debugger
+        TaskActions.receiveSingleTask(task);
       }
     });
   },

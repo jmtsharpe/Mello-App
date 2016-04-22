@@ -28,21 +28,16 @@ BoardShow = React.createClass ({
     });
   },
 
-  componentWillReceiveProps: function (newProps) {
-		debugger
-    ApiUtil.fetchSingleBoard(newProps.params.id);
-  },
-
   componentDidMount: function () {
-    this.boardListener = BoardStore.addListener(this._onChange);
+		this.cardListener = CardStore.addListener(this._onChange);
+		this.boardListener = BoardStore.addListener(this._onChange);
     ApiUtil.fetchSingleBoard(this.props.params.id);
   },
 
   componentWillUnmount: function () {
+		this.cardListener.remove();
     this.boardListener.remove();
   },
-
-
 
 	render: function () {
     if (!this.state.board || !this.state.board.cards) {

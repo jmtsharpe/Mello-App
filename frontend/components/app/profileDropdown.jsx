@@ -63,7 +63,6 @@ var ProfileDropdown = React.createClass({
 							</div>
 						</div>
 						<div className="profile-dropdown" onClick={this.isPressed}>
-							<h2>Profile Dropdown</h2>
 							<h2 className="profile-dropdown-logout" onClick={this.logout}>
 								Logout
 							</h2>

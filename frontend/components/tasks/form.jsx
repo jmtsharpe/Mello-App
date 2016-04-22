@@ -18,6 +18,7 @@ var TaskForm = React.createClass({
   },
 
   createTask: function (event) {
+    debugger
     event.preventDefault();
     var task = {};
     Object.keys(this.state).forEach(function (key) {

@@ -37,6 +37,16 @@ TaskStore.find = function (id) {
   return _tasks[id];
 };
 
+TaskStore.findMine = function (cardId) {
+  debugger
+  return _tasks[cardId]
+};
+
+TaskStore.eat = function (tasks, card) {
+  debugger
+    _tasks[card] = tasks;
+};
+
 TaskStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case TaskConstants.TASKS_RECEIVED:

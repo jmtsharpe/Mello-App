@@ -6,18 +6,24 @@ var BoardsDropdownItem = require('./boardsDropdownItem');
 var SessionStore = require('./../../stores/session');
 
 var BoardsDropdown = React.createClass({
+
 	mixins: [OnClickOutside],
-  getInitialState: function () {
+
+	contextTypes: {
+      router: React.PropTypes.object.isRequired
+    },
+
+	getInitialState: function () {
     return { pressed: false, boards: BoardStore.all() };
   },
 
   isPressed: function () {
+		debugger
 		this.setState({pressed: !this.state.pressed});
 	},
 
   handleClickOutside: function (e) {
-    this.setState({ pressed: false,
-		 boards: BoardStore.all()});
+    this.setState({ pressed: false })
   },
 
 
@@ -27,11 +33,12 @@ var BoardsDropdown = React.createClass({
 
 	_updateBoards: function () {
 		this.setState({ boards: BoardStore.all() });
+		this.isPressed;
 	},
 
 	componentDidMount: function () {
-		this.boardListener = BoardStore.addListener(this._updateBoards);
-			ApiUtil.fetchUserBoards(SessionStore.currentUser().id);
+		this.boardListener = BoardStore.addListener(this._updateBoards, this.isPressed);
+		ApiUtil.fetchUserBoards(SessionStore.currentUser().id);
 	},
 
 	componentWillUnmount: function () {
@@ -39,12 +46,16 @@ var BoardsDropdown = React.createClass({
 	},
 
 
+
+
   render: function () {
-		if (typeof this.state.boards === undefined ) {
+		if (typeof this.state.boards === undefined || this.state.boards.length === 0 ) {
 		} else {
-			var boards = this.state.boards.map(function (board) {
-				return <BoardsDropdownItem key={board.id} board={board} />;
-			}.bind(this));
+			boards = [];
+			this.state.boards.forEach(function (board) {
+				boards.push( <BoardsDropdownItem board={board} />
+				)
+				});
 		}
 
 		if (!this.state.pressed) {
