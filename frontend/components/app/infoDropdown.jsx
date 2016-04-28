@@ -46,10 +46,10 @@ var InfoDropdown = React.createClass({
 								<p>His info and portfolio can be found here:</p>
 								<br/>
 								<ul className="contact-links">
-									<li><a href="https://www.jamesmtsharpe.com">Personal Site</a></li>
-									<li><a href="https://github.com/jmtsharpe">Git-Hub</a></li>
-									<li><a href="https://www.linkedin.com/in/jmtsharpe">LinkedIn</a></li>
-									<li><a href="hello@jamesmtsharpe.com">Email</a></li>
+									<li><a>Email: hello@jamesmtsharpe.com</a></li>
+									<li><a href="http://www.jamesmtsharpe.com">Personal Site</a></li>
+									<li><a href="http://github.com/jmtsharpe">Git-Hub</a></li>
+									<li><a href="http://www.linkedin.com/in/jmtsharpe">LinkedIn</a></li>
 								</ul>
 							</div>
 						</div>
