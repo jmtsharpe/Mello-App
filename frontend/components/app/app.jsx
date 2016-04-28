@@ -7,7 +7,6 @@ var CardStore = require('./../../stores/card');
 var ApiUtil = require('./../../util/apiUtil');
 var ProfileDropdown = require('./profileDropdown');
 var BoardsDropdown = require('./boardsDropdown');
-var BoardsDropdownItem = require('./BoardsDropdownItem');
 var InfoDropdown = require('./infoDropdown');
 var SearchDropdown = require('./searchDropdown');
 var OnClickOutside = require('react-onclickoutside');
@@ -59,13 +58,6 @@ var App = React.createClass({
     this.sessionStoreToken.remove();
   },
 
-  // componentWillReceiveProps(nextProps) {
-  //   debugger
-  //   this.setState({
-  //       children: nextProps.children
-  //   });
-  // },
-
 	handleChange: function () {
 		if (SessionStore.isLoggedIn()) {
 			this.setState({ currentUser: SessionStore.currentUser() });
@@ -95,17 +87,6 @@ var App = React.createClass({
   },
 
   render: function () {
-
-    if (this.state.foundBoards.length != 0) {
-      debugger
-      var boards = [];
-      this.state.foundBoards.forEach(function (board) {
-        boards.push( <BoardsDropdownItem board={board} />
-        )
-      });
-    } else {
-      var boards = "No boards found";
-    }
 
     if (this.state.search) {
       var search =
