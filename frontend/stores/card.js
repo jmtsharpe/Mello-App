@@ -45,24 +45,32 @@ CardStore.all = function () {
 };
 
 CardStore.reorder = function (origin, newPos) {
-  if (origin.position != newPos.position) {
-    var cards = this.all.map (function (card) {
-      if ((card.position > newPos.position) && (card.position < origin.position)) {
+  console.log("Card store reorder");
+  if (origin.position != newPos) {
+
+    var newCards = this.all().map(function (card) {
+      if ((card.position > newPos) && (card.position < origin.position)) {
         card.position += 1;
-      } else if ((card.position == newPos.position) && (card.position < origin.position)) {
+        return card;
+      } else if ((card.position === newPos) && (card.position < origin.position)) {
         card.position += 1;
-      } else if ((card.position == newPos.position) && (card.position > origin.position)) {
+        return card;
+      } else if ((card.position === newPos) && (card.position > origin.position)) {
         card.position -= 1;
-      } else if ((card.position < newPos.position) && (card.position > origin.position)) {
+        return card;
+      } else if ((card.position < newPos) && (card.position > origin.position)) {
         card.position -= 1;
+        return card;
+      } else if (card.position === origin.position) {
+        card.position = newPos;
+        return card;
       } else {
-        card.position = newPos.position;
+        return card;
       }
     });
-    return cards
   }
 
-  return this.all;
+  return newCards;
 
 };
 

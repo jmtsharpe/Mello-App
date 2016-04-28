@@ -1,4 +1,5 @@
 var React = require('react');
+var ApiUtil = require('./../../util/apiUtil');
 
 
 var BoardsDropdownItem = React.createClass({
@@ -9,6 +10,7 @@ var BoardsDropdownItem = React.createClass({
 
   showDetail: function () {
       this.context.router.push('boards/' + this.props.board.id);
+      ApiUtil.fetchSingleBoard(this.props.board.id);
     },
 
 

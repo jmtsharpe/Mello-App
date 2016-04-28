@@ -55,7 +55,7 @@ var CardIndex = React.createClass({
 
     return (
       <div className="card-index group">
-        <ul className="card-list">
+        <ul className="card-list group">
 					{cardSlots}
 					<CardFormButton boardId={this.props.boardId} />
         </ul>
@@ -63,5 +63,7 @@ var CardIndex = React.createClass({
     );
   }
 });
+
+
 
 module.exports = DragDropContext(HTML5Backend)(CardIndex);

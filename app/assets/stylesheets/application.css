@@ -51,7 +51,6 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  overflow: auto;
 }
 
 ul {
@@ -84,7 +83,7 @@ h1 {
 
 }
 
-.top-buttons {
+.top-buttons, .search-form-div {
 	font-weight: bold;
   padding: 7px 10px 7px 10px;
   border-radius: 3px;
@@ -135,7 +134,7 @@ h1 {
 	color: #dddddd;
 }
 /*/ /*/ /*/ OVERHEAD DROPDOWNS /*/ /*/ /*/
-.board-dropdown, .profile-dropdown, .info-dropdown {
+.board-dropdown, .profile-dropdown, .info-dropdown, .search-dropdown {
 	padding: 9px;
 	box-shadow: 1px 1px 3px 1px #a2a4a6;
 	border: none;
@@ -208,6 +207,27 @@ h1 {
 	overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/*/ SEARCH DROPDOWN /*/
+
+.search-input-field {
+  border: none;
+  border-radius: 3px;
+  padding: 3px 5px 3px 5px;
+  background: linear-gradient(to bottom,rgba(255,255,255,.3) 0,rgba(255,255,255,.2) 100%);
+  color: white;
+}
+
+.search-form-div {
+  padding: 5px 10px 5px 10px;
+}
+
+.search-dropdown {
+	left: 100px;
+}
+
+
+
 
 /*/ PROFILE DROPDOWN /*/
 
@@ -421,6 +441,7 @@ h1 {
   right: 0;
   bottom: 0;
   overflow: auto;
+  white-space: nowrap;
 	padding: 10px;
 }
 
@@ -496,8 +517,7 @@ h1 {
 
 .board-content {
 	position: relative;
-	overflow: auto;
-	white-space: nowrap;
+	white-space: inherit;
 	text-align: left;
 	height: 100%;
 }
@@ -506,11 +526,14 @@ h1 {
 .card-index {
 	float: left;
 	height: 100%;
+  width: 100%;
 }
 
 .card-list {
 	float: left;
+  width: 100%;
 	height: 100%;
+  white-space: inherit;
 }
 
 .card-list-item-slot {
@@ -829,4 +852,44 @@ h1 {
     height   : 100%;
     z-index  : 10;
     display  : none;
+}
+
+/*/ CONTACT STUFF /*/
+
+.info-dropdown {
+  padding: 0;
+}
+
+.info-dropdown:hover {
+  cursor: default;
+}
+
+.info-dropdown > h2 {
+  padding: 5px;
+  text-align: center;
+}
+
+.info-dropdown > p {
+  padding: 2px 10px;
+  text-align: center;
+}
+
+.contact-links {
+  position: relative;
+}
+
+.contact-links > li {
+  position: relative;
+  margin: auto;
+}
+
+.contact-links > li > a:hover {
+  color: white;
+  background-color: #0079bf;
+}
+
+.contact-links > li > a {
+  display: block;
+  padding: 5px 5px;
+  font-size: 14px;
 }

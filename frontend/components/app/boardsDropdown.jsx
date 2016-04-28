@@ -18,7 +18,6 @@ var BoardsDropdown = React.createClass({
   },
 
   isPressed: function () {
-		debugger
 		this.setState({pressed: !this.state.pressed});
 	},
 
@@ -55,7 +54,7 @@ var BoardsDropdown = React.createClass({
 			this.state.boards.forEach(function (board) {
 				boards.push( <BoardsDropdownItem board={board} />
 				)
-				});
+			});
 		}
 
 		if (!this.state.pressed) {
@@ -69,7 +68,7 @@ var BoardsDropdown = React.createClass({
 		return (
 			<li >
 				<div id="board-dropdown-button" className="top-buttons" onClick={this.isPressed}>ℳ Boards</div>
-				<div className="board-dropdown">
+				<div className="board-dropdown" onClick={this.isPressed}>
 					<div className="board-dropdown-head">
 						<h3>MyBoards</h3>
 					</div>

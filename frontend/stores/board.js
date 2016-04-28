@@ -36,6 +36,20 @@ BoardStore.find = function (id) {
   return _boards[id];
 };
 
+BoardStore.findBySubject = function (title) {
+  debugger
+  var boards = [];
+  for (var id in _boards) {
+    if (_boards.hasOwnProperty(id)) {
+      if (_boards[id].subject.includes(title)) {
+        boards.push(_boards[id])
+      }
+    }
+  }
+
+  return boards
+};
+
 BoardStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case BoardConstants.BOARDS_RECEIVED:

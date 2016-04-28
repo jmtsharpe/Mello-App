@@ -19,14 +19,21 @@ var CardSlotIndex = require('./../cards/cardSlotIndex');
 BoardShow = React.createClass ({
 
 	getInitialState: function () {
+		debugger
     return {board: BoardStore.find(this.props.params.id) };
   },
 
   _onChange: function () {
+		debugger
     this.setState({
       board: BoardStore.find(this.props.params.id)
     });
   },
+
+	componentWillReceiveProps: function (newProps) {
+		debugger
+		this.setState({ board: BoardStore.find(this.props.params.id) })
+	},
 
   componentDidMount: function () {
 		this.cardListener = CardStore.addListener(this._onChange);

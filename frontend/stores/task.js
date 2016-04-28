@@ -38,12 +38,10 @@ TaskStore.find = function (id) {
 };
 
 TaskStore.findMine = function (cardId) {
-  debugger
   return _tasks[cardId]
 };
 
 TaskStore.eat = function (tasks, card) {
-  debugger
     _tasks[card] = tasks;
 };
 

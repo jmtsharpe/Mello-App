@@ -38,6 +38,8 @@ var CardTarget = {
 
   drop: function (props, monitor, component) {
 		var newPos = component.props.card.position;
+		newOrder = CardStore.reorder(monitor.getItem(), newPos)
+		ApiUtil.reorderCardStore(newOrder);
     ApiUtil.updateCardPosition(monitor.getItem(), newPos);
     return {};
   },
@@ -80,7 +82,6 @@ var CardIndexItem = React.createClass({
 	},
 
 	isPressed: function () {
-		debugger
 		this.setState({pressed: true });
 	},
 
@@ -99,7 +100,6 @@ var CardIndexItem = React.createClass({
 
 	componentDidMount: function () {
 		this.taskListener = TaskStore.addListener(this._onChange);
-		debugger
 	},
 
 	componentWillUnmount: function () {

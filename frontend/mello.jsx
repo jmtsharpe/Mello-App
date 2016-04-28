@@ -7,6 +7,8 @@ var Route = require('react-router').Route;
 var IndexRoute = require('react-router').IndexRoute;
 var BoardIndex = require('./components/boards/index');
 
+
+
 var App = require('./components/app/app');
 var LoginForm = require('./components/loginForm');
 var SignUpForm = require('./components/signUpForm');

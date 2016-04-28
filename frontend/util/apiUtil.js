@@ -35,6 +35,7 @@ module.exports = {
 	},
 
   fetchSingleBoard: function (id) {
+    debugger
     $.ajax({
       url: "api/boards/" + id,
       method: "GET",
@@ -112,6 +113,10 @@ module.exports = {
     });
   },
 
+  reorderCardStore: function (cards) {
+    CardActions.receiveAllCards(cards);
+  },
+
 	updateCardPosition: function (card, newPos) {
     $.ajax({
       url: "api/boards/" + card.boardId + "/cards/",
@@ -119,6 +124,7 @@ module.exports = {
       data: {card: card, newPos: newPos},
       dataType: "json",
       success: function (cards) {
+        console.log("Callback incoming");
         CardActions.receiveAllCards(cards);
       }
     });
@@ -140,14 +146,12 @@ module.exports = {
   },
 
   createTask: function (task, board_id, card_id) {
-    debugger
     $.ajax({
       url: "api/boards/" + board_id + "/cards/" + card_id + "/tasks",
       method: "POST",
       data: {task: task},
       dataType: "json",
       success: function (task) {
-        debugger
         TaskActions.receiveSingleTask(task);
       }
     });
@@ -160,7 +164,6 @@ module.exports = {
       data: {task: newTask},
       dataType: "json",
       success: function (task) {
-        debugger
         TaskActions.receiveSingleTask(task);
       }
     });
@@ -173,7 +176,6 @@ module.exports = {
       data: {task: newTask},
       dataType: "json",
       success: function (task) {
-        debugger
         TaskActions.receiveSingleTask(task);
       }
     });

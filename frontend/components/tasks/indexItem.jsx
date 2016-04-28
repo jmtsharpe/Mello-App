@@ -6,6 +6,7 @@ var ApiUtil = require('./../../util/apiUtil');
 var Modal = require('react-modal');
 var App = require('./../app/app');
 var TaskStore = require('./../../stores/task');
+CardStore = require('./../../stores/card');
 
 // var flow = require('lodash.flow');
 // var DropTarget = require('react-dnd').DropTarget;
