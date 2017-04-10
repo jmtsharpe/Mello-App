@@ -10,26 +10,26 @@ var SearchDropdown = React.createClass({
 	mixins: [OnClickOutside],
 
 	contextTypes: {
-      router: React.PropTypes.object.isRequired
-    },
+		router: React.PropTypes.object.isRequired
+	},
 
 	getInitialState: function () {
-    return { pressed: this.props.open, boards: this.props.boards };
-  },
+		return { pressed: this.props.open, boards: this.props.boards };
+	},
 
-  isPressed: function () {
+	isPressed: function () {
 		this.setState({pressed: !this.state.pressed});
 	},
 
-  handleClickOutside: function (e) {
-    this.setState({ pressed: false })
-  },
+	handleClickOutside: function (e) {
+		this.setState({ pressed: false })
+	},
 
 
-  render: function () {
+	render: function () {
 
 		if (typeof this.state.boards === undefined || this.state.boards.length === 0 ) {
-      var boards = [<li>NO BOARDS FOUND</li>];
+			var boards = [<li>NO BOARDS FOUND</li>];
 		} else {
 			var boards = [];
 			this.state.boards.forEach(function (board) {
@@ -38,25 +38,25 @@ var SearchDropdown = React.createClass({
 			});
 		}
 
-    if (this.state.pressed) {
-  		return (
-  				<div className="search-dropdown" onClick={this.isPressed}>
-  					<div className="search-dropdown-head">
-  						<h3>Search</h3>
-  					</div>
-  					<div className="search-dropdown-index group">
-  						<ul>
-  							{boards}
-  						</ul>
-  					</div>
-  				</div>
-  		);
+		if (this.state.pressed) {
+			return (
+				<div className="search-dropdown" onClick={this.isPressed}>
+					<div className="search-dropdown-head">
+						<h3>Search</h3>
+					</div>
+					<div className="search-dropdown-index group">
+						<ul>
+							{boards}
+						</ul>
+					</div>
+				</div>
+			);
 		}
 
-    return (
-      <div></div>
-    )
-  }
+		return (
+			<div></div>
+		)
+	}
 });
 
 module.exports = SearchDropdown;

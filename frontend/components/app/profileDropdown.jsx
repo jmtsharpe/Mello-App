@@ -9,68 +9,68 @@ var ProfileDropdown = React.createClass({
   },
 
 	mixins: [OnClickOutside],
-	  getInitialState: function () {
-	    return { pressed: false };
-	  },
+	getInitialState: function () {
+		return { pressed: false };
+	},
 
-	  isPressed: function () {
-			this.setState({pressed: !this.state.pressed});
-		},
+	isPressed: function () {
+		this.setState({pressed: !this.state.pressed});
+	},
 
-	  handleClickOutside: function () {
-	    this.setState({ pressed: false});
-	  },
+	handleClickOutside: function () {
+		this.setState({ pressed: false});
+	},
 
-		logout: function () {
-			ApiUtil.logout(function () {
-	      this.context.router.push("/welcome");
-	    }.bind(this));
-		},
+	logout: function () {
+		ApiUtil.logout(function () {
+			this.context.router.push("/welcome");
+		}.bind(this));
+	},
 
 
-	  render: function () {
-	  		if (!this.state.pressed) {
-	  			return(
-	  				<li className="group">
-							<div className="profile-button group" onClick={this.isPressed}>
-								<div className="profile-thumb group">
-									<h2 >
-										{this.props.username[0]}
-									</h2>
-								</div>
-								<div className="profile-name group">
-									<h2>
-										{this.props.username}
-									</h2>
-								</div>
-							</div>
-	  				</li>
-	  			);
-	  		}
-
-	      return(
-					<li className="group">
-						<div className="profile-button group" onClick={this.isPressed}>
-							<div className="profile-thumb group">
-								<h2 >
-									{this.props.username[0]}
-								</h2>
-							</div>
-							<div className="profile-name group">
-								<h2>
-									{this.props.username}
-								</h2>
-							</div>
-						</div>
-						<div className="profile-dropdown" onClick={this.isPressed}>
-							<h2 className="profile-dropdown-logout" onClick={this.logout}>
-								Logout
+	render: function () {
+		if (!this.state.pressed) {
+			return (
+				<li className="group">
+					<div className="profile-button group" onClick={this.isPressed}>
+						<div className="profile-thumb group">
+							<h2 >
+								{this.props.username[0]}
 							</h2>
 						</div>
-					</li>
-	      );
+						<div className="profile-name group">
+							<h2>
+								{this.props.username}
+							</h2>
+						</div>
+					</div>
+				</li>
+			);
+		}
 
-	  }
+		return (
+			<li className="group">
+				<div className="profile-button group" onClick={this.isPressed}>
+					<div className="profile-thumb group">
+						<h2 >
+							{this.props.username[0]}
+						</h2>
+					</div>
+					<div className="profile-name group">
+						<h2>
+							{this.props.username}
+						</h2>
+					</div>
+				</div>
+				<div className="profile-dropdown" onClick={this.isPressed}>
+					<h2 className="profile-dropdown-logout" onClick={this.logout}>
+						Logout
+					</h2>
+				</div>
+			</li>
+		);
+
+	}
 });
 
 module.exports = ProfileDropdown;

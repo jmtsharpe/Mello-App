@@ -14,10 +14,10 @@ var BoardsDropdownItem = React.createClass({
     },
 
 
-  render: function () {
-    return(
-      <li onClick={this.showDetail} className="board-dropdown-item">
-        <a className="board-dropdown-item-link">
+	render: function () {
+		return(
+			<li onClick={this.showDetail} className="board-dropdown-item">
+				<a className="board-dropdown-item-link">
 					<div className="board-dropdown-item-link-wrapper">
 						<div className="board-dropdown-item-thumbnail"></div>
 						<span className="board-dropdown-item-title">
@@ -25,9 +25,9 @@ var BoardsDropdownItem = React.createClass({
 						</span>
 					</div>
 				</a>
-      </li>
-    );
-  }
+			</li>
+		);
+	}
 });
 
 module.exports = BoardsDropdownItem;
