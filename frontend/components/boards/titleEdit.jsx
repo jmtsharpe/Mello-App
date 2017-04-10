@@ -3,50 +3,51 @@ var ApiUtil = require('../../util/apiUtil');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 
 var TitleEdit = React.createClass({
-  contextTypes: {
-      router: React.PropTypes.object.isRequired
-    },
-  mixins: [LinkedStateMixin],
+	contextTypes: {
+		router: React.PropTypes.object.isRequired
+	},
 
-  blankAttrs: {
-    subject: ''
-  },
+	mixins: [LinkedStateMixin],
 
-  getInitialState: function () {
-    return this.blankAttrs;
-  },
+	blankAttrs: {
+		subject: ''
+	},
 
-  editBoardTitle: function (event) {
-    event.preventDefault();
-    var board = {};
-    Object.keys(this.state).forEach(function (key) {
-      { board[key] = this.state[key]; }
-    }.bind(this));
-    board.id = this.props.boardId;
-    ApiUtil.editBoardTitle(board);
-    this.setState(this.blankAttrs);
-  },
+	getInitialState: function () {
+		return this.blankAttrs;
+	},
+
+	editBoardTitle: function (event) {
+		event.preventDefault();
+		var board = {};
+		Object.keys(this.state).forEach(function (key) {
+			{ board[key] = this.state[key]; }
+		}.bind(this));
+		board.id = this.props.boardId;
+		ApiUtil.editBoardTitle(board);
+		this.setState(this.blankAttrs);
+	},
 
 
-  render: function () {
-    return(
-      <div className="edit-board-title">
+	render: function () {
+		return (
+			<div className="edit-board-title">
 				<h4 className="edit-board-header">Rename Board</h4>
-        <form className='new-title' onSubmit={this.editBoardTitle}>
+				<form className='new-title' onSubmit={this.editBoardTitle}>
 					<label>Name</label>
 					<br />
-          <input
-            className="board-title-field"
-            type='text'
-            id='board_subject'
-            valueLink={this.linkState("subject")}
-          />
-          <br/>
-          <button className="submit">Save</button>
-        </form>
-      </div>
-    );
-  }
+					<input
+						className="board-title-field"
+						type='text'
+						id='board_subject'
+						valueLink={this.linkState("subject")}
+					/>
+					<br/>
+					<button className="submit">Save</button>
+				</form>
+			</div>
+		);
+	}
 });
 
 module.exports = TitleEdit;

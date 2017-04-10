@@ -19,40 +19,37 @@ var CardSlotIndex = require('./../cards/cardSlotIndex');
 BoardShow = React.createClass ({
 
 	getInitialState: function () {
-		debugger
-    return {board: BoardStore.find(this.props.params.id) };
-  },
+		return {board: BoardStore.find(this.props.params.id) };
+	},
 
-  _onChange: function () {
-		debugger
-    this.setState({
-      board: BoardStore.find(this.props.params.id)
-    });
-  },
+	_onChange: function () {
+		this.setState({
+			board: BoardStore.find(this.props.params.id)
+		});
+	},
 
 	componentWillReceiveProps: function (newProps) {
-		debugger
 		this.setState({ board: BoardStore.find(this.props.params.id) })
 	},
 
-  componentDidMount: function () {
+	componentDidMount: function () {
 		this.cardListener = CardStore.addListener(this._onChange);
 		this.boardListener = BoardStore.addListener(this._onChange);
-    ApiUtil.fetchSingleBoard(this.props.params.id);
-  },
+		ApiUtil.fetchSingleBoard(this.props.params.id);
+	},
 
-  componentWillUnmount: function () {
+	componentWillUnmount: function () {
 		this.cardListener.remove();
-    this.boardListener.remove();
-  },
+		this.boardListener.remove();
+	},
 
 	render: function () {
-    if (!this.state.board || !this.state.board.cards) {
-      return (<p>Loading board...</p>);
-    }
+		if (!this.state.board || !this.state.board.cards) {
+			return (<p>Loading board...</p>);
+		}
 
-    return (
-      <div id="board" className="group">
+		return (
+			<div id="board" className="group">
 				<div className="board-bar group">
 					<ul>
 						<TitleButton
@@ -68,9 +65,9 @@ BoardShow = React.createClass ({
 						umber={this.state.board.cards.length}
 					/>
 				</div>
-      </div>
-    );
-  }
+			</div>
+		);
+	}
 
 });
 

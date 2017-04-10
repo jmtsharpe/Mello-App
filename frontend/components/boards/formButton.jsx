@@ -3,48 +3,46 @@ var BoardForm = require('./form');
 var OnClickOutside = require('react-onclickoutside');
 
 BoardFormButton = React.createClass({
-mixins: [OnClickOutside],
-  getInitialState: function () {
-    return { pressed: false };
-  },
+	mixins: [OnClickOutside],
+	getInitialState: function () {
+		return { pressed: false };
+	},
 
-  isPressed: function () {
+	isPressed: function () {
 		this.setState({pressed: true});
 	},
 
-  handleClickOutside: function (e) {
-    this.setState({ pressed: false});
-  },
+	handleClickOutside: function (e) {
+		this.setState({ pressed: false});
+	},
 
-
-
-
-  render: function () {
+	render: function () {
 		if (!this.state.pressed) {
 			return(
 				<li className="board-list-item-padding">
-					<div id="create-board-button"
-            className="board-list-item"
-            onClick={this.isPressed}
-          >
+					<div 
+						id="create-board-button"
+						className="board-list-item"
+						onClick={this.isPressed}
+					>
 						Create a board
 					</div>
 				</li>
 			);
 		}
-    return(
+		return(
 			<li className="board-list-item-padding">
-				<div id="create-board-button"
-          className="board-list-item"
-          onClick={this.isPressed}
-        >
+				<div 
+					id="create-board-button"
+					className="board-list-item"
+					onClick={this.isPressed}
+				>
 					Create a board
-          <BoardForm />
+					<BoardForm />
 				</div>
-      </li>
-    );
-  }
-
+			</li>
+		);
+	}
 });
 
 module.exports = BoardFormButton;
