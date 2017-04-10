@@ -17,32 +17,34 @@ var LinkedStateMixin = require('react-addons-linked-state-mixin');
 
 
 var App = React.createClass({
-  contextTypes: {
-    router: React.PropTypes.object.isRequired
-  },
+	contextTypes: {
+		router: React.PropTypes.object.isRequired
+	},
 
-  mixins: [LinkedStateMixin, OnClickOutside],
+	mixins: [LinkedStateMixin, OnClickOutside],
 
 	getInitialState: function () {
 		return {
-      children: this.props.children,
-      currentUser: SessionStore.currentUser(),
-      search: false,
-      openSearch: false,
-      searchValue: "",
-      foundBoards: [] };
+		children: this.props.children,
+		currentUser: SessionStore.currentUser(),
+		search: false,
+		openSearch: false,
+		searchValue: "",
+		foundBoards: [] 
+		};
 	},
 
-  handleClickOutside: function () {
-    this.setState({ openSearch: false, search: false })
-  },
-  goHome: function () {
-      this.context.router.push('');
-    },
+	handleClickOutside: function () {
+		this.setState({ openSearch: false, search: false })
+	},
 
-  goToBoards: function () {
-    this.context.router.push('boards');
-  },
+	goHome: function () {
+		this.context.router.push('');
+	},
+
+	goToBoards: function () {
+		this.context.router.push('boards');
+	},
 
 	logOut: function () {
 
@@ -50,13 +52,13 @@ var App = React.createClass({
 
 
 	componentDidMount: function () {
-    this.sessionStoreToken = SessionStore.addListener(this.handleChange);
-    this.handleChange();
-  },
+		this.sessionStoreToken = SessionStore.addListener(this.handleChange);
+		this.handleChange();
+	},
 
-  componentWillUnmount: function() {
-    this.sessionStoreToken.remove();
-  },
+	componentWillUnmount: function() {
+		this.sessionStoreToken.remove();
+	},
 
 	handleChange: function () {
 		if (SessionStore.isLoggedIn()) {
@@ -66,101 +68,98 @@ var App = React.createClass({
 		}
 	},
 
-  resetOpenSearch: function () {
-    debugger
-    this.setState({ openSearch: false });
-    console.log(this.state.openSearch);
-  },
+	resetOpenSearch: function () {
+		this.setState({ openSearch: false });
+		console.log(this.state.openSearch);
+	},
 
-  findBoards: function (e) {
-    e.preventDefault();
-    this.resetOpenSearch();
-    debugger
-    var foundBoards = BoardStore.findBySubject(this.state.searchValue);
-    this.setState({ openSearch: false}, function () {
-      this.setState({ search: false, openSearch: true, foundBoards: foundBoards, searchValue: "" });
-    });
-  },
+	findBoards: function (e) {
+		e.preventDefault();
+		this.resetOpenSearch();
 
-  initSearch: function () {
-    this.setState({ search: true })
-  },
+		var foundBoards = BoardStore.findBySubject(this.state.searchValue);
+			this.setState({ openSearch: false}, function () {
+			this.setState({ search: false, openSearch: true, foundBoards: foundBoards, searchValue: "" });
+		});
+	},
 
-  render: function () {
+	initSearch: function () {
+		this.setState({ search: true })
+	},
 
-    if (this.state.search) {
-      var search =
-        <div className="search-form-div" >
-          <form className="search-form" onSubmit={this.findBoards}>
-            <input
-              className="search-input-field"
-              type="text"
-              id="card_subject"
-  						defaultValue="Search..."
-              valueLink={this.linkState("searchValue")}
-            />
-            <br/>
+	render: function () {
 
-          </form>
+		if (this.state.search) {
+		var search =
+			<div className="search-form-div" >
+				<form className="search-form" onSubmit={this.findBoards}>
+					<input
+						className="search-input-field"
+						type="text"
+						id="card_subject"
+						defaultValue="Search..."
+						valueLink={this.linkState("searchValue")}
+					/>
+					<br/>
+				</form>
+			</div>;
+		} else {
+			var search = 
+				<div className="top-buttons" onClick={this.initSearch}>
+					Search
+				</div>;
+		};
 
-        </div>;
-    } else {
-      var search = <div className="top-buttons" onClick={this.initSearch}>
-        Search
-      </div>;
-    };
+		if (this.state.openSearch) {
+			return (
+				<div>
+					<header className="over-head group">
+						<nav className="nav-bar">
+							<ul className="over-head-left">
+								<BoardsDropdown />
+									<li>
+										{search}
+									</li>
+								<SearchDropdown boards={this.state.foundBoards} open={this.state.openSearch} onClick={this.handleClickOutside}/>
+							</ul>
+							<ul className="over-head-right">
 
-    if (this.state.openSearch) {
-      return (
-        <div>
-          <header className="over-head group">
-            <nav className="nav-bar">
-              <ul className="over-head-left">
-                <BoardsDropdown />
-                <li>
-                  {search}
-                </li>
-                <SearchDropdown boards={this.state.foundBoards} open={this.state.openSearch} onClick={this.handleClickOutside}/>
-              </ul>
-              <ul className="over-head-right">
+								<ProfileDropdown username={this.state.currentUser.username}/>
+								<InfoDropdown />
+							</ul>
+							<div className="over-head-logo" onClick={this.goToBoards}>
+								ℳello
+							</div>
+						</nav>
+					</header>
+					{this.props.children}
+				</div>
+			);
+		}
 
-                <ProfileDropdown username={this.state.currentUser.username}/>
-                <InfoDropdown />
-              </ul>
-              <div className="over-head-logo" onClick={this.goToBoards}>
-                ℳello
-              </div>
-            </nav>
-          </header>
-          {this.props.children}
-        </div>
-      );
-    }
-
-    return (
-      <div>
-        <header className="over-head group">
-          <nav className="nav-bar">
-            <ul className="over-head-left">
-              <BoardsDropdown />
-              <li>
+		return (
+			<div>
+				<header className="over-head group">
+					<nav className="nav-bar">
+						<ul className="over-head-left">
+							<BoardsDropdown />
+							<li>
 								{search}
 							</li>
-            </ul>
-            <ul className="over-head-right">
-
+						</ul>
+						<ul className="over-head-right">
 							<ProfileDropdown username={this.state.currentUser.username}/>
 							<InfoDropdown />
-            </ul>
-            <div className="over-head-logo" onClick={this.goToBoards}>
-              ℳello
-            </div>
-          </nav>
-        </header>
-        {this.props.children}
-      </div>
-    );
-  }
+						</ul>
+						<div className="over-head-logo" onClick={this.goToBoards}>
+							ℳello
+						</div>
+					</nav>
+				</header>
+				{this.props.children}
+			</div>
+		);
+	}
 });
 
 module.exports = App;
