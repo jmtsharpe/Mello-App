@@ -12,26 +12,26 @@ var CardDndItem = require('./cardDndItem');
 
 var CardIndex = React.createClass({
 
-  getInitialState: function () {
-    return { cards: CardStore.all() };
-  },
+	getInitialState: function () {
+		return { cards: CardStore.all() };
+	},
 
-  _onChange: function () {
-    this.setState({ cards: CardStore.all() });
-  },
+	_onChange: function () {
+		this.setState({ cards: CardStore.all() });
+	},
 
-  componentDidMount: function () {
-    this.cardListener = CardStore.addListener(this._onChange);
+	componentDidMount: function () {
+		this.cardListener = CardStore.addListener(this._onChange);
 		ApiUtil.fetchAllCards(this.props.boardId);
-  },
+	},
 
-  componentWillReceiveProps: function (newProps) {
-    this.setState({ cards: CardStore.all() });
-  },
+	componentWillReceiveProps: function (newProps) {
+		this.setState({ cards: CardStore.all() });
+	},
 
-  componentWillUnmount: function () {
-    this.cardListener.remove();
-  },
+	componentWillUnmount: function () {
+		this.cardListener.remove();
+	},
 
 	renderCardSlot: function (i) {
 		return (
@@ -39,13 +39,13 @@ var CardIndex = React.createClass({
 		);
 	},
 
-  render: function () {
+	render: function () {
 
-    if ( typeof this.state.cards === undefined) {
-      return (
-        <div> LOADING CARDS... </div>
-      );
-    }
+		if ( typeof this.state.cards === undefined) {
+			return (
+				<div> LOADING CARDS... </div>
+			);
+		}
 
 		var cardSlots = [];
 
@@ -53,15 +53,15 @@ var CardIndex = React.createClass({
 			cardSlots.push(this.renderCardSlot(i));
 		}
 
-    return (
-      <div className="card-index group">
-        <ul className="card-list group">
+		return (
+			<div className="card-index group">
+				<ul className="card-list group">
 					{cardSlots}
 					<CardFormButton boardId={this.props.boardId} />
-        </ul>
-      </div>
-    );
-  }
+				</ul>
+			</div>
+		);
+	}
 });
 
 

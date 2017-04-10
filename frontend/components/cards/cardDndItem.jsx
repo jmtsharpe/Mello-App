@@ -22,13 +22,13 @@ var ItemTypes = require('./../../constants/draggableConstants');
 var CardSource = {
 	beginDrag: function (props) {
 
-    return {
-      position: props.card.position,
+		return {
+			position: props.card.position,
 			id: props.card.id,
-      subject: props.card.subject,
+			subject: props.card.subject,
 			boardId: props.card.board_id
-    };
-  }
+		};
+	}
 };
 
 var CardTarget = {
@@ -36,28 +36,28 @@ var CardTarget = {
 
 	},
 
-  drop: function (props, monitor, component) {
+	drop: function (props, monitor, component) {
 		var newPos = component.props.card.position;
 		newOrder = CardStore.reorder(monitor.getItem(), newPos)
 		ApiUtil.reorderCardStore(newOrder);
-    ApiUtil.updateCardPosition(monitor.getItem(), newPos);
-    return {};
-  },
+		ApiUtil.updateCardPosition(monitor.getItem(), newPos);
+		return {};
+	},
 
 };
 
 
 function collect(connect, monitor) {
-  return {
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging()
-  };
+	return {
+		connectDragSource: connect.dragSource(),
+		isDragging: monitor.isDragging()
+	};
 }
 
 function collectTarget(connect, monitor) {
-  return {
-    connectDropTarget: connect.dropTarget()
-  };
+	return {
+		connectDropTarget: connect.dropTarget()
+	};
 }
 
 var CardIndexItem = React.createClass({
@@ -68,9 +68,9 @@ var CardIndexItem = React.createClass({
 	},
 
 	propTypes: {
-	 connectDragSource: React.PropTypes.func.isRequired,
-	 isDragging: React.PropTypes.bool.isRequired
- },
+		connectDragSource: React.PropTypes.func.isRequired,
+		isDragging: React.PropTypes.bool.isRequired
+	},
 
 
 	getInitialState: function () {
@@ -90,8 +90,8 @@ var CardIndexItem = React.createClass({
 	},
 
 	componentWillReceiveProps: function (newProps) {
-    this.setState({ card: newProps.card, subject: newProps.card.subject })
-  },
+		this.setState({ card: newProps.card, subject: newProps.card.subject })
+	},
 
 	_onChange: function () {
 		ApiUtil.fetchAllCards(this.props.card.board_id);
@@ -106,27 +106,27 @@ var CardIndexItem = React.createClass({
 		this.taskListener.remove();
 	},
 
-  handleClickOutside: function (e) {
-    this.setState({ pressed: false });
-  },
+	handleClickOutside: function (e) {
+		this.setState({ pressed: false });
+	},
 
 	editCard: function (event) {
-    event.preventDefault();
-    var card = {};
-    Object.keys(this.state).forEach(function (key) {
-      { card.subject = this.state.subject; }
-    }.bind(this));
-    card.id = this.props.card.id;
+		event.preventDefault();
+		var card = {};
+		Object.keys(this.state).forEach(function (key) {
+			{ card.subject = this.state.subject; }
+		}.bind(this));
+		card.id = this.props.card.id;
 		card.boardId = this.props.card.board_id;
-    ApiUtil.editCard(card);
-    this.setState({ pressed: false });
-  },
+		ApiUtil.editCard(card);
+		this.setState({ pressed: false });
+	},
 
-  render: function () {
+	render: function () {
 
 		var connectDragSource = this.props.connectDragSource;
-    var isDragging = this.props.isDragging;
-    var connectDropTarget = this.props.connectDropTarget;
+		var isDragging = this.props.isDragging;
+		var connectDropTarget = this.props.connectDropTarget;
 
 		if (this.props.card.tasks === undefined || this.props.card.tasks.length === 0) {
 			var tasks = "";
@@ -141,50 +141,50 @@ var CardIndexItem = React.createClass({
 
 
 		if (!this.state.pressed) {
-	    return connectDragSource(connectDropTarget(
+			return connectDragSource(connectDropTarget(
 
-					<li
-						style={{
-			        opacity: isDragging ? 0.5 : 1,
-			        cursor: 'move'
-		      	}}
-						className="card-list-item-slot"
-					>
-						<div className="card-list-item" >
-		        <h2 onClick={this.isPressed} className="card-title">
+				<li
+					style={{
+						opacity: isDragging ? 0.5 : 1,
+						cursor: 'move'
+					}}
+					className="card-list-item-slot"
+				>
+					<div className="card-list-item" >
+						<h2 onClick={this.isPressed} className="card-title">
 							{this.props.card.subject}
 						</h2>
 						<ul>
-						{tasks}
+							{tasks}
 						</ul>
 						<TaskFormButton
 							className="task-creation-div"
 							boardId={this.state.card.board_id}
 							cardId={this.state.card.id}
 						/>
-						</div>
-					</li>
-	    ));
+					</div>
+				</li>
+			));
 		}
 
 		return (
 			<li className="card-list-item-slot">
 				<div className="card-list-item">
 					<div className="edit-card-form">
-		        <form
+					<form
 							className="edit-card"
 							onSubmit={this.editCard}
 						>
-		          <input
-		            className="edit-input-field"
-		            type="text"
-		            id="card_subject"
-		            valueLink={this.linkState("subject")}
-		          />
-		          <br/>
-		          <button className="submit">Save</button>
-		        </form>
-		      </div>
+						<input
+							className="edit-input-field"
+							type="text"
+							id="card_subject"
+							valueLink={this.linkState("subject")}
+						/>
+						<br/>
+						<button className="submit">Save</button>
+					</form>
+					</div>
 					{tasks}
 					<TaskFormButton
 						className="task-creation-div"
@@ -193,11 +193,11 @@ var CardIndexItem = React.createClass({
 					/>
 				</div>
 			</li>
-		);
-  }
+			);
+	}
 });
 
 module.exports = flow(
-  DragSource("cardDndItem", CardSource, collect),
-  DropTarget("cardDndItem", CardTarget, collectTarget)
+	DragSource("cardDndItem", CardSource, collect),
+	DropTarget("cardDndItem", CardTarget, collectTarget)
 )(CardIndexItem);
