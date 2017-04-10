@@ -10,25 +10,25 @@ var BoardsDropdown = React.createClass({
 	mixins: [OnClickOutside],
 
 	contextTypes: {
-      router: React.PropTypes.object.isRequired
-    },
+		router: React.PropTypes.object.isRequired
+	},
 
 	getInitialState: function () {
-    return { pressed: false, boards: BoardStore.all() };
-  },
+		return { pressed: false, boards: BoardStore.all() };
+	},
 
-  isPressed: function () {
+	isPressed: function () {
 		this.setState({pressed: !this.state.pressed});
 	},
 
-  handleClickOutside: function (e) {
-    this.setState({ pressed: false })
-  },
+	handleClickOutside: function (e) {
+		this.setState({ pressed: false })
+	},
 
 
 	_onChange: function () {
-    this.setState({ boards: BoardStore.all() });
-  },
+		this.setState({ boards: BoardStore.all() });
+	},
 
 	_updateBoards: function () {
 		this.setState({ boards: BoardStore.all() });
@@ -47,12 +47,12 @@ var BoardsDropdown = React.createClass({
 
 
 
-  render: function () {
+	render: function () {
 		if (typeof this.state.boards === undefined || this.state.boards.length === 0 ) {
 		} else {
 			boards = [];
 			this.state.boards.forEach(function (board) {
-				boards.push( <BoardsDropdownItem board={board} />
+					boards.push( <BoardsDropdownItem board={board} />
 				)
 			});
 		}

@@ -1,3 +1,3 @@
 json.array!(@cards) do |card|
-  json.partial!('card', card: card)
+	 json.partial!('card', card: card)
 end
